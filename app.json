@@ -1,0 +1,36 @@
+{
+  "pages": [
+    
+    "pages/mine/mine",
+    "pages/index/index",
+    "pages/classify/classify",
+    "pages/message/message"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#932525",
+    "navigationBarTitleText": "好借好还HJHH",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/zhuye.png",
+        "selectedIconPath": "images/zhuye-red.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "iconPath": "images/huaban3.png",
+        "selectedIconPath": "images/huaban3-red.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/gerenzhongxin.png",
+        "selectedIconPath": "images/gerenzhongxin-red.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap95.json"
+}
