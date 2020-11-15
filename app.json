@@ -1,6 +1,9 @@
 {
   "pages": [
     
+    "pages/mine-setting/mine-setting",
+    "pages/mine-info/mine-info",
+    "pages/mine-detail/mine-detail",
     "pages/mine/mine",
     "pages/index/index",
     "pages/classify/classify",
