@@ -1,0 +1,30 @@
+<!--pages/mine-info/mine-info.wxml-->
+<view class="bac">
+  <view class="mine-head">
+    <view><image src="../../images/fanhui-white.png"></image></view>
+    <view class="mine-head-text">个人资料</view>
+  </view>
+  <view class="lists">
+    <view class="mine-block">
+      <view>更换头像</view>
+      <image src="../../images/前进.png"></image>
+    </view>
+    <view class="mine-block">
+      <view>昵称</view>
+      <input class="inputs" value="晚安"/>
+    </view>
+    <view class="mine-block">
+      <view>真实姓名</view>
+      <input class="inputs" value="吴凝"/>
+    </view>
+    <view class="mine-block">
+      <view>联系电话</view>
+      <input class="inputs" value="12345678901"/>
+    </view>
+    <view class="mine-block">
+      <view>地址</view>
+      <input class="inputs" value="福州大学"/>
+    </view>
+  </view>
+  <button class="bottom-button">修改个人信息</button>
+</view>

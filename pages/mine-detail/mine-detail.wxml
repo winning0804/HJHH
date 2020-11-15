@@ -1,0 +1,31 @@
+<!--pages/mine-detail/mine-detail.wxml-->
+<view class="bac">
+  <view class="mine-head">
+    <view><image src="../../images/fanhui-white.png"></image></view>
+    <view class="mine-head-text">我要发布</view>
+  </view>
+  <view class="lists">
+    <view class="mine-block">
+      <view>物品种类：</view>
+    </view>
+    <view class="mine-block">
+      <view>物品名称：</view>
+      <input placeholder="请输入物品名称"/>
+    </view>
+    <view class="mine-block">
+      <view>租金：</view>
+      <input placeholder="请输入理想日租金"/>
+    </view>
+    <view class="mine-block">
+      <view>押金：</view>
+      <input placeholder="请输入理想押金"/>
+    </view>
+    <view class="mine-block">
+      <view>地址：</view>
+    </view>
+  </view>
+  <view class="upload-img">
+    上传图片
+  </view>
+  <button class="bottom-button">发布</button>
+</view>
