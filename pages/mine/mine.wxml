@@ -1,0 +1,88 @@
+<!--logs.wxml-->
+<view>
+  <!--第一部分-->
+  <view class="mine-box1 mine-view1 pad20 font">
+    <block wx:if="{{isLogin}}">
+      <view bindtap="ToInfo">
+        <image class="mine-image" src="{{src}}"></image>
+      </view>
+      <view class="mine-name">{{nickname}}</view>
+    </block>
+    <block wx:else>
+      <button open-type="getUserInfo" bindgetuserinfo="getMyInfo">未登录，点此登录</button>
+    </block>
+  </view>
+  <!--第二部分-->
+  <view class="mine-box mine-view2">
+    <block wx:if="{{isLogin}}">
+      <view class="view2-block" bindtap="ToDetail" data-nid="1">
+        <view>{{borrow}}</view>
+        <view>已借出</view>
+      </view>
+      <view class="view2-block" bindtap="ToDetail" data-nid="2">
+        <view>{{return}}</view>
+        <view>待归还</view>
+      </view>
+      <view class="view2-block" bindtap="ToDetail" data-nid="3">
+        <view>{{deal}}</view>
+        <view>待处理</view>
+      </view>
+      <view class="view2-block1" bindtap="ToDetail" data-nid="4">
+        <view>{{check}}</view>
+        <view>待审核</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="view2-block">
+        <view>0</view>
+        <view>已借出</view>
+      </view>
+      <view class="view2-block">
+        <view>0</view>
+        <view>待归还</view>
+      </view>
+      <view class="view2-block">
+        <view>0</view>
+        <view>待处理</view>
+      </view>
+      <view class="view2-block1">
+        <view>0</view>
+        <view>待审核</view>
+      </view>
+    </block>
+  </view>
+  <!--第三部分-->
+  <view class="bac view3">
+    <block wx:if="{{isLogin}}">
+      <view class="view3-text">{{score}}</view>
+    </block>
+    <block wx:else>
+      <view class="view3-text">信誉分：000分</view>
+    </block>
+  </view>
+  <!--第四部分-->
+  <view  class="bac">
+    <view class="mine-block block1" bindtap="ToDetail" data-nid="5">
+      <image   src="../../images/icon-goods.png"></image>
+      <view>我的物品</view>
+      <image   src="../../images/前进.png"></image>
+    </view>
+    <view class="mine-block" bindtap="ToSub">
+      <image   src="../../images/fabu.png"></image>
+      <view>我要发布</view>
+      <image  src="../../images/前进.png"></image>
+    </view>
+    <view class="mine-block" bindtap="ToSet">
+      <image  src="../../images/shezhi.png"></image>
+      <view>用户设置</view>
+      <image  src="../../images/前进.png"></image>
+    </view>
+  </view>  
+  <!--第五部分-->
+  <view class="view5 bac">
+    <view class="mine-block" bindtap="ToClar">
+      <view>实名认证</view>
+      <image src="../../images/前进.png"></image>
+    </view>
+  </view> 
+</view>

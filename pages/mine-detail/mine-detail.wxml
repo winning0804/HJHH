@@ -1,0 +1,46 @@
+<!--pages/mine-detail/mine-detail.wxml-->
+<view class="bac">
+  <view class="mine-head">
+    <view class="mine-head-text">我要发布</view>
+  </view>
+  <view class="lists">
+    <view class="mine-block">
+      <view>物品种类：</view>
+      <view class='select_box'>
+        <view class='select' catchtap='selectTaps'>
+          <text class='select_text'>{{selectDatas[indexs]}}</text>
+        </view>
+        <view class='option_box' style='height:{{shows?(selectDatas.length>5?300:selectDatas.length*60):0}}rpx;'>
+          <text class='option' style='{{indexs==selectDatas.length-1&&"border:0;"}}' wx:for='{{selectDatas}}' wx:key='this' data-index='{{index}}' catchtap='optionTaps'>{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="mine-block">
+      <view>物品名称：</view>
+      <input placeholder="请输入物品名称"/>
+    </view>
+    <view class="mine-block">
+      <view>租金：</view>
+      <input placeholder="请输入理想日租金"/>
+    </view>
+    <view class="mine-block">
+      <view>押金：</view>
+      <input placeholder="请输入理想押金"/>
+    </view>
+    <view class="mine-block">
+      <view>地址：</view>
+      <view class="getloc" bindtap="getlocal">
+        <image src="../../images/地址.png"></image>
+        <view>{{local}}</view>
+      </view>  
+    </view>
+  </view>
+  <view class="upload-img">
+    <view> 上传图片 </view>
+    <image bindtap="upload" src="../../images/上传图片.png"></image>
+  </view>  
+  <view class="img-container">
+    <image class="images" wx:for="{{imgList}}" src="{{item}}"></image>
+  </view>
+  <button class="bottom-button1">发布</button>
+</view>

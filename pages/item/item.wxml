@@ -1,0 +1,11 @@
+<!--pages/item/item.wxml-->
+<view>
+  <!--顶栏-->
+  <view class="mine-head">
+    <view class="mine-head-text">{{page}}</view>
+  </view>
+  <!--幻灯片-->
+  <view>
+    <image src="../../images/u8.png"></image>
+  </view>
+</view>

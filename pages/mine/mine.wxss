@@ -1,0 +1,128 @@
+.bac{
+  background-color: white;
+}
+
+
+.mine-box{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  align-items:center;
+  align-content: center;
+  background-color: white;
+  margin-top: 20rpx;
+}
+
+.mine-box1{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items:center;
+  align-content: center;
+}
+
+.mine-box2{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items:center;
+  align-content: center;
+  background-color: white;
+  margin-top: 20rpx;
+}
+
+.pad20{
+  padding: 20rpx;
+}
+
+.font{
+  font-size: 40rpx;
+  font-weight: bold;
+  color:white;
+}
+
+.mine-view1{
+  background-color: #932525;
+  height: 200rpx;
+  width: 750rpx;
+  border-radius: 0% 0% 30% 30%;
+}
+
+.mine-image{
+  height: 130rpx;
+  width: 130rpx;
+  border-radius: 50%;
+}
+
+.mine-view2{
+  padding-left: 60rpx;
+  padding-right: 70rpx;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+.view2-block{
+  text-align: center;
+  border-right: 1px solid black;
+  padding-right: 20rpx;
+  padding-left: 20rpx;
+}
+
+.view2-block1{
+  text-align: center;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.mine-view3{
+  padding:20rpx;
+  padding-right: 240rpx;
+  padding-left: 240rpx;
+}
+
+.view3{
+  text-align: center;
+  margin-top: 30rpx;
+  padding: 15rpx;
+}
+
+.block1{
+  padding-top: 30rpx;
+}
+
+.mine-view4{
+  padding-right: 20rpx;
+  padding-left: 20rpx;
+}
+
+.view4-image{
+  height: 60rpx;
+  width: 60rpx;
+  padding-right: 20rpx;
+  padding-left: 20rpx;
+}
+
+.line-bottom{
+  border-bottom: 1px solid black;
+}
+
+.view4-block{
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  display:flex;
+  flex-direction: row;
+  text-align: center;
+  width:700rpx;
+}
+
+.arrow{
+  padding-left: 370rpx;
+}
+
+.view5{
+  padding-top: 5rpx;
+  margin-top: 30rpx;
+}

@@ -1,0 +1,5 @@
+/* pages/iden/iden.wxss */
+.group{
+  display: flex;
+  flex-direction: row;
+}

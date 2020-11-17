@@ -1,0 +1,30 @@
+<!--pages/iden/iden.wxml-->
+<view>
+  <view class="mine-head">
+    <view class="mine-head-text">实名认证</view>
+  </view>
+  <view class="lists">
+    <view class="mine-block">
+      <view>真实姓名</view>
+      <input placeholder="必填"/>
+    </view>
+    <view class="mine-block">
+      <view>性别</view>
+      <radio-group class="group" bindchange="radioChange">
+        <view class="label-2" wx:for="{{radioItems}}">
+          <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}"></radio>
+          <label class="label-2-text" for="{{item.name}}"><text>{{item.name}}</text></label>
+        </view>
+      </radio-group>
+    </view>
+    <view class="mine-block">
+      <view>身份证号</view>
+      <input placeholder="必填"/>
+    </view>
+    <view class="mine-block">
+      <view>联系电话</view>
+      <input placeholder="必填"/>
+    </view>
+  </view>
+  <button class="bottom-button">确认</button>
+</view>

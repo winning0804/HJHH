@@ -1,0 +1,137 @@
+<!--pages/return/return.wxml-->
+<view>
+  <!--顶栏-->
+  <view class="mine-head">
+    <view class="mine-head-text">{{page}}</view>
+  </view>
+  <!--物品栏-->
+  <view class="lists">
+
+    <view class="mine-list">
+      <image src="{{img}}"></image>
+      <view class="list-in">
+        <view class="list-info list-info-name">{{obj}}</view>
+        <view class="list-info list-info-peo">{{people}}</view>
+        <view class="list-info list-info-pri">{{price}}</view>
+        <view class="list-info list-info-date">{{date}}</view>
+        <view class="list-info mine-buttons">
+          <button class="list-button" wx:if="{{show}}">{{button1}}</button>
+          <button class="list-button">{{button2}}</button>
+        </view>  
+      </view>
+    </view>
+
+    <view class="mine-list">
+      <image src="{{img}}"></image>
+      <view class="list-in">
+        <view class="list-info list-info-name">{{obj}}</view>
+        <view class="list-info list-info-peo">{{people}}</view>
+        <view class="list-info list-info-pri">{{price}}</view>
+        <view class="list-info list-info-date">{{date}}</view>
+        <view class="list-info mine-buttons">
+          <button class="list-button" wx:if="{{show}}">{{button1}}</button>
+          <button class="list-button">{{button2}}</button>
+        </view>  
+      </view>
+    </view>
+
+    <view class="mine-list">
+      <image src="{{img}}"></image>
+      <view class="list-in">
+        <view class="list-info list-info-name">{{obj}}</view>
+        <view class="list-info list-info-peo">{{people}}</view>
+        <view class="list-info list-info-pri">{{price}}</view>
+        <view class="list-info list-info-date">{{date}}</view>
+        <view class="list-info mine-buttons">
+          <button class="list-button" wx:if="{{show}}">{{button1}}</button>
+          <button class="list-button">{{button2}}</button>
+        </view>  
+      </view>
+    </view>
+
+    <view class="mine-list">
+      <image src="{{img}}"></image>
+      <view class="list-in">
+        <view class="list-info list-info-name">{{obj}}</view>
+        <view class="list-info list-info-peo">{{people}}</view>
+        <view class="list-info list-info-pri">{{price}}</view>
+        <view class="list-info list-info-date">{{date}}</view>
+        <view class="list-info mine-buttons">
+          <button class="list-button" wx:if="{{show}}">{{button1}}</button>
+          <button class="list-button">{{button2}}</button>
+        </view>  
+      </view>
+    </view>
+
+    <view class="mine-list">
+      <image src="{{img}}"></image>
+      <view class="list-in">
+        <view class="list-info list-info-name">{{obj}}</view>
+        <view class="list-info list-info-peo">{{people}}</view>
+        <view class="list-info list-info-pri">{{price}}</view>
+        <view class="list-info list-info-date">{{date}}</view>
+        <view class="list-info mine-buttons">
+          <button class="list-button" wx:if="{{show}}">{{button1}}</button>
+          <button class="list-button">{{button2}}</button>
+        </view>  
+      </view>
+    </view>
+
+    <view class="mine-list">
+      <image src="{{img}}"></image>
+      <view class="list-in">
+        <view class="list-info list-info-name">{{obj}}</view>
+        <view class="list-info list-info-peo">{{people}}</view>
+        <view class="list-info list-info-pri">{{price}}</view>
+        <view class="list-info list-info-date">{{date}}</view>
+        <view class="list-info mine-buttons">
+          <button class="list-button" wx:if="{{show}}">{{button1}}</button>
+          <button class="list-button">{{button2}}</button>
+        </view>  
+      </view>
+    </view>
+
+    <view class="mine-list">
+      <image src="{{img}}"></image>
+      <view class="list-in">
+        <view class="list-info list-info-name">{{obj}}</view>
+        <view class="list-info list-info-peo">{{people}}</view>
+        <view class="list-info list-info-pri">{{price}}</view>
+        <view class="list-info list-info-date">{{date}}</view>
+        <view class="list-info mine-buttons">
+          <button class="list-button" wx:if="{{show}}">{{button1}}</button>
+          <button class="list-button">{{button2}}</button>
+        </view>  
+      </view>
+    </view>
+
+    <view class="mine-list">
+      <image src="{{img}}"></image>
+      <view class="list-in">
+        <view class="list-info list-info-name">{{obj}}</view>
+        <view class="list-info list-info-peo">{{people}}</view>
+        <view class="list-info list-info-pri">{{price}}</view>
+        <view class="list-info list-info-date">{{date}}</view>
+        <view class="list-info mine-buttons">
+          <button class="list-button" wx:if="{{show}}">{{button1}}</button>
+          <button class="list-button">{{button2}}</button>
+        </view>  
+      </view>
+    </view>
+
+    <view class="mine-list">
+      <image src="{{img}}"></image>
+      <view class="list-in">
+        <view class="list-info list-info-name">{{obj}}</view>
+        <view class="list-info list-info-peo">{{people}}</view>
+        <view class="list-info list-info-pri">{{price}}</view>
+        <view class="list-info list-info-date">{{date}}</view>
+        <view class="list-info mine-buttons">
+          <button class="list-button" wx:if="{{show}}">{{button1}}</button>
+          <button class="list-button">{{button2}}</button>
+        </view>  
+      </view>
+    </view>
+
+  </view>
+</view>

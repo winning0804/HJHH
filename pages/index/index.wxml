@@ -1,0 +1,59 @@
+<!--index.wxml-->
+<view class="container">
+	<view class = "images">
+		<image src="../../images/u8.png"></image>
+	</view>
+	<view class = "title1">电子产品| 蓝牙耳机</view>
+	<!--<view class = "title2"></view>-->
+	<view class = "price">￥ 3.00元 / 日</view>
+	<view class = "introduce">
+		<view class = "introduce_title">物品介绍</view>
+		<view class = "introduce_container">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</view>
+	</view>
+	<view class = "container_info">
+		<view class = "container_image">
+			<image src="../../images/u19.svg" mode = "aspectFit" class = "imagg1"></image>
+		</view>
+		<view class = "container_detail">
+		持有人： 美少女战士
+		地址： ×××××××
+		</view>
+	</view>
+	<view class = "comment">
+		<view class = "comment_title">评价</view>
+		<view class = "borrower">
+			<view class = "borrower_image">
+				<image src="../../images/u22.svg" mode = "aspectFit" class = "imagg1"></image>
+			</view>
+			<view class = "borrower_detail">
+			铲屎官
+			</view>
+			<view class = "borrower_detail2">
+			耳机很好用，租金也很便宜，好评~
+			</view>
+		</view>
+		<view class = "thumb-up">
+			<view class = "thumb-up1">点赞</view>
+			<view class = "thumb-up1">评论</view>
+		</view>
+		<view class = "print">
+			请输入评论。
+		</view>
+		<view class = "thecomment">
+			<view class = "thecomment_image">
+				<image src="../../images/u19.svg" mode = "aspectFit" class = "imagg1"></image>
+			</view>
+			<view class = "thecomment_detail">
+				谢谢~~
+			</view>
+		</view>
+		<view class = "thecomment">
+			<view class = "thecomment_image">
+				<image src="../../images/u22.svg" mode = "aspectFit" class = "imagg1"></image>
+			</view>
+			<view class = "thecomment_detail">
+				回复美少女战士：下次还借~
+			</view>
+		</view>
+	</view>
+</view>

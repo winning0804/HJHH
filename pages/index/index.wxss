@@ -1,0 +1,140 @@
+/**index.wxss**/
+.images{
+    width: 100vw;
+    height: 52vh;
+}
+.title1{
+    width: 100vw;
+    height: 10vh;
+    line-height : 10vh;
+    padding-left : 15vw;
+    font-size :20px;
+}
+.price{
+    width: 100vw;
+    height: 5vh;
+    line-height : 5vh;
+    padding-left : 15vw;
+    font-size :10px;
+    color : red;
+}
+.introduce{
+    width: 75vw;
+    height: 30vh;
+    border-radius: 40rpx;
+    border :5rpx solid black;
+    margin-top: 8vh;
+    padding: 50rpx;
+}
+.introduce_title{
+    font-size: 20px;
+}
+.introduce_container{
+    font-size: 15px;
+    padding-left : 20px;
+    padding-top : 10px;
+}
+.container_info{
+    width: 75vw;
+    height: 12vh;
+    border-radius: 40rpx;
+    border :5rpx solid black;
+    margin-top: 8vh;
+    padding: 50rpx;
+}
+.container_image{
+    float: left;
+    width:30vw;
+    height: 12vh;
+}
+.container_detail{
+    float: left;
+    width: 55%;
+    height: 12vh;
+    line-height: 60rpx;
+    font-size: 13px;
+    padding-left: 10rpx;
+}
+.comment{
+    width: 75vw;
+    height: 55vh;
+    border-radius: 40rpx;
+    border :5rpx solid black;
+    margin-top: 8vh;
+    padding: 50rpx;
+    margin-bottom: 20px;
+}
+.comment_title{
+    font-size: 20px;
+}
+.borrower_image{
+    float: left;
+    width:35%;
+    height: 12vh;
+}
+.borrower_detail{
+    float: left;
+    width: 55%;
+    height: 4vh;
+    line-height: 60rpx;
+    font-size: 13px;
+    padding-left: 10rpx;
+}
+.borrower_detail2{
+    float: left;
+    width: 55%;
+    height: 7vh;
+    line-height: 15px;
+    font-size: 13px;
+    padding-left: 10rpx;
+}
+.borrower{
+    height: 12vh;
+    margin-top: 15px;
+}
+.thumb-up{
+    width: 100%;
+    height: 20px;
+    margin-top:1vh;
+}
+.thumb-up1{
+    width: 50%;
+    font-size: 12px;
+    float: left;
+    text-align:center;
+}
+.print{
+    width: 100%;
+    height: 20px;
+    text-align:center;
+    font-size: 12px;
+    font-style: italic;
+    color: #d6d6d6;
+    border :3rpx solid black;
+    border-radius: 20px;
+    margin-bottom: 3vh;
+    margin-top: 1vh;
+}
+.thecomment_image{
+    float: left;
+    width:35%;
+    height: 8vh;
+    font-size: 11px;
+}
+.thecomment_detail{
+    float: left;
+    width: 55%;
+    height: 8vh;
+    line-height: 4vh;
+    font-size: 11px;
+    padding-left: 10rpx;
+    margin-top: 10rpx;
+}
+.thecomment{
+    margin-top: 5vh;
+}
+.imagg1{
+    float: left;
+    width: 95%;
+    height: 95%;
+}
