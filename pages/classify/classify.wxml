@@ -4,17 +4,25 @@
     </view>
     <view class = "nav_top">
         <scroll-view class="nav_left" scroll-x="true" scroll-left="{{x}}" scroll-with-animation="{{true}}">
-        <view class = "thenav">电子产品</view>
-        <view class = "thenav">日常用品</view>
-        <view class = "thenav">交通出行</view>
-        <view class = "thenav">服务</view>
-        <view class = "thenav">其他</view>
+        <view bindtap = "select1" class = "thenav">电子产品</view>
+        <view bindtap = "select2" class = "thenav">日常用品</view>
+        <view bindtap = "select3" class = "thenav">交通出行</view>
+        <view bindtap = "select4" class = "thenav">服务</view>
+        <view bindtap = "select5" class = "thenav">其他</view>
         </scroll-view>
-        <view class = "nav_serch">筛选</view>
+        <view bindtap="clickme" class = "nav_serch">筛选</view>
     </view>
+    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+        <view bindtap = "select1" class = "select">电子产品</view>
+        <view bindtap = "select2" class = "select">日常用品</view>
+        <view bindtap = "select3" class = "select">交通出行</view>
+        <view bindtap = "select4" class = "select">服务</view>
+        <view bindtap = "select5" class = "select">其他</view>
+    </view> 
     <view class = "goods">
         <view class = "thegoods">
-            <view class = "goods_detail">
+            <view class = "goods_detail" bindtap = "toindex">
                 <view class = "goods_img">
                     <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
                 </view>
@@ -24,7 +32,7 @@
             </view>
         </view>
         <view class = "thegoods">
-            <view class = "goods_detail">
+            <view class = "goods_detail" bindtap = "toindex">
                 <view class = "goods_img">
                     <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
                 </view>
@@ -34,7 +42,7 @@
             </view>
         </view>
         <view class = "thegoods">
-            <view class = "goods_detail">
+            <view class = "goods_detail" bindtap = "toindex">
                 <view class = "goods_img">
                     <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
                 </view>
@@ -44,7 +52,7 @@
             </view>
         </view>
         <view class = "thegoods">
-            <view class = "goods_detail">
+            <view class = "goods_detail" bindtap = "toindex">
                 <view class = "goods_img">
                     <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
                 </view>
@@ -54,7 +62,27 @@
             </view>
         </view>
         <view class = "thegoods">
-            <view class = "goods_detail">
+            <view class = "goods_detail" bindtap = "toindex">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">电子产品|蓝牙耳机</view>
+                <view class = "goods_price">￥ 3.00元/日</view>
+                <view class = "goods_deposit">押金：￥20</view>
+            </view>
+        </view>
+        <view class = "thegoods">
+            <view class = "goods_detail" bindtap = "toindex">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">电子产品|蓝牙耳机</view>
+                <view class = "goods_price">￥ 3.00元/日</view>
+                <view class = "goods_deposit">押金：￥20</view>
+            </view>
+        </view>
+        <view class = "thegoods">
+            <view class = "goods_detail" bindtap = "toindex">
                 <view class = "goods_img">
                     <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
                 </view>

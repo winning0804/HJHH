@@ -1,0 +1,79 @@
+<!--render.wxml-->
+<view class="container">
+	<view class = "title">
+        <view class = "profile_picture">
+            <image src="../../images/fanhui-white.png" bindtap='back' mode = "aspectFit" class = "return_img"></image>
+            <image src="../../images/u19.svg" mode = "aspectFit" class = "img"></image>
+        </view>
+        <view class = "profile_infors">
+            <view class = "infor_name">美少女战士</view>
+            <view class = "infor_credit">信誉分： 100分</view>
+            <view class = "to_message">
+                <image src="../../images/huaban3-white.png" bindtap='tomessage' mode = "aspectFit" class = "img2"></image>
+            </view>
+        </view>
+        <view class = "nav">
+            <view class = "select" bindtap='tosend_select' style = "text-align: right">可借</view>
+            <view class = "select" bindtap='sent_select' style = "text-aligh: left">已借</view>    
+        </view>
+    </view>
+    <view class = "goods">
+        <view class = "thegoods">
+            <view class = "goods_detail" wx:if="{{tosend}}">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">电子产品|蓝牙耳机</view>
+                <view class = "goods_price">￥ 3.00元/日</view>
+                <view class = "goods_deposit">押金：￥20</view>
+            </view>
+        </view>
+        <view class = "thegoods">
+            <view class = "goods_detail" wx:if="{{tosend}}">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">电子产品|蓝牙耳机</view>
+                <view class = "goods_price">￥ 3.00元/日</view>
+                <view class = "goods_deposit">押金：￥20</view>
+            </view>
+        </view><view class = "thegoods">
+            <view class = "goods_detail" wx:if="{{tosend}}">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">电子产品|蓝牙耳机</view>
+                <view class = "goods_price">￥ 3.00元/日</view>
+                <view class = "goods_deposit">押金：￥20</view>
+            </view>
+        </view><view class = "thegoods">
+            <view class = "goods_detail" wx:if="{{tosend}}">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">电子产品|蓝牙耳机</view>
+                <view class = "goods_price">￥ 3.00元/日</view>
+                <view class = "goods_deposit">押金：￥20</view>
+            </view>
+        </view><view class = "thegoods">
+            <view class = "goods_detail" wx:if="{{tosend}}">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">电子产品|蓝牙耳机</view>
+                <view class = "goods_price">￥ 3.00元/日</view>
+                <view class = "goods_deposit">押金：￥20</view>
+            </view>
+        </view>
+        <view class = "thegoods">
+            <view class = "goods_detail" wx:if="{{sent}}">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">电子产品|蓝牙耳机</view>
+                <view class = "goods_price">￥ 3.00元/日</view>
+                <view class = "goods_deposit">押金：￥20</view>
+            </view>
+        </view>
+    </view>
+</view>

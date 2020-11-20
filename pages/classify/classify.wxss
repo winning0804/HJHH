@@ -118,3 +118,37 @@ page{
     padding-top: 4%;
     float: left;
 }
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.commodity_attr_box {
+  height: 500rpx;
+  width: 100vw;
+  overflow: hidden;
+  position: fixed;
+  top: 20vh;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}
+.select{
+    width: 600rpx;
+    height: 60rpx;
+    margin: auto;
+    margin-top: 35rpx;
+    border-radius: 30rpx;
+    background: #932525;
+    text-align:center;
+    color: #fff;
+    font-size: 35rpx;
+    line-height: 60rpx;
+}

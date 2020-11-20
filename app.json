@@ -1,14 +1,14 @@
 {
   "pages": [
-    "pages/mine/mine",
+    "pages/classify/classify",
     "pages/index/index",
+    "pages/mine/mine",
     "pages/item/item",
     "pages/return/return",
     "pages/mine-detail/mine-detail",
     "pages/iden/iden",
     "pages/mine-info/mine-info",
     "pages/mine-setting/mine-setting",
-    "pages/classify/classify",
     "pages/message/message"
     
   ],
