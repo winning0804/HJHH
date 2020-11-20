@@ -10,7 +10,6 @@
     "pages/mine-info/mine-info",
     "pages/mine-setting/mine-setting",
     "pages/message/message"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

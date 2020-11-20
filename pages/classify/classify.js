@@ -1,15 +1,105 @@
 // pages/classification/classify.js
 Page({
   	data: {
-		obj: [
+		list: [
 			{
-				id: "0",
-				name: ""
+				obj: [
+					{
+						id: "0",
+						name: "电子产品|蓝牙耳机",
+						price: "￥ 3.00元/日",
+						deposit: "押金：￥20"
+					},
+					{
+						id: "1",
+						name: "电子产品|蓝牙耳机",
+						price: "￥ 3.00元/日",
+						deposit: "押金：￥20"
+					},
+					{
+						id: "2",
+						name: "电子产品|蓝牙耳机",
+						price: "￥ 3.00元/日",
+						deposit: "押金：￥20"
+					},
+					{
+						id: "3",
+						name: "电子产品|蓝牙耳机",
+						price: "￥ 3.00元/日",
+						deposit: "押金：￥20"
+					},
+					{
+						id: "4",
+						name: "电子产品|蓝牙耳机",
+						price: "￥ 3.00元/日",
+						deposit: "押金：￥20"
+					},
+				]
 			},
 			{
-				id: "1",
-				name: "B"
+				obj: [
+					{
+						id: "0",
+						name: "日常用品|针线盒",
+						price: "￥ 1.00元/日",
+						deposit: "押金：免费"
+					},
+					{
+						id: "1",
+						name: "日常用品|针线盒",
+						price: "￥ 1.00元/日",
+						deposit: "押金：免费"
+					},
+				],
 			},
+			{
+				obj: [
+					{
+						id: "0",
+						name: "交通工具|电动车",
+						price: "￥ 5.00元/日",
+						deposit: "押金：￥20"
+					},
+					{
+						id: "1",
+						name: "交通工具|电动车",
+						price: "￥ 5.00元/日",
+						deposit: "押金：￥20"
+					},
+				],
+			},
+			{
+				obj: [
+					{
+						id: "0",
+						name: "服务|代取快递",
+						price: "￥ 3.00元/次",
+						deposit: "押金：免费"
+					},
+					{
+						id: "1",
+						name: "服务|代取快递",
+						price: "￥ 3.00元/次",
+						deposit: "押金：免费"
+					},
+					{
+						id: "2",
+						name: "服务|代取快递",
+						price: "￥ 3.00元/次",
+						deposit: "押金：免费"
+					},
+				],
+			},
+			{
+				obj: [
+					{
+						id: "0",
+						name: "其他|PPT制作",
+						price: "￥ 20.00元/次",
+						deposit: "押金：免费"
+					}
+				],
+			}
 		]
 	},
 	toindex:function(event){

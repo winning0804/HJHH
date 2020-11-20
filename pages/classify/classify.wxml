@@ -20,76 +20,18 @@
         <view bindtap = "select4" class = "select">服务</view>
         <view bindtap = "select5" class = "select">其他</view>
     </view> 
-    <view class = "goods">
-        <view class = "thegoods">
+    <view  class = "goods">
+        <view wx:for="{{list}}" wx:key="id" wx:for-item="item" data-id='{{item.id}}' >
+        <view  wx:for="{{item.obj}}"   wx:for-item="objItem" wx:key="objItem" class = "thegoods">
             <view class = "goods_detail" bindtap = "toindex">
                 <view class = "goods_img">
                     <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
                 </view>
-                <view class = "goods_name">电子产品|蓝牙耳机</view>
-                <view class = "goods_price">￥ 3.00元/日</view>
-                <view class = "goods_deposit">押金：￥20</view>
+                <view class = "goods_name">{{objItem.name}}</view>
+                <view class = "goods_price">{{objItem.price}}</view>
+                <view class = "goods_deposit">{{objItem.deposit}}</view>
             </view>
         </view>
-        <view class = "thegoods">
-            <view class = "goods_detail" bindtap = "toindex">
-                <view class = "goods_img">
-                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
-                </view>
-                <view class = "goods_name">电子产品|蓝牙耳机</view>
-                <view class = "goods_price">￥ 3.00元/日</view>
-                <view class = "goods_deposit">押金：￥20</view>
-            </view>
-        </view>
-        <view class = "thegoods">
-            <view class = "goods_detail" bindtap = "toindex">
-                <view class = "goods_img">
-                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
-                </view>
-                <view class = "goods_name">电子产品|蓝牙耳机</view>
-                <view class = "goods_price">￥ 3.00元/日</view>
-                <view class = "goods_deposit">押金：￥20</view>
-            </view>
-        </view>
-        <view class = "thegoods">
-            <view class = "goods_detail" bindtap = "toindex">
-                <view class = "goods_img">
-                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
-                </view>
-                <view class = "goods_name">电子产品|蓝牙耳机</view>
-                <view class = "goods_price">￥ 3.00元/日</view>
-                <view class = "goods_deposit">押金：￥20</view>
-            </view>
-        </view>
-        <view class = "thegoods">
-            <view class = "goods_detail" bindtap = "toindex">
-                <view class = "goods_img">
-                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
-                </view>
-                <view class = "goods_name">电子产品|蓝牙耳机</view>
-                <view class = "goods_price">￥ 3.00元/日</view>
-                <view class = "goods_deposit">押金：￥20</view>
-            </view>
-        </view>
-        <view class = "thegoods">
-            <view class = "goods_detail" bindtap = "toindex">
-                <view class = "goods_img">
-                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
-                </view>
-                <view class = "goods_name">电子产品|蓝牙耳机</view>
-                <view class = "goods_price">￥ 3.00元/日</view>
-                <view class = "goods_deposit">押金：￥20</view>
-            </view>
-        </view>
-        <view class = "thegoods">
-            <view class = "goods_detail" bindtap = "toindex">
-                <view class = "goods_img">
-                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
-                </view>
-                <view class = "goods_name">电子产品|蓝牙耳机</view>
-                <view class = "goods_price">￥ 3.00元/日</view>
-                <view class = "goods_deposit">押金：￥20</view>
-            </view>
         </view>
     </view>
 </view>

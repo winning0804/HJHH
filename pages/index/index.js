@@ -4,6 +4,8 @@ const app = getApp()
 Page({
   data: {
     userInfo: {},
+    thumb1: 20,
+    thumb2: 21,
   },
   	clickme: function () {
     this.showModal();
@@ -74,6 +76,16 @@ Page({
     tomessage: function(event){
       wx.switchTab({
         url: '../message/message'
+      });
+    },
+    increase1: function(event){
+      this.setData({
+        thumb1: this.data.thumb1+1,
+      });
+    },
+    increase2: function(event){
+      this.setData({
+        thumb2: this.data.thumb2+1,
       });
     },
 })

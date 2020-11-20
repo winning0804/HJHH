@@ -59,10 +59,10 @@
 		<view class = "thumb-up">
 			<view class = "thumb-upin">
 				<image class = "thumb_upin_img" src="../../images/点赞1.png" mode = "aspectFill"></image>
-				<view id = "thumb_up_num">20</view>
+				<view id = "thumb_up_num"  bindtap= "increase1">{{thumb1}}</view>
 			</view>
 			<view class = "thumb-upin">
-				<image class = "thumb_upin_img" src="../../images/huaban3.png" mode = "aspectFill"></image>
+				<image class = "thumb_upin_img" src="../../images/huaban3.png"  bindtap='tomessage' mode = "aspectFill"></image>
 			</view>
 		</view>
 		<view class = "print">
@@ -128,10 +128,10 @@
 		<view class = "thumb-up">
 			<view class = "thumb-upin">
 				<image class = "thumb_upin_img" src="../../images/点赞1.png" mode = "aspectFill"></image>
-				<view id = "thumb_up_num">21</view>
+				<view id = "thumb_up_num"  bindtap= "increase2">{{thumb2}}</view>
 			</view>
 			<view class = "thumb-upin">
-				<image class = "thumb_upin_img" src="../../images/huaban3.png" mode = "aspectFill"></image>
+				<image class = "thumb_upin_img" src="../../images/huaban3.png"  bindtap='tomessage' mode = "aspectFill"></image>
 			</view>
 		</view>
 		<view class = "print">
