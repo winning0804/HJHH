@@ -6,10 +6,14 @@ Page({
    */
   data: {
     page:"...",
-    imagesrc1:"../../images/u8.png",
+    array:[
+      "../../images/u8.png",
+      "../../images/u19.svg",
+      "../../images/u8.png",
+      "../../images/u8.png",
+      "../../images/u8.png",
+    ],
     imagesrc2:"../../images/u19.svg",
-    imagesrc3:"../../images/u19.svg",
-    imagesrc4:"../../images/u19.svg",
     obj:"...",
     people:"...",
     time:"...",
@@ -47,10 +51,12 @@ Page({
     if(options.id==1){
       that.setData({
         page:"已借出物品",
-        imagesrc1:"../../images/u8.png",
+        array:[
+          "../../images/u8.png",
+          "../../images/电动车.png",
+          "../../images/指甲剪.png",
+        ],
         imagesrc2:"../../images/u19.svg",
-        imagesrc3:"../../images/电动车.png",
-        imagesrc4:"../../images/指甲剪.png",
         obj:"电子产品|蓝牙耳机",
         people:"所属人：阿达娃",
         time:"借用时间：2020.10.02-2020.11.20",
@@ -62,10 +68,15 @@ Page({
     if(options.id==2){
       that.setData({
         page:"待归还物品",
-        imagesrc1:"../../images/电动车.png",
+        array:[
+          "../../images/u8.png",
+          "../../images/u19.svg",
+          "../../images/u8.png",
+          "../../images/u8.png",
+          "../../images/u8.png",
+          "../../images/u8.png",
+        ],
         imagesrc2:"../../images/u19.svg",
-        imagesrc3:"../../images/u19.svg",
-        imagesrc4:"../../images/u19.svg",
         obj:"交通出行|电动车",
         people:"所属人：月野兔",
         time:"借用时间：2020.08.04-2020.11.23",
