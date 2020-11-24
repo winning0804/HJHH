@@ -1,14 +1,24 @@
-// pages/mine-setting/mine-setting.js
+// pages/message_detail/message_detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hiddenmodalput:true,
-    content:""
+    messages:[
+      {
+        url:"../../images/u19.svg",
+        messages_detail_text:"租金可以便宜点吗？",
+      },
+     
+    ],
+    my_messages:[
+      {
+        messages_text_anser:"可以啊",
+        ur1:"../../images/mine-image.png",
+      },
+    ]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

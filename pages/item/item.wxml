@@ -5,7 +5,35 @@
     <view class="mine-head-text">{{page}}</view>
   </view>
   <!--幻灯片-->
-  <view>
-    <image src="../../images/u8.png"></image>
+  <view class="my-image">
+    <swiper indicator-dots indicator-color="#E4DADA"
+  indicator-active-color="#932525">
+      <swiper-item>
+        <image src="{{imagesrc1}}"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="{{imagesrc3}}"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="{{imagesrc4}}"></image>
+      </swiper-item>
+    </swiper>
+    
   </view>
+  <!--内容-->
+  <view class="content">
+    <view class="obj">{{obj}}</view>
+    <view class="line2">
+      <view>{{people}}</view>
+      <view class="price">{{price}}</view>
+    </view>
+    <view class="line3">
+      <image src="{{imagesrc2}}"></image>
+      <view class="line4">
+        <view class="line5">{{time}}</view>
+        <view>{{phone}}</view>
+      </view>
+    </view>
+  </view>
+  <button class="bottom-button" bindtap="confirm">{{func}}</button>
 </view>

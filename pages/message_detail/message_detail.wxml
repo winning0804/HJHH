@@ -1,0 +1,33 @@
+<!--pages/message_detail/message_detail.wxml-->
+  <view class="mine-head">
+    <view class="mine-head-text">美少女战士</view>
+  </view>
+
+  <view class="messages_detail">
+     <block wx:for="{{messages}}">
+  <view class="item">
+    <image class = "borrower_image" src="{{item.url}}" ></image>
+    <view class="messages_text">
+      <view>
+        <text class = "messages_detail_text">{{item.messages_detail_text}}</text>
+      </view>
+    </view>
+  </view>
+  </block>
+  </view>
+
+  <view class="messages_my_detail">
+    <block wx:for ="{{my_messages}}" wx:key="key">
+    <view class="messages_text_anser">
+        <text class = "messages_detail_anser">{{item.messages_text_anser}}</text>
+    </view>
+    <image class = "mine_image" src="{{item.ur1}}" ></image>
+  </block>
+  </view>
+
+  <view class="messages_detai_bottom">
+    <view class = "send_top">
+        <input class = "send" type='default' placeholder='发信息。。' confirm-type='send' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>    
+    </view>
+    <button class="bottom" style="font-size:25rpx ">发送</button>
+  </view>

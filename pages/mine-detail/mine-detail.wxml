@@ -17,15 +17,15 @@
     </view>
     <view class="mine-block">
       <view>物品名称：</view>
-      <input placeholder="请输入物品名称"/>
+      <input placeholder="{{objs}}"/>
     </view>
     <view class="mine-block">
       <view>租金：</view>
-      <input placeholder="请输入理想日租金"/>
+      <input placeholder="{{money1}}"/>
     </view>
     <view class="mine-block">
       <view>押金：</view>
-      <input placeholder="请输入理想押金"/>
+      <input placeholder="{{money2}}"/>
     </view>
     <view class="mine-block">
       <view>地址：</view>
@@ -42,5 +42,5 @@
   <view class="img-container">
     <image class="images" wx:for="{{imgList}}" src="{{item}}"></image>
   </view>
-  <button class="bottom-button1">发布</button>
+  <button class="bottom-button1" bindtap="change">{{button}}</button>
 </view>

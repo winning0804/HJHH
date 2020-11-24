@@ -5,13 +5,56 @@ Page({
    * 页面的初始数据
    */
   data: {
+    username:" ",
+    src:"../../images/unlogin.png"
+  },
 
+  change:function(){
+    wx.showModal({
+      title: '提醒',
+      content: '是否确认修改个人信息？',
+      success(res){
+        if(res.confirm)
+        {
+          wx.showToast({
+            title: '修改成功',
+            duration:2000,//显示时长
+            mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+            icon:'success'//图标，支持"success"、"loading"
+          })
+        }else if(res.cancel)
+        {
+          console.log("用户点击了取消");
+        }
+      }
+    })
+  },
+
+  upload:function(){
+    var that = this;
+
+    wx.chooseImage({
+      count: 1,
+      sizeType:['original', 'compressed'],
+      sourceType:['album', 'camera'],
+      success:function(res){
+        console.log(res),
+        that.setData({
+          src:res.tempFilePaths,
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
+    this.setData({
+      username:options.username,
+      src:"../../images/mine-image.png"
+    })
 
   },
 

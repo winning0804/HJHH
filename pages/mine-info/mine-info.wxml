@@ -5,13 +5,17 @@
   </view>
   <view class="lists">
     <view class="mine-block">
+      <view>昵称</view>
+      <input class="inputs" value="{{username}}"/>
+    </view>
+    <view class="mine-block" bindtap="upload">
       <view>更换头像</view>
       <image src="../../images/前进.png"></image>
     </view>
-    <view class="mine-block">
-      <view>昵称</view>
-      <input class="inputs" value="晚安"/>
-    </view>
   </view>
-  <button class="bottom-button">修改个人信息</button>
+  <view class="subs">
+    <view>当前头像</view>
+    <image class="changeimg" src="{{src}}"></image>
+  </view>
+  <button class="bottom-button" bindtap="change">修改个人信息</button>
 </view>

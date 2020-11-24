@@ -1,0 +1,110 @@
+/* pages/message_detail/message_detail.wxss */
+page{
+  background: #E4DADA;
+}
+
+.messages_detail{
+  background-color: #E4DADA;
+  margin-top: 2vh;
+  width: 100%;
+}
+.item{
+  margin-top: 0;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction:row;
+  background-color: #E4DADA;
+}
+.borrower_image{
+  float: left;
+  width:50px;
+  height:50px;
+  border-radius: 50rpx;
+  margin-left: 10px;
+}
+.messages_text{
+  float:center;
+  width: 50%;
+  height: 7vh;
+  background-color:white;
+  border-radius: 25px;
+  border:1px solid gray;
+  margin-left: 10px;
+  margin-top:10px;
+}
+.messages_detail_text{
+    float:center;
+    font-size: 12px;
+    padding-top: 20px;
+    padding-left: 30px;
+  
+}
+
+
+.messages_my_detail{
+  margin-top: 2vh;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction:row;
+  background-color: #E4DADA;
+}
+.mine_image{
+  float: right;
+  width:50px;
+  height:50px;
+  border-radius: 60rpx;
+  margin-left: 10px;
+}
+.messages_text_anser{
+  float:center;
+  width: 50%;
+  height: 7vh;
+  background-color:white;
+  border-radius: 25px;
+  border:1px solid gray;
+  margin-left: 90px;
+  margin-top:10px;
+}
+.messages_detail_anser{
+  float:center;
+  font-size: 12px;
+  padding-top: 20px;
+  padding-left: 23px;
+}
+
+.messages_detai_bottom{
+  width : 100%;
+  height: 10vh;
+  z-index:9999;
+  position: fixed;
+  bottom: 0;
+  text-align:left;
+  background-color: #932525;
+}
+.send_top{
+    width:75%;
+    height: 6vh;
+    margin-top:2vh;
+    margin-left: 5%;
+    background-color:white;
+    border:1rpx solid whitesmoke;
+    border-radius: 40rpx;
+    float: left;
+}
+.send{
+  padding-top: 5px;
+  padding-left: 20px;
+}
+.send input
+{
+  font-size:27rpx;
+}
+.bottom{
+  width:15%;
+  height:6vh;
+  float: left;
+  margin-top:2vh;
+  margin-left:10px;
+}

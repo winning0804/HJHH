@@ -1,4 +1,29 @@
 <!--logs.wxml-->
-<view class="container log-list">
-  这里是消息中心！
-</view>
+<view class = "container">
+  <view class = "search_top">
+        <input class = "search" type='text' placeholder='搜索' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
+    </view>
+
+  <view class="message_list">
+     <block wx:for="{{messages}}">
+        <navigator url="/pages/message_detail/message_detail">
+    <view class="item">
+      <image class = "borrower_image" src="{{item.url}}" ></image>
+      <view class="borrower_text">
+        <view>
+          <text class = "borrower_name">{{item.borrower_name}}</text>
+        </view> 
+        <view>
+          <text class = "borrower_message">{{item.borrower_message}}</text>
+        </view> 
+      </view> 
+      
+      <view class="item_right">
+      <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view>
+    </view>
+
+   </view>
+ </navigator>
+    </block>
+  </view>   
+</view>  

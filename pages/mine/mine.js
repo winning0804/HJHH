@@ -5,10 +5,10 @@ Page({
   data: {
     nickname:"晚安",
     src:"../../images/mine-image.png",
-    borrow:1,
-    return:2,
+    borrow:2,
+    return:3,
     deal:1,
-    check:1,
+    check:4,
     score:"信誉分：100分"
   },
 
@@ -55,8 +55,9 @@ Page({
   },
 
   ToInfo:function(){
+    var that = this;
     wx.navigateTo({
-      url: '/pages/mine-info/mine-info',
+      url: '/pages/mine-info/mine-info?username='+that.data.nickname,
     })
   }
 
