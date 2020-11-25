@@ -195,8 +195,17 @@ Page({
 				deposit: "押金：免费"
 			}
 		],
-	
 	},
+	onRefresh(){
+        wx.showLoading({
+		  title: '刷新中...',
+		  duration: 1500, 
+        })
+        //this.getData();获取数据，重置数据
+	},
+	onPullDownRefresh: function () {
+    	this.onRefresh();
+    },
 	toindex:function(event){
 		wx.navigateTo({
 			url: '../index/index'

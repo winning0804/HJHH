@@ -21,6 +21,7 @@
         <view bindtap = "select5" class = "select">其他</view>
     </view> 
     <view  class = "goods">
+        
         <view wx:for="{{list}}" wx:key="id" wx:for-item="item" data-id='{{item.id}}' wx:if = '{{all}}'>
         <view  wx:for="{{item.obj}}"   wx:for-item="objItem" wx:key="objItem" class = "thegoods">
             <view class = "goods_detail" bindtap = "toindex">
