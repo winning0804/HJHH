@@ -51,59 +51,6 @@
 			</view>
 			<view class = "borrower_comment">{{item.comment}}</view>
 		</view>
-		<view class = "thumb-up">
-			<view class = "thumb-upin">
-				<image class = "thumb_upin_img" bindtap= "thumbChange" data-index="{{index}}" src= "{{item.like? '../../images/点赞2.png' : '../../images/点赞1.png'}}" mode = "aspectFill"></image>
-				<view id = "thumb_up_num" bindtap= "thumbChange" data-index="{{index}}" style = "color: {{item.like ? '#79000f': '#797979'}}">{{item.thumb}}</view>
-			</view>
-			<view class = "thumb-upin">
-				<image class = "thumb_upin_img" bindtap='ctcShow' data-index="{{index}}" src="../../images/huaban3.png" mode = "aspectFill"></image>
-			</view>
-		</view>
-		<view wx:if="{{item.ctcshow}}">
-			<view class = "print" >
-				<textarea bindblur="bindTextAreaBlur" auto-height class= "printtext" placeholder="评论" />
-			</view>
-			<view class = "printaffirm" bindtap = "printaffirm">确认发布</view>
-			<view class = "commentTocomment">
-				<view class = "cTocer">
-					<image src="../../images/u19.svg" mode = "aspectFit" class = "image_small"></image>
-					<view class = "cTocer_name">美少女战士</view>
-					<view class = "cTocer_time">2020-11-12 9:30</view>
-					<view class = "cTocer_contain">谢谢~~</view>
-				</view>
-				<view class = "cTocTocers">
-					<view class = "cTocTocer">
-						<image src="../../images/u22.svg" mode = "aspectFit" class = "image_small"></image>
-						<view class = "cTocer_name">铲屎官</view>
-						<view class = "cTocer_time">2020-11-13 8:11</view>
-						<view class = "cTocer_contain">下次还借~</view>
-					</view>
-					<view class = "cTocTocer">
-						<image src="../../images/u19.svg" mode = "aspectFit" class = "image_small"></image>
-						<view class = "cTocer_name">美少女战士</view>
-						<view class = "cTocer_time">2020-11-13 9:30</view>
-						<view class = "cTocer_contain">嗯嗯~</view>
-					</view>
-				</view>
-			</view>
-			<view class = "commentTocomment">
-				<view class = "cTocer">
-					<image src="../../images/u19.svg" mode = "aspectFit" class = "image_small"></image>
-					<view class = "cTocer_name">和上面撞头像的</view>
-					<view class = "cTocer_time">2020-11-15 19:30</view>
-					<view class = "cTocer_contain">物品有损坏吗</view>
-				</view>
-				<view class = "cTocTocers">
-					<view class = "cTocTocer">
-						<image src="../../images/u22.svg" mode = "aspectFit" class = "image_small"></image>
-						<view class = "cTocer_name">铲屎官</view>
-						<view class = "cTocer_time">2020-11-16 8:20</view>
-						<view class = "cTocer_contain">我借的时候没有</view>
-					</view>
-				</view>
-			</view>
-		</view>
 	</view>
 	</view>
 
