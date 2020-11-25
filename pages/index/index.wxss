@@ -174,18 +174,34 @@
 #thumb_up_num{
     width: 35rpx;
     height: 60rpx;
-    margin-left: 20rpx;
+    padding-left: 20rpx;
     float: left;
     color: #797979;
 }
 .print{
     width: 650rpx;
     font-size: 30rpx;
-    line-height: 30rpx;
+    line-height: 35rpx;
     border :1rpx solid black;
     border-radius: 40rpx;
     margin: auto;
-    padding: 5rpx 0rpx 5rpx 20rpx;
+}
+.printaffirm{
+    width: 650rpx;
+    height: 45rpx;
+    font-size: 35rpx;
+    line-height: 40rpx;
+    margin:auto;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    text-align:center;
+    background-color: #932525;
+    color: #fff;
+    border-radius: 40rpx;
+}
+.printtext{
+    width: 630rpx;
+    margin:auto;
 }
 .comment_print{
 }
@@ -270,7 +286,7 @@
     font-size: 40rpx;
     float: left;
 }
-.commodity_screen {
+.commodity_screen0 {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -289,7 +305,7 @@
   position: fixed;
   bottom: 100rpx;
   left: 0;
-  z-index: 1500;
+  z-index: 3000;
   background: #fff;
 }
 .rend_detail{
@@ -363,4 +379,76 @@
     height: 60rpx;
     margin-right: 0rpx;
     margin-top: 20rpx;
+}
+.toaffirm{
+    width: 100%;
+    height: 100rpx;
+    line-height: 90rpx;
+    text-align:center;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    z-index: 5000;
+    border-top: 1rpx solid #797979;
+}
+.affirmbutton{
+    width: 30%;
+    height: 70rpx;
+    line-height: 70rpx;
+    background-color: #79000F;
+    border-radius :40rpx;
+    color: #fff;
+    margin: auto;
+    margin-top: 15rpx;
+}
+.commodity_contain {
+  height: 360rpx;
+  width: 600rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 360rpx;
+  left: 80rpx;
+  z-index: 6500;
+  background: #fff;
+  border: 1rpx solid #797979;
+}
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 6000;
+  color: #fff;
+}
+.contain_title{
+    width: 500rpx;
+    height: 120rpx;
+    padding: 0 50rpx 0 50rpx;
+    line-height: 120rpx;
+    font-size: 40rpx;
+}
+.contain_contain{
+    width: 440rpx;
+    height: 60rpx;
+    padding: 0 80rpx 0 80rpx;
+    line-height:60rpx;
+    font-size: 30rpx;
+}
+.contain_buttons{
+    width: 600rpx;
+    height: 120rpx;
+    font-size: 35rpx;
+}
+.contain_button{
+    width: 180rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align:center;
+    margin:30rpx 60rpx 30rpx 60rpx;
+    background:#c83232;
+    color: #fff;
+    border-radius:30rpx;
+    float:left;
 }

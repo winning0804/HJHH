@@ -35,115 +35,83 @@
 			<image src="../../images/huaban3-red.png" bindtap='tomessage' mode = "aspectFit" class = "img2"></image>
 		</view>
 	</view>
+
 <!--评论-->
 	<view class = "comments">
 	<view class = "comment_title">评价</view>
-	<view class = "comment">
+	<view  wx:for="{{comments}}" data-index="{{index}}" class = "comment">
 		<view class = "borrower">
-			<image src="../../images/u22.svg" mode = "aspectFit" class = "borrower_image"></image>
+			<image src="{{item.img}}" mode = "aspectFit" class = "borrower_image"></image>
 			<view class = "borrower_detail">
-				<text style="display: inline-block; width: 40%;">铲屎官</text>
-				<text style="display: inline-block; width: 20%; font-size : 30rpx;">借过</text>
+				<text style="display: inline-block; width: 40%;">{{item.name}}</text>
+				<text style="display: inline-block; width: 20%; font-size : 30rpx;">{{item.islend}}</text>
 				<view style="display: inline-block; width: 40%;">
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
+					<image  wx:for="{{item.starnum}}" class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
 				</view>
 			</view>
-			<view class = "borrower_comment">
-			耳机很好用，租金也很便宜，好评~
-			</view>
+			<view class = "borrower_comment">{{item.comment}}</view>
 		</view>
 		<view class = "thumb-up">
 			<view class = "thumb-upin">
-				<image class = "thumb_upin_img" src="../../images/点赞1.png" mode = "aspectFill"></image>
-				<view id = "thumb_up_num"  bindtap= "increase1">{{thumb1}}</view>
+				<image class = "thumb_upin_img" bindtap= "thumbChange" data-index="{{index}}" src= "{{item.like? '../../images/点赞2.png' : '../../images/点赞1.png'}}" mode = "aspectFill"></image>
+				<view id = "thumb_up_num" bindtap= "thumbChange" data-index="{{index}}" style = "color: {{item.like ? '#79000f': '#797979'}}">{{item.thumb}}</view>
 			</view>
 			<view class = "thumb-upin">
-				<image class = "thumb_upin_img" src="../../images/huaban3.png"  bindtap='tomessage' mode = "aspectFill"></image>
+				<image class = "thumb_upin_img" bindtap='ctcShow' data-index="{{index}}" src="../../images/huaban3.png" mode = "aspectFill"></image>
 			</view>
 		</view>
-		<view class = "print">
-			<textarea bindblur="bindTextAreaBlur" auto-height placeholder="评论" />
-		</view>
-		<view class = "commentTocomment">
-			<view class = "cTocer">
-				<image src="../../images/u19.svg" mode = "aspectFit" class = "image_small"></image>
-				<view class = "cTocer_name">美少女战士</view>
-				<view class = "cTocer_time">2020-11-12 9:30</view>
-				<view class = "cTocer_contain">谢谢~~</view>
+		<view wx:if="{{item.ctcshow}}">
+			<view class = "print" >
+				<textarea bindblur="bindTextAreaBlur" auto-height class= "printtext" placeholder="评论" />
 			</view>
-			<view class = "cTocTocers">
-				<view class = "cTocTocer">
-					<image src="../../images/u22.svg" mode = "aspectFit" class = "image_small"></image>
-					<view class = "cTocer_name">铲屎官</view>
-					<view class = "cTocer_time">2020-11-13 8:11</view>
-					<view class = "cTocer_contain">下次还借~</view>
-				</view>
-				<view class = "cTocTocer">
+			<view class = "printaffirm" bindtap = "printaffirm">确认发布</view>
+			<view class = "commentTocomment">
+				<view class = "cTocer">
 					<image src="../../images/u19.svg" mode = "aspectFit" class = "image_small"></image>
 					<view class = "cTocer_name">美少女战士</view>
-					<view class = "cTocer_time">2020-11-13 9:30</view>
-					<view class = "cTocer_contain">嗯嗯~</view>
+					<view class = "cTocer_time">2020-11-12 9:30</view>
+					<view class = "cTocer_contain">谢谢~~</view>
+				</view>
+				<view class = "cTocTocers">
+					<view class = "cTocTocer">
+						<image src="../../images/u22.svg" mode = "aspectFit" class = "image_small"></image>
+						<view class = "cTocer_name">铲屎官</view>
+						<view class = "cTocer_time">2020-11-13 8:11</view>
+						<view class = "cTocer_contain">下次还借~</view>
+					</view>
+					<view class = "cTocTocer">
+						<image src="../../images/u19.svg" mode = "aspectFit" class = "image_small"></image>
+						<view class = "cTocer_name">美少女战士</view>
+						<view class = "cTocer_time">2020-11-13 9:30</view>
+						<view class = "cTocer_contain">嗯嗯~</view>
+					</view>
 				</view>
 			</view>
-		</view>
-		<view class = "commentTocomment">
-			<view class = "cTocer">
-				<image src="../../images/u19.svg" mode = "aspectFit" class = "image_small"></image>
-				<view class = "cTocer_name">和上面撞头像的</view>
-				<view class = "cTocer_time">2020-11-15 19:30</view>
-				<view class = "cTocer_contain">物品有损坏吗</view>
-			</view>
-			<view class = "cTocTocers">
-				<view class = "cTocTocer">
-					<image src="../../images/u22.svg" mode = "aspectFit" class = "image_small"></image>
-					<view class = "cTocer_name">铲屎官</view>
-					<view class = "cTocer_time">2020-11-16 8:20</view>
-					<view class = "cTocer_contain">我借的时候没有</view>
+			<view class = "commentTocomment">
+				<view class = "cTocer">
+					<image src="../../images/u19.svg" mode = "aspectFit" class = "image_small"></image>
+					<view class = "cTocer_name">和上面撞头像的</view>
+					<view class = "cTocer_time">2020-11-15 19:30</view>
+					<view class = "cTocer_contain">物品有损坏吗</view>
+				</view>
+				<view class = "cTocTocers">
+					<view class = "cTocTocer">
+						<image src="../../images/u22.svg" mode = "aspectFit" class = "image_small"></image>
+						<view class = "cTocer_name">铲屎官</view>
+						<view class = "cTocer_time">2020-11-16 8:20</view>
+						<view class = "cTocer_contain">我借的时候没有</view>
+					</view>
 				</view>
 			</view>
-		</view>
-	</view>
-	<view class = "comment">
-		<view class = "borrower">
-			<image src="../../images/u22.svg" mode = "aspectFit" class = "borrower_image"></image>
-			<view class = "borrower_detail">
-				<text style="display: inline-block; width: 40%;">csg</text>
-				<text style="display: inline-block; width: 20%; font-size : 30rpx;">借过</text>
-				<view style="display: inline-block; width: 40%;">
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
-					<image class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
-				</view>
-			</view>
-			<view class = "borrower_comment">
-			还行吧
-			</view>
-		</view>
-		<view class = "thumb-up">
-			<view class = "thumb-upin">
-				<image class = "thumb_upin_img" src="../../images/点赞1.png" mode = "aspectFill"></image>
-				<view id = "thumb_up_num"  bindtap= "increase2">{{thumb2}}</view>
-			</view>
-			<view class = "thumb-upin">
-				<image class = "thumb_upin_img" src="../../images/huaban3.png"  bindtap='tomessage' mode = "aspectFill"></image>
-			</view>
-		</view>
-		<view class = "print">
-			<textarea bindblur="bindTextAreaBlur" auto-height placeholder="评论" />
 		</view>
 	</view>
 	</view>
 
+<!--底部弹窗-->
 	<view class = "torend">
 		<view bindtap="clickme" class = "torend_button">借</view>
 	</view>
-	<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+	<view class="commodity_screen0" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
   	<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
 		<view class = "rend_detail">
 			<view class = "rend_detail_img">
@@ -176,4 +144,17 @@
 				show-mark = "{{ false }}"
   				show-confirm="{{ false }}"
 	/>
+	<view class = "toaffirm" wx:if="{{toaffirm}}">
+		<view bindtap="clickbutton" class = "affirmbutton">确定</view>
+	</view>
+	<view class="commodity_screen" bindtap="hideShade" wx:if="{{popupshow}}"></view>
+  	<view class="commodity_contain" wx:if="{{popupshow}}">
+	  	<view class = "contain_title">您选择的租赁日期</view>
+		<view class = "contain_contain">{{date}}</view>
+		<view class = "contain_contain">共{{sum}}天</view>
+		<view class = "contain_buttons">
+			<view class = "contain_button" bindtap = "confirmbutton">确认</view>
+			<view class = "contain_button" bindtap = "cancelbutton">取消</view>
+		</view>
+	</view>
 </view>
