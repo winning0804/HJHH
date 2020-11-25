@@ -19,30 +19,90 @@ Page({
     time:"...",
     phone:"...",
     price:"...",
-    func:"..."
+    func:"...",
+    isShowConfirm1:false,
+    isShowConfirm2:false,
+    one_1: 0,
+    two_1: 5,
+    one_2: 0,
+    two_2: 5,
+    content1:""
   },
 
   confirm:function(){
-      wx.showModal({
-        title: '提醒',
-        content: '是否确认归还？',
-        success(res){
-          if(res.confirm)
-          {
-            wx.showToast({
-              title: '已取消',
-              duration:2000,//显示时长
-              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-              icon:'success'//图标，支持"success"、"loading"
-            })
-          }else if(res.cancel)
-          {
-            console.log("用户点击了取消");
-          }
-        }
+      this.setData({
+        isShowConfirm1:true
       })
     
   },
+
+  in_xin1:function(e){
+    var in_xin = e.currentTarget.dataset.in;
+    var one_1;
+    if (in_xin === 'use_sc2'){
+      one_1 = Number(e.currentTarget.id);
+    } else {
+      one_1 = Number(e.currentTarget.id) + this.data.one_1;
+    }
+    this.setData({
+      one_1: one_1,
+      two_1: 5 - one_1
+    })
+  },
+
+  in_xin2:function(e){
+    var in_xin = e.currentTarget.dataset.in;
+    var one_2;
+    if (in_xin === 'use_sc2'){
+      one_2 = Number(e.currentTarget.id);
+    } else {
+      one_2 = Number(e.currentTarget.id) + this.data.one_2;
+    }
+    this.setData({
+      one_2: one_2,
+      two_2: 5 - one_2
+    })
+  },
+
+  setValue: function (e) {
+    this.setData({
+      content1: e.detail.value
+    })
+  },
+
+  confirmAcceptance:function(){
+    var that = this;
+    that.setData({
+      isShowConfirm1: false,
+    })
+    if(that.data.page=="已借出物品"){
+      wx.showToast({
+        title: '评论成功',
+        duration:2000,//显示时长
+        mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+        icon:'success'//图标，支持"success"、"loading"
+      })
+    }
+    if(that.data.page=="待归还物品"){
+      that.setData({
+        isShowConfirm2:true
+      })
+    }
+  },
+
+  confirmAcceptance2:function(){
+    var that = this;
+    that.setData({
+      isShowConfirm2: false
+    })
+    wx.showToast({
+      title: '评论成功',
+      duration:2000,//显示时长
+      mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+      icon:'success'//图标，支持"success"、"loading"
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

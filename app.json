@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/classify/classify",
-    "pages/index/index",
     "pages/mine/mine",
     "pages/item/item",
+    "pages/classify/classify",
+    "pages/index/index",
     "pages/return/return",
     "pages/mine-detail/mine-detail",
     "pages/iden/iden",

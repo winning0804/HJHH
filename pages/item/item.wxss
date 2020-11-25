@@ -60,3 +60,84 @@ swiper{
 .line5{
   padding-bottom: 10rpx;
 }
+
+.toast-box {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+
+.toastbg {
+  opacity: 0.2;
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  min-height: 300vh;
+}
+
+.showToast {
+  position: absolute;
+  opacity: 1;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 40%;
+}
+
+.toast-title {
+  padding-left: 5%;
+  background-color: #932525;
+  color: white;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  border-top-right-radius: 16rpx;
+  border-top-left-radius: 16rpx;
+}
+
+.toast-main {
+  padding: 20rpx;
+  background-color: white;
+  text-align: center;
+}
+
+.toast-input {
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 1px solid #ddd;
+  padding-left: 2vh;
+  padding-right: 2vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.twinkle{
+  height: 60rpx;
+  width: 60rpx;
+  display: inline-block;
+}
+
+.stars{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20rpx;
+}
+
+.center{
+  text-align: center;
+}
+
+textarea{
+  padding: 20rpx;
+  width: 500rpx;
+  border-radius: 40rpx;
+  border: 3px solid gray;
+}
+
+.confirm{
+  background-color: #932525;
+  color: white;
+}

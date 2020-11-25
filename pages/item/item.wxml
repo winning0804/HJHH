@@ -32,4 +32,58 @@
     </view>
   </view>
   <button class="bottom-button" bindtap="confirm">{{func}}</button>
+
+  <!--弹窗1:评价人-->
+  <block wx:if="{{isShowConfirm1}}">
+      <view class='toast-box'>
+        <view class='toastbg'></view>
+        <view class='showToast'>
+            <view class='toast-title center'>
+                <text>评价对方</text>
+            </view>
+            <view class="stars center">
+              <view>
+                <block wx:for="{{one_1}}" wx:key="index">
+                <image catchtap='in_xin1' class="twinkle" id='{{index+1}}' data-in='use_sc2' src='../../images/星.png'></image>
+                </block>
+                <block wx:for="{{two_1}}" wx:key="index">
+                <image catchtap='in_xin1' class="twinkle" id='{{index+1}}' data-in='use_sc' src='../../images/星星.png'></image>
+                </block>
+              </view>
+              <view>{{one_1}}星</view>
+            </view>
+            <view class='toast-main'>
+                <textarea type='text' placeholder='输入对借用人的评价' bindinput='setValue'></textarea>
+            </view>
+            <button class="confirm" bindtap="confirmAcceptance">确认</button>
+        </view>
+    </view>
+  </block>
+
+  <!--弹窗2:评价物-->
+  <block wx:if="{{isShowConfirm2}}">
+      <view class='toast-box'>
+        <view class='toastbg'></view>
+        <view class='showToast'>
+            <view class='toast-title center'>
+                <text>评价物品</text>
+            </view>
+            <view class="stars center">
+              <view>
+                <block wx:for="{{one_2}}" wx:key="index">
+                <image catchtap='in_xin2' class="twinkle" id='{{index+1}}' data-in='use_sc2' src='../../images/星.png'></image>
+                </block>
+                <block wx:for="{{two_2}}" wx:key="index">
+                <image catchtap='in_xin2' class="twinkle" id='{{index+1}}' data-in='use_sc' src='../../images/星星.png'></image>
+                </block>
+              </view>
+              <view>{{one_2}}星</view>
+            </view>
+            <view class='toast-main'>
+                <textarea type='text' placeholder='输入对物品的评价' bindinput='setValue'></textarea>
+            </view>
+            <button class="confirm" bindtap="confirmAcceptance2">确认</button>
+        </view>
+    </view>
+  </block>
 </view>
