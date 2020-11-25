@@ -21,7 +21,7 @@
         <view bindtap = "select5" class = "select">其他</view>
     </view> 
     <view  class = "goods">
-        <view wx:for="{{list}}" wx:key="id" wx:for-item="item" data-id='{{item.id}}' >
+        <view wx:for="{{list}}" wx:key="id" wx:for-item="item" data-id='{{item.id}}' wx:if = '{{all}}'>
         <view  wx:for="{{item.obj}}"   wx:for-item="objItem" wx:key="objItem" class = "thegoods">
             <view class = "goods_detail" bindtap = "toindex">
                 <view class = "goods_img">
@@ -32,6 +32,56 @@
                 <view class = "goods_deposit">{{objItem.deposit}}</view>
             </view>
         </view>
+        </view>
+        <view  wx:for="{{list1}}"  wx:for-item="objItem" wx:key="objItem" class = "thegoods" wx:if = "{{s1}}">
+            <view class = "goods_detail" bindtap = "toindex">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">{{objItem.name}}</view>
+                <view class = "goods_price">{{objItem.price}}</view>
+                <view class = "goods_deposit">{{objItem.deposit}}</view>
+            </view>
+        </view>
+        <view  wx:for="{{list2}}"  wx:for-item="objItem" wx:key="objItem" class = "thegoods" wx:if = '{{s2}}'>
+            <view class = "goods_detail" bindtap = "toindex">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u21.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">{{objItem.name}}</view>
+                <view class = "goods_price">{{objItem.price}}</view>
+                <view class = "goods_deposit">{{objItem.deposit}}</view>
+            </view>
+        </view>
+        <view  wx:for="{{list3}}"  wx:for-item="objItem" wx:key="objItem" class = "thegoods" wx:if = '{{s3}}'>
+            <view class = "goods_detail" bindtap = "toindex">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/电动车.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">{{objItem.name}}</view>
+                <view class = "goods_price">{{objItem.price}}</view>
+                <view class = "goods_deposit">{{objItem.deposit}}</view>
+            </view>
+        </view>
+        <view  wx:for="{{list4}}"  wx:for-item="objItem" wx:key="objItem" class = "thegoods" wx:if = '{{s4}}'>
+            <view class = "goods_detail" bindtap = "toindex">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/快递.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">{{objItem.name}}</view>
+                <view class = "goods_price">{{objItem.price}}</view>
+                <view class = "goods_deposit">{{objItem.deposit}}</view>
+            </view>
+        </view>
+        <view  wx:for="{{list5}}"  wx:for-item="objItem" wx:key="objItem" class = "thegoods" wx:if = '{{s5}}'>
+            <view class = "goods_detail" bindtap = "toindex">
+                <view class = "goods_img">
+                    <image class = "images" src="../../images/u8.png" mode="aspectFill" lazy-load="true"></image>
+                </view>
+                <view class = "goods_name">{{objItem.name}}</view>
+                <view class = "goods_price">{{objItem.price}}</view>
+                <view class = "goods_deposit">{{objItem.deposit}}</view>
+            </view>
         </view>
     </view>
 </view>
