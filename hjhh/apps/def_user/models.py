@@ -13,6 +13,8 @@ class UserInfo(models.Model):
     usex = models.CharField(max_length=10,verbose_name="性别",default="")
     uphone = models.CharField(max_length=11,default="",verbose_name="手机号")
     ucredit = models.CharField(max_length=5,default="",verbose_name="信誉分")
+    token = models.CharField(max_length=100,default="",verbose_name="token")
+    openID = models.CharField(max_length=30,default="",verbose_name="openID")
 
     class Meta:
         verbose_name = "用户信息"
