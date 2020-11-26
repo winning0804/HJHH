@@ -7,6 +7,9 @@ Page({
 		ctcshow: false,
 		show22: false,
 		sum:0,
+		autoplay: false,
+    	interval: 3000,
+    	duration: 1000,
 		comments:[
 			{
 				img: "../../images/u22.svg",
@@ -36,8 +39,22 @@ Page({
 				thumb: 20,
 				ctcshow: false,
 			},
+		],
+		goods_img:[
+			{
+				src : "../../images/u8.png",
+			},
+			{
+				src : "../../images/u21.png",
+			}
 		]
-  	},
+	  },
+	  swiperchange: function (e) {
+		//console.log(e.detail.current)
+		this.setData({
+		  swiperCurrent: e.detail.current
+		})
+	  },
   	clickme: function () {
     this.showModal();
   	},
