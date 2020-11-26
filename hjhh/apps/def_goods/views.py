@@ -2,10 +2,10 @@ from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.views.generic import View
 from django.core.cache import cache
-from def_goods.models import GoodsSKU,GoodsType,GoodsClassify,GoodsOwner,IndexTypeGoodsBanner
+from .models import GoodsSKU,GoodsType,GoodsClassify,GoodsOwner,IndexTypeGoodsBanner
 from django_redis import get_redis_connection
-from def_order.models import OrderGoods
-from def_user.models import User
+from ..def_order.models import Order
+from ..def_user.models import UserInfo
 from django.http import HttpResponse
 import json
 import random
@@ -80,7 +80,7 @@ def DetailView(request):
             return
         goods_detail = GoodsSKU.objects.filter(id=goods_id)
 
-        goods_orders = OrderGoods.objects.filter(id=goods_id).exclude(comment='')
+        goods_orders = Order.objects.filter(id=goods_id).exclude(comment='')
 
         data = {
             "code":200,
@@ -212,10 +212,10 @@ def FindView(request):
             print(e)
             print('获取前端传回的数据失败')
             return
-        goods_id = OrderGoods.objects.filter(id=openid,stateid=stateid)
-        time = OrderGoods.objects.filter(id=openid,stateid=stateid)
-        price = OrderGoods.objects.filter(id=openid,stateid=stateid)
-        sideuser = OrderGoods.objects.filter(id=openid,stateid=stateid)
+        goods_id = Order.objects.filter(id=openid,stateid=stateid)
+        time = Order.objects.filter(id=openid,stateid=stateid)
+        price = Order.objects.filter(id=openid,stateid=stateid)
+        sideuser = Order.objects.filter(id=openid,stateid=stateid)
 
         for item in goods_id:
             goods_list = GoodsSKU.objects.filter(id=item).order_by("-id")
