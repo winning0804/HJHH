@@ -64,17 +64,13 @@
   padding-bottom: 40rpx;
 }
 
-.view2-block{
-  text-align: center;
-  border-right: 1px solid black;
-  padding-right: 20rpx;
-  padding-left: 20rpx;
-}
-
-.view2-block1{
-  text-align: center;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
+.block2{
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  justify-content: space-evenly;
+  margin-top: 50rpx;
+  padding: 20rpx;
 }
 
 .mine-view3{
@@ -125,4 +121,17 @@
 .view5{
   padding-top: 5rpx;
   margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 20rpx;
+}
+
+.view5 image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.center{
+  text-align: center;
 }

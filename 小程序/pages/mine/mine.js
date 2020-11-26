@@ -5,17 +5,17 @@ Page({
   data: {
     nickname:"晚安",
     src:"../../images/mine-image.png",
-    borrow:2,
-    return:3,
-    deal:1,
-    check:4,
     score:"信誉分：100分"
   },
 
   //获取个人信息
   getMyInfo:function(e){
-    //console.log(e.detail.userInfo)
-    let info = e.detail.userInfo
+    wx.login({
+      success:(result)=>{
+        console.log(result);
+      }
+    })
+    let info = e.detail.userInfo;
     this.setData({
       src:info.avatarUrl,
       nickname:info.nickName,

@@ -13,45 +13,6 @@
     </block>
   </view>
   <!--第二部分-->
-  <view class="mine-box mine-view2">
-    <block wx:if="{{isLogin}}">
-      <view class="view2-block" bindtap="ToDetail" data-nid="1">
-        <view>{{borrow}}</view>
-        <view>已借出</view>
-      </view>
-      <view class="view2-block" bindtap="ToDetail" data-nid="2">
-        <view>{{return}}</view>
-        <view>待归还</view>
-      </view>
-      <view class="view2-block" bindtap="ToDetail" data-nid="3">
-        <view>{{deal}}</view>
-        <view>待处理</view>
-      </view>
-      <view class="view2-block1" bindtap="ToDetail" data-nid="4">
-        <view>{{check}}</view>
-        <view>待审核</view>
-      </view>
-    </block>
-    <block wx:else>
-      <view class="view2-block">
-        <view>0</view>
-        <view>已借出</view>
-      </view>
-      <view class="view2-block">
-        <view>0</view>
-        <view>待归还</view>
-      </view>
-      <view class="view2-block">
-        <view>0</view>
-        <view>待处理</view>
-      </view>
-      <view class="view2-block1">
-        <view>0</view>
-        <view>待审核</view>
-      </view>
-    </block>
-  </view>
-  <!--第三部分-->
   <view class="bac view3">
     <block wx:if="{{isLogin}}">
       <view class="view3-text">{{score}}</view>
@@ -60,6 +21,21 @@
       <view class="view3-text">信誉分：000分</view>
     </block>
   </view>
+  <!--第三部分-->
+  <view class="view5 bac">
+    <view  class="center" bindtap="ToDetail" data-nid="1">
+      <view>我是所属人</view>
+      <image src="../../images/商家.png"></image>
+    </view>
+    <view  class="center" bindtap="ToDetail" data-nid="2">
+      <view>我是借方</view>
+      <image src="../../images/支付买家.png"></image>
+    </view>
+    <view  class="center" bindtap="ToClar">
+      <view>实名认证</view>
+      <image src="../../images/实名认证.png"></image>
+    </view>
+  </view> 
   <!--第四部分-->
   <view  class="bac">
     <view class="mine-block block1" bindtap="ToDetail" data-nid="5">
@@ -78,11 +54,4 @@
       <image  src="../../images/前进.png"></image>
     </view>
   </view>  
-  <!--第五部分-->
-  <view class="view5 bac">
-    <view class="mine-block" bindtap="ToClar">
-      <view>实名认证</view>
-      <image src="../../images/前进.png"></image>
-    </view>
-  </view> 
 </view>
