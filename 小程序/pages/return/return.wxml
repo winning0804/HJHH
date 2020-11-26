@@ -16,7 +16,8 @@
         <view class="list-info list-info-date">{{item.date}}</view>
         <view class="list-info mine-buttons">
           <button class="list-button" wx:if="{{item.button1}}" bindtap="button1">{{item.button1}}</button>
-          <button class="list-button" bindtap="button2">{{item.button2}}</button>
+          <button class="list-button" wx:if="{{item.button2}}" bindtap="button2">{{item.button2}}</button>
+          <view class="situa">{{item.situa}}</view>
         </view>  
       </view>
     </view>

@@ -135,3 +135,7 @@
 .center{
   text-align: center;
 }
+
+.text{
+  padding-bottom: 15rpx;
+}

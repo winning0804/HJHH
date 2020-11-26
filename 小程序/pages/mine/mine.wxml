@@ -24,15 +24,15 @@
   <!--第三部分-->
   <view class="view5 bac">
     <view  class="center" bindtap="ToDetail" data-nid="1">
-      <view>我是所属人</view>
+      <view class="text">我是所属人</view>
       <image src="../../images/商家.png"></image>
     </view>
     <view  class="center" bindtap="ToDetail" data-nid="2">
-      <view>我是借方</view>
+      <view class="text">我是借方</view>
       <image src="../../images/支付买家.png"></image>
     </view>
     <view  class="center" bindtap="ToClar">
-      <view>实名认证</view>
+      <view class="text">实名认证</view>
       <image src="../../images/实名认证.png"></image>
     </view>
   </view> 
