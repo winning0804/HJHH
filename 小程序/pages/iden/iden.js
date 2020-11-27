@@ -5,6 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    name:"",
+    sex:"男",
+    id:"",
+    phone:"",
     radioItems: [
       {name: '男', value: 'b', checked: 'true'},
       {name: '女', value: 'g'}
@@ -22,9 +26,33 @@ Page({
         changed['radioItems[' + i + '].checked'] = false
       }
     }
-    this.setData(changed)
+    this.setData(changed);
+    this.setData({ sex:e.detail.value });
   },
 
+  bindname:function(e){
+    this.setData({ name:e.detail.value });
+  },
+
+  bindid:function(e){
+    this.setData({ id:e.detail.value });
+  },
+
+  bindphone:function(e){
+    this.setData({ phone:e.detail.value });
+  },
+
+  submit:function(){
+    console.log(this.data.sex);
+    wx.request({
+      url: 'http://127.0.0.1:8000/def_user/getUserInfo',
+      data: { urealname:this.data.name, usex:this.data.sex, uzhengjian_tel:this.data.id, uphone:this.data.phone},
+      method: "POST",
+      success:function(res){
+        console.log(res);
+      } 
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
