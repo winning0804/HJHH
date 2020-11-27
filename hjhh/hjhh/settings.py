@@ -100,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans' #后台管理改为中文
 
-TIME_ZONE = 'Asia/Fuzhou' #时区改为福州
+TIME_ZONE = 'Asia/Shanghai' #时区改为上海
 
 USE_I18N = True
 
