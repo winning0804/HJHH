@@ -9,18 +9,32 @@ Page({
     src:"../../images/unlogin.png"
   },
 
+  bindname:function(e){
+    this.setData({
+      username:e.detail.value
+    })
+  },
+
   change:function(){
+    var that = this;
     wx.showModal({
       title: '提醒',
       content: '是否确认修改个人信息？',
       success(res){
         if(res.confirm)
         {
-          wx.showToast({
-            title: '修改成功',
-            duration:2000,//显示时长
-            mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-            icon:'success'//图标，支持"success"、"loading"
+          wx.request({
+            url: 'http://127.0.0.1:8000/def_user/user_list',
+            data: { uname:that.data.username, ulogo:that.data.src },
+            method: "POST",
+            success:function(res){
+              wx.showToast({
+                title: '修改成功',
+                duration:2000,//显示时长
+                mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                icon:'success'//图标，支持"success"、"loading"
+              })
+            } 
           })
         }else if(res.cancel)
         {

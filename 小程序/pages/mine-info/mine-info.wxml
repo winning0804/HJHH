@@ -6,7 +6,7 @@
   <view class="lists">
     <view class="mine-block">
       <view>昵称</view>
-      <input class="inputs" value="{{username}}"/>
+      <input class="inputs" bindinput="bindname" value="{{username}}"/>
     </view>
     <view class="mine-block" bindtap="upload">
       <view>更换头像</view>

@@ -20,9 +20,13 @@ from .serializers import *
 #Create your views here
 
 #获取用户列表
-class user_list(generics.ListCreateAPIView):
+class user_list(APIView):
+    def post(self,request,*args,**kwargs):
+        print(request.data)
+        return Response({"status":True})
+    '''
     queryset = UserInfo.objects.all()
-    serializer_class = UserInfoSerializer
+    serializer_class = UserInfoSerializer'''
 
 #针对特定用户进行信息修改操作
 class user_detail(APIView):
