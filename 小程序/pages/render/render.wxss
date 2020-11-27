@@ -18,15 +18,10 @@ page{
     float: left;
     color: #fff;
 }
-.return_img{
-    width: 65rpx;
-    height: 65rpx;
-    margin-bottom: 210rpx;
-}
 .img{
     width: 250rpx;
     height: 250rpx;
-    margin: 5rpx 60rpx 20rpx 0;
+    margin: 5rpx 60rpx 20rpx 65rpx;
 }
 .infor_name{
     width: 375rpx;
