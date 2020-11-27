@@ -62,15 +62,21 @@ page{
     border-radius: 40rpx 40rpx 0 0;
     border-bottom: 2rpx solid #797979;
 }
-.select{
-    width: 325rpx;
+.select2{
+    width: 375rpx;
     height: 100rpx;
     line-height: 100rpx;
     font-size: 40rpx;
     font-weight: bold;
     float: left;
-    padding-left: 25rpx;
-    padding-right: 25rpx;
+}
+.select1{
+    width: 250rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 40rpx;
+    font-weight: bold;
+    float: left;
 }
 .goods{
     margin-top: 375rpx;

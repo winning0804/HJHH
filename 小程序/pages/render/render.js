@@ -3,9 +3,34 @@ const app = getApp()
 
 Page({
   	data: {
-    date: '',
 		tosend: true,
 		sent: true,
+		isMine: true,
+		list:{
+			titles:[
+				{
+					title:"可借",
+				},
+				{
+					title:"已借",
+				},
+				{
+					title:"隐藏",
+				},
+			],
+			goods:[
+				{
+					name:"电子产品|蓝牙耳机",
+					price:3.00,
+					deposit:20,
+				},
+				{
+					name:"电子产品|蓝牙耳机",
+					price:3.00,
+					deposit:20,
+				}
+			]
+		},
   	},
 	tomessage: function(event){
 		wx.switchTab({
