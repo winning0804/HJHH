@@ -5,10 +5,11 @@ django.setup()
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.contrib import messages
-# from . import user_decorator
-from .models import UserInfo,Information,send
+from .models import Information,send
+from ..models import UserInfo
 from datetime import datetime
-
+from django.http import HttpResponse
+import json
 
 # Create your views here.
 #消息中心
@@ -31,7 +32,8 @@ def message(request):
         ###'guest_cart': 1,
         # 'checks':checks,
     }
-    return render(request, 'def_message/messages.html', context)    ####修改为模板中的html!!!!!
+    return HttpResponse(json.dump(context, ensure_ascii=False), content_type="application/json", charset='utf-8',
+                        status='200', reason='success')
 
 # 消息内容展示
 def person_message(request):
@@ -71,18 +73,25 @@ def person_message(request):
             send.objects.create(ccontent_chart=ccontent_chart)
             messages.success(request, "消息发送成功")
             return redirect(reverse("def_message:message"))
-    context = {
-        'title': '消息中心',
-        'page_name': 1,
-        'user':user,
-        'informations':informations,
-        'persons':persons,
-        'imgs':imgs,
-        'logo':logo,
-        'username':username,
-        'user_name':user_name,
-        ###'guest_cart': 1,
-        # 'checks':checks,
-        #'persons1':persons1,
-    }
-    return render(request, 'def_message/messages.html', context)
+        context = {
+            "code": '200',
+            "msg": '成功',
+            "data":{
+                'title': '消息中心',
+                'page_name': 1,
+                'user': user,
+                'informations': informations,
+                'persons': persons,
+                'imgs': imgs,
+                'logo': logo,
+                'username': username,
+                'user_name': user_name,
+                ###'guest_cart': 1,
+                # 'checks':checks,
+                # 'persons1':persons1,
+            }
+        }
+        return HttpResponse(json.dump(context, ensure_ascii=False), content_type="application/json", charset='utf-8',
+                        status='200', reason='success')
+    else:
+        return HttpResponse('It is not a POST request!!!')
