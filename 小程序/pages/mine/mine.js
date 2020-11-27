@@ -24,7 +24,6 @@ Page({
   },
 
   onLoad: function () {
-    
   },
 
   /**跳转到具体界面 */

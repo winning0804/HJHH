@@ -26,14 +26,64 @@ Page({
     two_1: 5,
     one_2: 0,
     two_2: 5,
-    content1:""
+    content1:"",
+    text:false,
+    but:false,
+    situa:"",
+    num:""
   },
 
   confirm:function(){
-      this.setData({
+    var that = this;
+    console.log(this.data.num);
+    if(this.data.num==1){
+      wx.showModal({
+        title: '提醒',
+        content: '是否通过审核？',
+        success(res){
+          if(res.confirm)
+          {
+            wx.showToast({
+              title: '已通过',
+              duration:2000,//显示时长
+              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+              icon:'success'//图标，支持"success"、"loading"
+            })
+          }else if(res.cancel)
+          {
+            wx.showToast({
+              title: '已拒绝',
+              duration:2000,//显示时长
+              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+              icon:'success'//图标，支持"success"、"loading"
+            })
+          }
+        }
+      })
+    }
+    if(this.data.num==2){
+      wx.showModal({
+        title: '提醒',
+        content: '是否成功交易？',
+        success(res){
+          if(res.confirm)
+          {
+            wx.showToast({
+              title: '已通过',
+              duration:2000,//显示时长
+              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+              icon:'success'//图标，支持"success"、"loading"
+            })
+          }
+        }
+      })
+    }
+    if(this.data.num==4){
+      that.setData({
         isShowConfirm1:true
       })
-    
+    }
+      
   },
 
   in_xin1:function(e){
@@ -110,7 +160,7 @@ Page({
     var that = this;
     if(options.id==1){
       that.setData({
-        page:"已借出物品",
+        page:"物品详情",
         array:[
           "../../images/u8.png",
           "../../images/电动车.png",
@@ -118,12 +168,46 @@ Page({
         ],
         imagesrc2:"../../images/u19.svg",
         obj:"电子产品|蓝牙耳机",
-        people:"所属人：阿达娃",
+        people:"借用人：阿达娃",
         time:"借用时间：2020.10.02-2020.11.20",
-        phone:"所属人电话：2657843659",
-        price:"￥3.00/日 免押金",
-        func:"确认归还"
+        phone:"借用人电话：2657843659",
+        price:"￥3.00/日 免押金"
       })
+      if(options.num==1){
+        that.setData({
+          but:true,
+          func:"审核",
+          num:1
+        })
+      }
+      if(options.num==2){
+        that.setData({
+          but:true,
+          func:"已交易",
+          num:2
+        })
+      }
+      if(options.num==3){
+        that.setData({
+          text:true,
+          situa:"等待对方确认交易",
+          num:3
+        })
+      }
+      if(options.num==4){
+        that.setData({
+          but:true,
+          func:"已归还",
+          num:4
+        })
+      }
+      if(options.num==5){
+        that.setData({
+          text:true,
+          situa:"等待对方确认归还",
+          num:5
+        })
+      }
     }
     if(options.id==2){
       that.setData({
@@ -144,6 +228,41 @@ Page({
         price:"￥10.00/日 免押金",
         func:"归还"
       })
+      if(options.num==1){
+        that.setData({
+          text:true,
+          situa:"待审核",
+          num:1
+        })
+      }
+      if(options.num==2){
+        that.setData({
+          but:true,
+          func:"已交易",
+          num:2
+        })
+      }
+      if(options.num==3){
+        that.setData({
+          text:true,
+          situa:"等待对方确认交易",
+          num:3
+        })
+      }
+      if(options.num==4){
+        that.setData({
+          but:true,
+          func:"已归还",
+          num:4
+        })
+      }
+      if(options.num==5){
+        that.setData({
+          text:true,
+          situa:"等待对方确认归还",
+          num:5
+        })
+      }
     }
   },
 

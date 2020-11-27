@@ -141,3 +141,9 @@ textarea{
   background-color: #932525;
   color: white;
 }
+
+.buttom-text{
+  padding-top: 20rpx;
+  text-align: center;
+  color: #932525;
+}
