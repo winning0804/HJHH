@@ -35,7 +35,7 @@ class GoodsSKU(models.Model):
     image = models.ImageField(upload_to='goods') # 物品图片
     score = models.DecimalField(max_digits=10,decimal_places=2) # 评分
     score_num = models.DecimalField(max_digits=10,decimal_places=2) # 评分人数
-    status = models.SmallAutoField(default=1,choices=status_choices) # 物品状态
+    status = models.SmallAutoField(default=1,choices=status_choices,primary_key=True) # 物品状态
 
     owner = models.ForeignKey(GoodsOwner,on_delete=models.CASCADE) # 物品持有者
     type = models.ForeignKey(GoodsType, on_delete=models.CASCADE)  # 物品种类

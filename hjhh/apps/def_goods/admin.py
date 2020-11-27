@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ..def_goods.models import GoodsType,GoodsSKU,IndexTypeGoodsBanner
+from .models import GoodsType,GoodsSKU,IndexTypeGoodsBanner
 
 # Register your models here.
 class BaseModelAdmin(admin.ModelAdmin):

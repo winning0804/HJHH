@@ -4,15 +4,16 @@ from django.views.generic import View
 from django.core.cache import cache
 from .models import GoodsSKU,GoodsType,GoodsClassify,GoodsOwner,IndexTypeGoodsBanner
 from django_redis import get_redis_connection
-from ..def_order.models import Order
-from ..def_user.models import UserInfo
+from def_order.models import Order
+from def_user.models import UserInfo
 from django.http import HttpResponse
 import json
 import random
 from django.shortcuts import render,get_object_or_404
 
 # Create your views here.
-
+import sys
+sys.path.append("..")
 
 def IndexView(request):
     '''首页'''

@@ -94,7 +94,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+#AUTH_USER_MODEL = 'customuser.UserModel'
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -117,3 +117,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+
