@@ -7,7 +7,7 @@ from . import views
 
 app_name = 'def_message'
 urlpatterns = [
-        url('^message/$',views.message, name="message"),
-        url('^person_message/$', views.person_message, name="person_message"),
+        url('api/get_message',views.message, name="message"),
+        url('api/get_message_detail', views.message_detail, name="message_detail"),
         # url(r'^kefu_message/$', kefu_message, name="kefu_message"),
 ]
