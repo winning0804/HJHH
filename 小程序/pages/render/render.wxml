@@ -2,7 +2,6 @@
 <view class="container">
 	<view class = "title">
         <view class = "profile_picture">
-            <image src="../../images/fanhui-white.png" bindtap='back' mode = "aspectFit" class = "return_img"></image>
             <image src="../../images/u19.svg" mode = "aspectFit" class = "img"></image>
         </view>
         <view class = "profile_infors">

@@ -150,6 +150,7 @@ Page({
 
 	clickbutton: function () {
 		this.showShade();
+		this.hideModal();
 	},
 	showShade: function () {// 显示遮罩层
 		this.setData({
