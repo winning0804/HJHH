@@ -1,6 +1,6 @@
 import os,django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hjhh.settings")# project_name 项目名称
-django.setup()
+#django.setup()
 
 from django.db import models
 from datetime import datetime

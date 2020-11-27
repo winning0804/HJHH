@@ -1,1 +1,1 @@
-default_app_config = "df_goods.apps.DfGoodsConfig"
+default_app_config = "def_goods.apps.DefGoodsConfig"
