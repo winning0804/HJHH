@@ -4,7 +4,8 @@ const app = getApp()
 Page({
   	data: {
 		tosend: true,
-		sent: true,
+		sent: false,
+		hide:false,
 		isMine: true,
 		list:{
 			titles:[
@@ -18,7 +19,7 @@ Page({
 					title:"隐藏",
 				},
 			],
-			goods:[
+			goods1:[
 				{
 					name:"电子产品|蓝牙耳机",
 					price:3.00,
@@ -29,7 +30,31 @@ Page({
 					price:3.00,
 					deposit:20,
 				}
-			]
+			],
+			goods2:[
+				{
+					name:"电子产品|蓝牙耳机",
+					price:3.00,
+					deposit:20,
+				}
+			],
+			goods3:[
+				{
+					name:"电子产品|蓝牙耳机",
+					price:3.00,
+					deposit:20,
+				},
+				{
+					name:"电子产品|蓝牙耳机",
+					price:3.00,
+					deposit:20,
+				},
+				{
+					name:"电子产品|蓝牙耳机",
+					price:3.00,
+					deposit:20,
+				}
+			],
 		},
   	},
 	tomessage: function(event){
@@ -46,15 +71,22 @@ Page({
 		this.setData({
 			tosend: true,
 			sent: false,
-		}),
-		this.style.display="none"
+			hide:false,
+		})
 	},
 	sent_select: function(event){
 		this.setData({
 			tosend: false,
 			sent: true,
+			hide:false,
 		})
-		this.style.display="none"
+	},
+	hide_select: function(event){
+		this.setData({
+			tosend: false,
+			sent: false,
+			hide:true,
+		})
 	}
 });
 
