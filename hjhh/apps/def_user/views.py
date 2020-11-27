@@ -53,5 +53,8 @@ class user_detail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 #用户信息认证
-
+class getUserInfo(APIView):
+    def post(self,request,*args,**kwargs):
+        print(request.data)
+        return Response({"status":True})
 
