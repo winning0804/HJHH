@@ -5,12 +5,11 @@ django.setup()
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.contrib import messages
-from .models import Information,send
-from ..models import UserInfo
-from datetime import datetime
+from .models import Information
+from ..def_user.models import UserInfo
 from django.http import HttpResponse
 import json
-
+from datetime import datetime
 # Create your views here.
 #消息中心
 def message(request):
@@ -18,8 +17,6 @@ def message(request):
     #消息用户名去重
     persons = Information.objects.filter(cinformation_id=user.id).values('chat_partner','ccheck').distinct().order_by('chat_partner')
     # 查看消息的已读状态
-    # checks = Information.objects.filter(cinformation_id=user.id).values('cusername').distinct().order_by('cusername')
-    # print("checks:%s,checks.count:%s" % (checks, checks.count()))
     print("消息列举:%s,消息长度：%s,消息个数:%s" %(persons, len(persons),persons.count()))
     #查询发消息者的头像
     imgs = UserInfo.objects.filter()
@@ -32,11 +29,11 @@ def message(request):
         ###'guest_cart': 1,
         # 'checks':checks,
     }
+    # return render(request, 'message.wxml', context)    ####修改为模板中的html!
     return HttpResponse(json.dump(context, ensure_ascii=False), content_type="application/json", charset='utf-8',
                         status='200', reason='success')
-
 # 消息内容展示
-def person_message(request):
+def message_detail(request):
     user = UserInfo.objects.get(id=request.session['user_id'])#当前登录用户
     #消息用户名去重
     persons = Information.objects.filter(cinformation_id=user.id).values('chat_partner','ccheck').distinct().order_by('chat_partner')
@@ -68,11 +65,11 @@ def person_message(request):
         if ccontent_chart == "":
             messages.success(request, "请输入内容！")
         else:
-            Information.objects.create(myself=cusername, chat_partner=cusername1,
+            Information.objects.create(myself=cusername, chat_partner=cusername1,ccontent_chart=ccontent_chart,
                                        cinformation_id=cinformation_id)
-            send.objects.create(ccontent_chart=ccontent_chart)
+
             messages.success(request, "消息发送成功")
-            return redirect(reverse("def_message:message"))
+            return redirect(reverse(messages))
         context = {
             "code": '200',
             "msg": '成功',
