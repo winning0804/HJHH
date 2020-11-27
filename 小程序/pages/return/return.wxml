@@ -8,7 +8,16 @@
   <view class="lists">
 
     <view class="mine-list" wx:for="{{array}}">
-      <image src="{{item.img}}" bindtap="obj_detail"></image>
+      <block wx:if="{{item.id==5}}">
+        <navigator url="../../pages/mine-detail/mine-detail?id={{item.id}}">
+          <image src="{{item.img}}"></image>
+        </navigator>  
+      </block>
+      <block wx:else>
+        <navigator url="../../pages/item/item?id={{item.id}}&num={{item.num}}">
+          <image src="{{item.img}}"></image>
+        </navigator>  
+      </block>
       <view class="list-in">
         <view class="list-info list-info-name">{{item.obj}}</view>
         <view class="list-info list-info-peo">{{item.people}}</view>

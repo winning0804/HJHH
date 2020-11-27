@@ -31,7 +31,13 @@
       </view>
     </view>
   </view>
-  <button class="bottom-button" bindtap="confirm">{{func}}</button>
+  <block wx:if="{{text}}">
+    <view class="buttom-text">{{situa}}</view>
+  </block>
+  <block wx:if="{{but}}">
+    <button class="bottom-button" bindtap="confirm">{{func}}</button>
+  </block>
+  
 
   <!--弹窗1:评价人-->
   <block wx:if="{{isShowConfirm1}}">

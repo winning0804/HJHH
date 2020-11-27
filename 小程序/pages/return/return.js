@@ -5,9 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-      id:"",
       page:"我是xx人",
       array:[{
+        id:"",
         num:"1",
         img:"../../images/u8.png",
         obj:"电子产品|蓝牙耳机",
@@ -17,6 +17,7 @@ Page({
         situa:"待审核"
       },
       {
+        id:"",
         num:"2",
         img:"../../images/电动车.png",
         obj:"交通出行|电动车",
@@ -37,17 +38,18 @@ Page({
     if(options.id==1){
       that.setData({
         page:"我是所属人",
-        id:"1",
         array:[{
+          id:"1",
           num:"1",
           img:"../../images/u8.png",
           obj:"电子产品|蓝牙耳机",
           people:"借用人：美少女战士",
           price:"￥3.00/日",
           date:"20.11.11-20.11.13",
-          button1:"待审核"
+          situa:"待审核"
         },
         {
+          id:"1",
           num:"3",
           img:"../../images/电动车.png",
           obj:"交通出行|电动车",
@@ -55,6 +57,26 @@ Page({
           price:"￥5.00/日",
           date:"20.10.10-20.11.11",
           situa:"等待对方确认交易"
+        },
+        {
+          id:"1",
+          num:"5",
+          img:"../../images/电动车.png",
+          obj:"交通出行|电动车",
+          people:"借用人：圣代",
+          price:"￥5.00/日",
+          date:"20.10.10-20.11.11",
+          situa:"等待对方确认归还"
+        },
+        {
+          id:"1",
+          num:"4",
+          img:"../../images/电动车.png",
+          obj:"交通出行|电动车",
+          people:"借用人：圣代",
+          price:"￥5.00/日",
+          date:"20.10.10-20.11.11",
+          situa:"待归还"
         }
       ]
       })
@@ -62,17 +84,18 @@ Page({
     if(options.id==2){
       that.setData({
         page:"我是借方",
-        id:"2",
         array:[{
+          id:"2",
           num:"2",
           img:"../../images/电动车.png",
           obj:"交通出行|电动车",
           people:"所属人：月野兔",
           price:"￥10.00/日",
           date:"20.08.04-20.11.23",
-          button1:"待交易",
+          situa:"待交易",
         },
         {
+          id:"2",
           num:"5",
           img:"../../images/指甲剪.png",
           obj:"日常用品|指甲剪",
@@ -82,6 +105,7 @@ Page({
           situa:"等待对方确认归还"
         },
         {
+          id:"2",
           num:"1",
           img:"../../images/电动车.png",
           obj:"交通出行|电动车",
@@ -89,6 +113,16 @@ Page({
           price:"￥10.00/日",
           date:"20.08.04-20.11.23",
           situa:"待审核"
+        },
+        {
+          id:"2",
+          num:"4",
+          img:"../../images/电动车.png",
+          obj:"交通出行|电动车",
+          people:"所属人：月野兔",
+          price:"￥10.00/日",
+          date:"20.08.04-20.11.23",
+          situa:"待归还"
         }
         ]
       })
@@ -96,8 +130,8 @@ Page({
     if(options.id==5){
       that.setData({
         page:"我的物品",
-        id:"5",
         array:[{
+          id:"5",
           img:"../../images/电动车.png",
           obj:"交通出行|电动车",
           people:"所属人：晚安",
@@ -159,6 +193,7 @@ Page({
 
   },
 
+  /*
   obj_detail:function(e){
     console.log(e);
     
@@ -178,35 +213,9 @@ Page({
       })
     }
   },
+*/
 
   button1:function(){
-    if(this.data.id==1){
-      console.log(this.data.button1+" "+this.data.id);
-      wx.navigateTo({
-        url:'../../pages/message_detail/message_detail',
-      })
-    }
-    else if(this.data.id==4){
-      wx.showModal({
-        title: '提醒',
-        content: '是否确认取消申请？',
-        success(res){
-          if(res.confirm)
-          {
-            wx.showToast({
-              title: '已取消',
-              duration:2000,//显示时长
-              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-              icon:'success'//图标，支持"success"、"loading"
-            })
-          }else if(res.cancel)
-          {
-            console.log("用户点击了取消");
-          }
-        }
-      })
-    }
-    else if(this.data.id==5){
       wx.showModal({
         title: '提醒',
         content: '是否确认隐藏物品？',
@@ -225,18 +234,17 @@ Page({
           }
         }
       })
-    }
   },
 
   button2:function(){
       wx.showModal({
         title: '提醒',
-        content: '是否继续操作？',
+        content: '是否确认删除？',
         success(res){
           if(res.confirm)
           {
             wx.showToast({
-              title: '成功',
+              title: '已删除',
               duration:2000,//显示时长
               mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
               icon:'success'//图标，支持"success"、"loading"
