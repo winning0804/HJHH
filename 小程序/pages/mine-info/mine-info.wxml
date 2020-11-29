@@ -10,7 +10,7 @@
     </view>
     <view class="mine-block" bindtap="upload">
       <view>更换头像</view>
-      <image src="../../images/前进.png"></image>
+      <image src="../../images/forward.png"></image>
     </view>
   </view>
   <view class="subs">

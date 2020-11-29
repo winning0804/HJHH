@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    page:"...",
+    id:"",
+    page:"物品详情",
     array:[
       "../../images/u8.png",
       "../../images/u19.svg",
@@ -30,12 +31,25 @@ Page({
     text:false,
     but:false,
     situa:"",
-    num:""
+    num:"",
+    comment1:"请输入对对方的评价",
+    comment2:"请输入对物品的评价"
+  },
+
+  setValue1:function(e){
+    this.setData({
+      comment1:e.detail.value,
+    })
+  },
+
+  setValue2:function(e){
+    this.setData({
+      comment2:e.detail.value,
+    })
   },
 
   confirm:function(){
     var that = this;
-    console.log(this.data.num);
     if(this.data.num==1){
       wx.showModal({
         title: '提醒',
@@ -125,7 +139,7 @@ Page({
     that.setData({
       isShowConfirm1: false,
     })
-    if(that.data.page=="已借出物品"){
+    if(that.data.id==1){
       wx.showToast({
         title: '评论成功',
         duration:2000,//显示时长
@@ -133,11 +147,12 @@ Page({
         icon:'success'//图标，支持"success"、"loading"
       })
     }
-    if(that.data.page=="待归还物品"){
+    if(that.data.id==2){
       that.setData({
         isShowConfirm2:true
       })
     }
+    console.log(this.data.comment1+"   ");
   },
 
   confirmAcceptance2:function(){
@@ -151,6 +166,7 @@ Page({
       mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
       icon:'success'//图标，支持"success"、"loading"
     })
+    console.log(this.data.comment2+"   ");
   },
 
   /**
@@ -160,11 +176,11 @@ Page({
     var that = this;
     if(options.id==1){
       that.setData({
-        page:"物品详情",
+        id:1,
         array:[
           "../../images/u8.png",
-          "../../images/电动车.png",
-          "../../images/指甲剪.png",
+          "../../images/car.png",
+          "../../images/finger.png",
         ],
         imagesrc2:"../../images/u19.svg",
         obj:"电子产品|蓝牙耳机",
@@ -211,7 +227,7 @@ Page({
     }
     if(options.id==2){
       that.setData({
-        page:"待归还物品",
+        id:2,
         array:[
           "../../images/u8.png",
           "../../images/u19.svg",
@@ -221,7 +237,7 @@ Page({
           "../../images/u8.png",
         ],
         imagesrc2:"../../images/u19.svg",
-        obj:"交通出行|电动车",
+        obj:"交通出行|car",
         people:"所属人：月野兔",
         time:"借用时间：2020.08.04-2020.11.23",
         phone:"所属人电话：2657843659",

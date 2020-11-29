@@ -25,15 +25,15 @@
   <view class="view5 bac">
     <view  class="center" bindtap="ToDetail" data-nid="1">
       <view class="text">我是所属人</view>
-      <image src="../../images/商家.png"></image>
+      <image src="../../images/people2.png"></image>
     </view>
     <view  class="center" bindtap="ToDetail" data-nid="2">
       <view class="text">我是借方</view>
-      <image src="../../images/支付买家.png"></image>
+      <image src="../../images/people1.png"></image>
     </view>
     <view  class="center" bindtap="ToClar">
       <view class="text">实名认证</view>
-      <image src="../../images/实名认证.png"></image>
+      <image src="../../images/iden.png"></image>
     </view>
   </view> 
   <!--第四部分-->
@@ -41,17 +41,17 @@
     <view class="mine-block block1" bindtap="ToDetail" data-nid="5">
       <image   src="../../images/icon-goods.png"></image>
       <view>我的物品</view>
-      <image   src="../../images/前进.png"></image>
+      <image   src="../../images/forward.png"></image>
     </view>
     <view class="mine-block" bindtap="ToSub">
       <image   src="../../images/fabu.png"></image>
       <view>我要发布</view>
-      <image  src="../../images/前进.png"></image>
+      <image  src="../../images/forward.png"></image>
     </view>
     <view class="mine-block" bindtap="ToSet">
       <image  src="../../images/shezhi.png"></image>
       <view>用户设置</view>
-      <image  src="../../images/前进.png"></image>
+      <image  src="../../images/forward.png"></image>
     </view>
   </view>  
 </view>

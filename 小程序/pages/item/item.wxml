@@ -50,16 +50,16 @@
             <view class="stars center">
               <view>
                 <block wx:for="{{one_1}}" wx:key="index">
-                <image catchtap='in_xin1' class="twinkle" id='{{index+1}}' data-in='use_sc2' src='../../images/星.png'></image>
+                <image catchtap='in_xin1' class="twinkle" id='{{index+1}}' data-in='use_sc2' src='../../images/star.png'></image>
                 </block>
                 <block wx:for="{{two_1}}" wx:key="index">
-                <image catchtap='in_xin1' class="twinkle" id='{{index+1}}' data-in='use_sc' src='../../images/星星.png'></image>
+                <image catchtap='in_xin1' class="twinkle" id='{{index+1}}' data-in='use_sc' src='../../images/stars.png'></image>
                 </block>
               </view>
               <view>{{one_1}}星</view>
             </view>
             <view class='toast-main'>
-                <textarea type='text' placeholder='输入对借用人的评价' bindinput='setValue'></textarea>
+                <textarea type='text' placeholder='{{comment1}}' bindinput='setValue1'></textarea>
             </view>
             <button class="confirm" bindtap="confirmAcceptance">确认</button>
         </view>
@@ -77,16 +77,16 @@
             <view class="stars center">
               <view>
                 <block wx:for="{{one_2}}" wx:key="index">
-                <image catchtap='in_xin2' class="twinkle" id='{{index+1}}' data-in='use_sc2' src='../../images/星.png'></image>
+                <image catchtap='in_xin2' class="twinkle" id='{{index+1}}' data-in='use_sc2' src='../../images/star.png'></image>
                 </block>
                 <block wx:for="{{two_2}}" wx:key="index">
-                <image catchtap='in_xin2' class="twinkle" id='{{index+1}}' data-in='use_sc' src='../../images/星星.png'></image>
+                <image catchtap='in_xin2' class="twinkle" id='{{index+1}}' data-in='use_sc' src='../../images/stars.png'></image>
                 </block>
               </view>
               <view>{{one_2}}星</view>
             </view>
             <view class='toast-main'>
-                <textarea type='text' placeholder='输入对物品的评价' bindinput='setValue'></textarea>
+                <textarea type='text' placeholder='{{comment2}}' bindinput='setValue2'></textarea>
             </view>
             <button class="confirm" bindtap="confirmAcceptance2">确认</button>
         </view>

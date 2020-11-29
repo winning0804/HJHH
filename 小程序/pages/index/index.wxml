@@ -40,7 +40,7 @@
 	</view>
 	<view class = "container_info" bindtap = "torender">
 		<view class = "container_image">
-			<image src="../../images/u19.svg" mode = "aspectFit" class = "imagg1"></image>
+			<image src="../../images/u22.svg" mode = "aspectFit" class = "imagg1"></image>
 		</view>
 		<view class = "container_detail" bindtap = "torender">
 		<view>持有人： 美少女战士</view>
@@ -61,7 +61,7 @@
 				<text style="display: inline-block; width: 40%;">{{item.name}}</text>
 				<text style="display: inline-block; width: 20%; font-size : 30rpx;">{{item.islend}}</text>
 				<view style="display: inline-block; width: 40%;">
-					<image  wx:for="{{item.starnum}}" class = "star" src="../../images/星.svg" mode = "aspectFill"></image>
+					<image  wx:for="{{item.starnum}}" class = "star" src="../../images/star.svg" mode = "aspectFill"></image>
 				</view>
 			</view>
 			<view class = "borrower_comment">{{item.comment}}</view>

@@ -16,7 +16,26 @@ Page({
     button:"发布"
   },
 
-  
+  bindobjs:function(e){
+    console.log(e.detail.value);
+    this.setData({
+      objs:e.detail.value
+    })
+  },
+
+  bindmoney1:function(e){
+    console.log(e.detail.value);
+    this.setData({
+      money1:e.detail.value
+    })
+  },
+
+  bindmoney2:function(e){
+    console.log(e.detail.value);
+    this.setData({
+      money2:e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -26,7 +45,7 @@ Page({
     if(options.id==5){
       that.setData({
         local:"福建省福州市福州大学",
-        imgList:["../../images/电动车.png"],
+        imgList:["../../images/car.png"],
         indexs: 2 ,//选择的下拉列 表下标,
         objs:"蓝牙耳机",
         money1:"10",
@@ -127,6 +146,7 @@ Page({
   },
 
   change:function(){
+    console.log(this.data.selectDatas[this.data.indexs]+this.data.objs+this.data.money1+this.data.money2+this.data.local+this.data.imgList);
     wx.showModal({
       title: '确认发布？',
       success(res){

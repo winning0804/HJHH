@@ -6,28 +6,33 @@ Page({
     // text:"这是一个页面"
    
     messages:[
-      {
+      { 
+        nameid:'1',
         borrower_name:"美少女战士",
-        url:"../../images/u19.svg",
+        url:"../../images/u22.svg",
         borrower_message:"租金可以便宜点吗？",
         count:5
       },
       {
+        nameid:'2',
         borrower_name:"房东的猫",
         url:"../../images/u22.svg",
-        borrower_message:"哈哈哈，我要一统江湖啦，",
-        count:18
+        borrower_message:"哈哈哈，这个耳机质量怎么样？",
+        count:8
         },
         {
-          borrower_name:"无名",
+          nameid:'3',
+          borrower_name:"马化腾",
           url:"../../images/gerenzhongxin.png",
-          borrower_message:"在吗？",
+          borrower_message:"在吗?想借电动车。",
           count:2
+    
           },
           {
-            borrower_name:"cherss",
+            nameid:'4',
+            borrower_name:"马云",
             url:"../../images/点赞2.png",
-            borrower_message:"我现在没空",
+            borrower_message:"我现在没时间，等下聊",
             count:4
             },
      

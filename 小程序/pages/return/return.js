@@ -19,7 +19,7 @@ Page({
       {
         id:"",
         num:"2",
-        img:"../../images/电动车.png",
+        img:"../../images/car.png",
         obj:"交通出行|电动车",
         people:"借用人：圣代",
         price:"￥5.00/日",
@@ -51,7 +51,7 @@ Page({
         {
           id:"1",
           num:"3",
-          img:"../../images/电动车.png",
+          img:"../../images/car.png",
           obj:"交通出行|电动车",
           people:"借用人：圣代",
           price:"￥5.00/日",
@@ -61,7 +61,7 @@ Page({
         {
           id:"1",
           num:"5",
-          img:"../../images/电动车.png",
+          img:"../../images/car.png",
           obj:"交通出行|电动车",
           people:"借用人：圣代",
           price:"￥5.00/日",
@@ -71,7 +71,7 @@ Page({
         {
           id:"1",
           num:"4",
-          img:"../../images/电动车.png",
+          img:"../../images/car.png",
           obj:"交通出行|电动车",
           people:"借用人：圣代",
           price:"￥5.00/日",
@@ -87,7 +87,7 @@ Page({
         array:[{
           id:"2",
           num:"2",
-          img:"../../images/电动车.png",
+          img:"../../images/car.png",
           obj:"交通出行|电动车",
           people:"所属人：月野兔",
           price:"￥10.00/日",
@@ -97,8 +97,8 @@ Page({
         {
           id:"2",
           num:"5",
-          img:"../../images/指甲剪.png",
-          obj:"日常用品|指甲剪",
+          img:"../../images/finger.png",
+          obj:"日常用品|finger",
           people:"所属人：subs",
           price:"￥1.00/日",
           date:"20.10.04-20.11.23",
@@ -107,7 +107,7 @@ Page({
         {
           id:"2",
           num:"1",
-          img:"../../images/电动车.png",
+          img:"../../images/car.png",
           obj:"交通出行|电动车",
           people:"所属人：月野兔",
           price:"￥10.00/日",
@@ -117,7 +117,7 @@ Page({
         {
           id:"2",
           num:"4",
-          img:"../../images/电动车.png",
+          img:"../../images/car.png",
           obj:"交通出行|电动车",
           people:"所属人：月野兔",
           price:"￥10.00/日",
@@ -132,7 +132,7 @@ Page({
         page:"我的物品",
         array:[{
           id:"5",
-          img:"../../images/电动车.png",
+          img:"../../images/car.png",
           obj:"交通出行|电动车",
           people:"所属人：晚安",
           price:"￥10.0/日 押金：￥50.0",

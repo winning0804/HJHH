@@ -17,27 +17,27 @@
     </view>
     <view class="mine-block">
       <view>物品名称：</view>
-      <input placeholder="{{objs}}"/>
+      <input bindinput="bindobjs" placeholder="{{objs}}"/>
     </view>
     <view class="mine-block">
       <view>租金：</view>
-      <input placeholder="{{money1}}"/>
+      <input bindinput="bindmoney1" placeholder="{{money1}}"/>
     </view>
     <view class="mine-block">
       <view>押金：</view>
-      <input placeholder="{{money2}}"/>
+      <input bindinput="bindmoney2" placeholder="{{money2}}"/>
     </view>
     <view class="mine-block">
       <view>地址：</view>
       <view class="getloc" bindtap="getlocal">
-        <image src="../../images/地址.png"></image>
+        <image src="../../images/address.png"></image>
         <view>{{local}}</view>
       </view>  
     </view>
   </view>
   <view class="upload-img">
     <view> 上传图片 </view>
-    <image bindtap="upload" src="../../images/上传图片.png"></image>
+    <image bindtap="upload" src="../../images/upimg.png"></image>
   </view>  
   <view class="img-container">
     <image class="images" wx:for="{{imgList}}" src="{{item}}"></image>

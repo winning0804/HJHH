@@ -2,7 +2,7 @@
 <view class="container">
 	<view class = "title">
         <view class = "profile_picture">
-            <image src="../../images/u19.svg" mode = "aspectFit" class = "img"></image>
+            <image src="../../images/u22.svg" mode = "aspectFit" class = "img"></image>
         </view>
         <view class = "profile_infors">
             <view class = "infor_name">美少女战士</view>

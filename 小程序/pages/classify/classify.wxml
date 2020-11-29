@@ -57,7 +57,7 @@
         <view  wx:for="{{list3}}"  wx:for-item="objItem" wx:key="objItem" class = "thegoods" wx:if = '{{s3}}'>
             <view class = "goods_detail" bindtap = "toindex">
                 <view class = "goods_img">
-                    <image class = "images" src="../../images/电动车.png" mode="aspectFill" lazy-load="true"></image>
+                    <image class = "images" src="../../images/car.png" mode="aspectFill" lazy-load="true"></image>
                 </view>
                 <view class = "goods_name">{{objItem.name}}</view>
                 <view class = "goods_price">{{objItem.price}}</view>
@@ -67,7 +67,7 @@
         <view  wx:for="{{list4}}"  wx:for-item="objItem" wx:key="objItem" class = "thegoods" wx:if = '{{s4}}'>
             <view class = "goods_detail" bindtap = "toindex">
                 <view class = "goods_img">
-                    <image class = "images" src="../../images/快递.png" mode="aspectFill" lazy-load="true"></image>
+                    <image class = "images" src="../../images/kd.png" mode="aspectFill" lazy-load="true"></image>
                 </view>
                 <view class = "goods_name">{{objItem.name}}</view>
                 <view class = "goods_price">{{objItem.price}}</view>

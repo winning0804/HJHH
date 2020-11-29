@@ -1,15 +1,15 @@
 <!--pages/message_detail/message_detail.wxml-->
-  <view class="mine-head">
-    <view class="mine-head-text">美少女战士</view>
+<view class="mine-head">
+    <view class="mine-head-text">{{name}}</view>
   </view>
 
   <view class="messages_detail">
-     <block wx:for="{{messages}}">
+     <block wx:for="{{messages_detail_text1}}">
   <view class="item">
-    <image class = "borrower_image" src="{{item.url}}" ></image>
+    <image class = "borrower_image" src="{{url}}" ></image>
     <view class="messages_text">
       <view>
-        <text class = "messages_detail_text">{{item.messages_detail_text}}</text>
+        <text class = "messages_detail_text">{{item}}</text>
       </view>
     </view>
   </view>
@@ -17,11 +17,15 @@
   </view>
 
   <view class="messages_my_detail">
-    <block wx:for ="{{my_messages}}" wx:key="key">
-    <view class="messages_text_anser">
-        <text class = "messages_detail_anser">{{item.messages_text_anser}}</text>
+    <block wx:for ="{{messages_detail_text2}}">
+    <view class="item">
+      <view class="messages_text2">
+        <view>
+          <text class = "messages_detail_text2">{{item}}</text>
+        </view>
     </view>
-    <image class = "mine_image" src="{{item.ur1}}" ></image>
+    <image class = "mine_image" src="{{ur2}}" ></image>
+  </view>
   </block>
   </view>
 
