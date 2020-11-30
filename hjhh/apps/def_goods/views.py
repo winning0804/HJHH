@@ -2,11 +2,18 @@ from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.views.generic import View
 from django.core.cache import cache
-from .models import GoodsSKU,GoodsType,GoodsClassify,GoodsOwner,IndexTypeGoodsBanner
-from django_redis import get_redis_connection
+from .models import *
+from .serializers import *
 from def_order.models import Order
 from def_user.models import UserInfo
 from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework import mixins
+from rest_framework import generics
+from utils.default_value import default_response
+from django.http import Http404
 import json
 import random
 from django.shortcuts import render,get_object_or_404
@@ -15,10 +22,39 @@ from django.shortcuts import render,get_object_or_404
 import sys
 sys.path.append("..")
 
+
+def index(request):
+    return HttpResponse("Hello world !  django ~~")
+
+
+class IndexView(mixins.ListModelMixin,generics.GenericAPIView,mixins.CreateModelMixin):
+    queryset = GoodsSKU.objects.all()
+    serializer_class = GoodsSKUSerializer
+
+    def get(self,request,format=None):
+        product = GoodsSKU.objects.all()
+        serializer = GoodsSKUSerializer(product,many=True)
+        result = default_response()
+        result['data'] = serializer.data
+        return Response(result)
+
+    def post(self,request,*args,**kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+        result = default_response()
+        result['data'] = serializer.data
+        return Response(result)
+
+
+
+
+'''
 def IndexView(request):
-    '''首页'''
+    # 首页
+    # return HttpResponse('IndexView!')
     if request.method == "GET":
-        '''显示首页'''
+        # 显示首页
         # 获取首页商品信息
         goods_banners = GoodsSKU.objects.all().order_by('index')
 
@@ -38,30 +74,42 @@ def IndexView(request):
             "msg":'成功',
             "data":arrayList
         }
+        # print(arrayList)
         return HttpResponse(json.dump(data,ensure_ascii=False),content_type="application/json",charset='utf-8',status='200',reason='success'),
-
-
-
+    else:
+        return HttpResponse("Is's not a GET request!!!")
 '''
-class IndexView(View):
-    #首页
-    def get(self,request):
-        #显示首页
-        # 获取商品的种类信息
-        types = GoodsType.objects.all()
 
-        # 获取首页商品信息
-        goods_banners = IndexTypeGoodsBanner.objects.all().order_by('index')
+class DetailView(APIView):
+    def get_objects(self,pk):
+        try:
+            return GoodsSKU.objects.get(pk=pk)
+        except GoodsSKU.DoesNotExist:
+            raise Http404
 
-        # 组织模板上下文
-        context = {
-            'types':types,
-            'goods_banners':goods_banners
-        }
+    def get(self,request,pk,format=None):
+        product = self.get_objects(pk)
+        serializer = GoodsSKUSerializer(product)
+        result = default_response()
+        result['data'] = serializer.data
+        return Response(result)
 
-        # 使用模板
-        return render(request,'index.wxml',context)
-'''
+    def put(self,request,pk,format=None):
+        product = self.get_objects(pk)
+        serializer = GoodsSKUSerializer(product,data=request.data)
+        print(request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self,request,pk,format=None):
+        product = self.get_objects(pk)
+        product.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
 
 '''
 详情页
@@ -69,7 +117,10 @@ method  POST
 openid   用户ID
 goods_id    商品ID
 '''
+
+'''
 def DetailView(request):
+    # return HttpResponse('DetailView!!')
     if request.method == 'POST':
         data_string = request.POST
         try:
@@ -107,36 +158,28 @@ def DetailView(request):
         return HttpResponse(json.dump(data,ensure_ascii=False),content_type="application/json",charset='utf-8',status='200',reason='success')
     else:
         return HttpResponse('It is not a POST request!!!')
-
-
 '''
-class DetailView(View):
-    # 详情页
-    def get(self,request,goods_id):
-        # 显示详情页
-        try:
-            sku = GoodsSKU.objects.get(id=goods_id)
-        except GoodsSKU.DoesNotExist:
-            return redirect(reverse('goods:index'))
-        # 获取商品的分类信息
-        types = GoodsType.objects.all()
 
-        # 获取商品的评论信息
-        sku_orders = OrderGoods.objects.filter(sku=sku).exclude(comment='')
 
-        # 组织模板上下文
-        context = {
-            'sku':sku,'types':types,
-            'sku_orders':sku_orders
-        }
-        # 使用模板
-        return render(request,'detail.wxml',context)
-'''
+
+class ListView(mixins.ListModelMixin,generics.GenericAPIView):
+    queryset = GoodsType.objects.all()
+    serializer_class = GoodsTypeSerializer
+
+    def get(self,request,format=None):
+        category = GoodsType.objects.all()
+        serializer = GoodsTypeSerializer(category,many=True)
+        result = default_response()
+        result['data'] = serializer.data
+        return Response(result)
+
 
 '''
 获取指定类型物品
 method  POST
 type    种类
+'''
+
 '''
 def ListView(request):
     if request.method == 'POST':
@@ -169,31 +212,21 @@ def ListView(request):
                             status='200', reason='success')
     else:
         return HttpResponse('It is not a POST request!!!')
-
 '''
-class ListView(View):
-    # 列表页（筛选）
-    def get(self,request,type_id):
-        # 显示列表页
-        # 获取种类信息
+
+class FindView(APIView):
+    def get_objects(self,state):
         try:
-            type = GoodsType.objects.get(id=type_id)
-        except GoodsType.DoesNotExist:
-            return redirect(reverse('goods:index'))
+            return GoodsSKU.objects.get(state=state)
+        except GoodsSKU.DoesNotExist:
+            raise Http404
 
-        # 获取商品的分类信息
-        types = GoodsType.objects.all()
-
-        # 获取分类商品的信息
-        skus = GoodsSKU.objects.filter(type=type).order_by('-id')
-
-        # 组织模板上下文
-        context = {
-            'type':type,'types':types,
-            'skus':skus
-        }
-        return render(request,'list.wxml',context)
-'''
+    def get(self,request,state,format=None):
+        product = self.get_objects(state)
+        serializer = GoodsSKUSerializer(product)
+        result = default_response()
+        result['data'] = serializer.data
+        return Response(result)
 
 
 
@@ -202,6 +235,8 @@ class ListView(View):
 method  POST
 state   状态
 openid  用户ID
+'''
+
 '''
 def FindView(request):
     if request.method == 'POST':
@@ -238,7 +273,7 @@ def FindView(request):
                             status='200', reason='success')
     else:
         return HttpResponse('It is not a POST request!!!')
-
+'''
 
 
 '''
@@ -266,22 +301,6 @@ def BorrowerView(request):
                 'name':item.name,
                 ''
             })
-'''
-
-'''
-# 传入状态id
-class FindView(View):
-    # 申请
-    def get(self,request,state_id):
-        # 显示列表页
-        # 获取商品信息
-        skus = GoodsSKU.objects.filter(state_id=state_id).order_by('-id')
-
-        # 组织模板上下文
-        context = {
-            'skus':skus
-        }
-        return render(request,'find.wxml',context)
 '''
 
 
