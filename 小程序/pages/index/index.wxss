@@ -43,6 +43,7 @@ swiper-item image {
 }
 .t1{
     width: 100vw;
+    height: 950rpx;
     background-color: #fff;
     border-radius: 0 0 30rpx 30rpx;
 }
@@ -52,15 +53,16 @@ swiper-item image {
     float:left;
 }
 .title1{
-    width:600rpx;
-    line-height : 50rpx;
-    margin: auto;
+    width:100vw;
+    height: 90rpx;
+    line-height : 90rpx;
+    padding-left : 60rpx;
     font-size :40rpx;
 }
 .price{
     width: 220rpx;
-    height: 110rpx;
-    line-height : 110rpx;
+    height: 60rpx;
+    line-height : 60rpx;
     font-size :35rpx;
     padding-left: 60rpx;
     color : #BF0A0A;
@@ -68,8 +70,8 @@ swiper-item image {
 }
 .deposit{
     width: 200rpx;
-    height: 110rpx;
-    line-height : 110rpx;
+    height: 60rpx;
+    line-height : 60rpx;
     font-size :25rpx;
     color : #BF0A0A;
     float: left;
@@ -115,6 +117,7 @@ swiper-item image {
 }
 .container_info{
     width: 100vw;
+    height: 200rpx;
     border-radius: 30rpx;
     background-color: #fff;
     margin-top: 30rpx;
