@@ -122,3 +122,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
+#配置小程序的请求代码
+AppId=""
+AppSecret=""
+# 封装code2Session接口，方便后期更换url中的参数
+code2Session=" https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code"
+
