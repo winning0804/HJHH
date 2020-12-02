@@ -5,7 +5,7 @@
 	<view class="swiper-container">
 		<swiper class="swiper_box" indicator-dots indicator-color="#E4DADA"
   indicator-active-color="#932525" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
-		<block wx:for="{{goods_img}}" wx:key="id">
+		<block wx:for="{{detail.img}}" wx:key="id">
 			<swiper-item>
 			<image src="{{item.src}}" class="slide-image" width="355" height="150" mode="aspectFit" lazy-load="true" />
 			</swiper-item>
@@ -18,10 +18,10 @@
 		</view>
 	</view>
 	<view class = "title1">
-		<text style = "font-size: 50rpx">电子产品| </text>蓝牙耳机
+		<text style = "font-size: 50rpx">{{detail.kind}}| </text>{{detail.name}}
 	</view>
-	<view class = "price">￥ 3.00元/日</view>
-	<view class = "deposit">押金 : ￥ 40元</view>
+	<view class = "price">￥ {{detail.rent}}元/日</view>
+	<view class = "deposit">押金 : ￥ {{detail.deposit}}元</view>
 	<view class = "score">
 		<view class = "thescore">5.0分</view>
 		<view class = "stars">
@@ -36,7 +36,7 @@
 </view>
 	<view class = "introduce">
 		<view class = "introduce_title">物品介绍</view>
-		<view class = "introduce_container">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</view>
+		<view class = "introduce_container">{{detail.introduction}}</view>
 	</view>
 	<view class = "container_info" bindtap = "torender">
 		<view class = "container_image">
@@ -54,18 +54,21 @@
 <!--评论-->
 	<view class = "comments">
 	<view class = "comment_title">评价</view>
-	<view  wx:for="{{comments}}" data-index="{{index}}" class = "comment">
+	<view  wx:for="{{comment}}" data-index="{{index}}" class = "comment" wx:if='{{comment.length!=0}}'>
 		<view class = "borrower">
 			<image src="{{item.img}}" mode = "aspectFit" class = "borrower_image"></image>
 			<view class = "borrower_detail">
 				<text style="display: inline-block; width: 40%;">{{item.name}}</text>
-				<text style="display: inline-block; width: 20%; font-size : 30rpx;">{{item.islend}}</text>
+				<text style="display: inline-block; width: 20%; font-size : 30rpx;">借过</text>
 				<view style="display: inline-block; width: 40%;">
-					<image  wx:for="{{item.starnum}}" class = "star" src="../../images/star.svg" mode = "aspectFill"></image>
+					<image  wx:for="{{item.score}}" class = "star" src="../../images/star.svg" mode = "aspectFill"></image>
 				</view>
 			</view>
-			<view class = "borrower_comment">{{item.comment}}</view>
+			<view  class = "borrower_comment">{{item.comment}}</view>
 		</view>
+	</view>
+	<view wx:if='{{comment.length===0}}' style = "height: 200rpx; font-size : 60rpx;text-align : center;line-height: 200rpx">
+	暂无评价
 	</view>
 	</view>
 
@@ -77,14 +80,14 @@
   	<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
 		<view class = "rend_detail">
 			<view class = "rend_detail_img">
-				<image class="rend_detail_img_in" src="../../images/u8.png" mode="aspectFill"></image>
+				<image class="rend_detail_img_in" src="{{detail.img[1]}}" mode="aspectFill"></image>
 			</view>
 			<view class = "rend_detail_detail">
 				<view class = "rend_detail_detail1">
-					<text style = "color: red">￥3.00</text>元/日
+					<text style = "color: red">￥{{detail.rent}}</text>元/日
 				</view>
 				<view class = "rend_detail_detail2">
-					押金: ￥0.00元
+					押金: ￥{{detail.deposit}}元
 				</view>
 			</view>
 		</view>
