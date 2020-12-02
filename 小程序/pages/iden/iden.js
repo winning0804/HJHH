@@ -14,7 +14,8 @@ Page({
       {name: '男', value: 'b', checked: 'true'},
       {name: '女', value: 'g'}
     ],
-    hidden: false
+    hidden: false,
+    set:false
   },
 
   radioChange(e) {
@@ -45,7 +46,8 @@ Page({
 
   submit:function(){
     var that = this;
-    db.collection('identify').add({
+    if(set==false){
+      db.collection('identify').add({
       data:{
         realname:that.data.name,
         sex:that.data.sex,
@@ -61,6 +63,8 @@ Page({
         })
       }
     })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -88,7 +92,8 @@ Page({
             name:res.data[0].realname,
             sex:res.data[0].sex,
             id:res.data[0].ID_number,
-            phone:res.data[0].phone
+            phone:res.data[0].phone,
+            set:true
           })
         }
           

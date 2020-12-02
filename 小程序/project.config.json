@@ -5,7 +5,11 @@
     "ignore": []
   },
   "setting": {
+<<<<<<< HEAD
     "urlCheck": false,
+=======
+    "urlCheck": true,
+>>>>>>> 34d0fead15497085d2158600d011e697faae5308
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -29,12 +33,21 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+<<<<<<< HEAD
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
+=======
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+>>>>>>> 34d0fead15497085d2158600d011e697faae5308
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "bundle": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.0",
