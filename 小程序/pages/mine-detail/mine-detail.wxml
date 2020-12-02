@@ -28,6 +28,10 @@
       <input bindinput="bindmoney2" placeholder="{{money2}}"/>
     </view>
     <view class="mine-block">
+      <view>介绍：</view>
+      <input bindinput="intro" placeholder="{{intro}}"/>
+    </view>
+    <view class="mine-block">
       <view>地址：</view>
       <view class="getloc" bindtap="getlocal">
         <image src="../../images/address.png"></image>

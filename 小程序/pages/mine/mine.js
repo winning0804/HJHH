@@ -21,7 +21,24 @@ Page({
       nickname:info.nickName,
       isLogin:true
     })
+    var app=getApp(); 
+    app.globalData.username = info.nickName
+    app.globalData.userimg = info.avatarUrl
   },
+
+  getOpenid() {
+    let that = this;
+    wx.cloud.callFunction({
+     name: 'getOpenID',
+     success(res){
+       var id = res.result.openId;
+       var app=getApp(); 
+       app.globalData.openid = id
+       console.log(" openid为： "+app.globalData.openid)
+     }
+    })
+   },
+
 
   onLoad: function () {
   },
@@ -29,7 +46,7 @@ Page({
   /**跳转到具体界面 */
   ToDetail:function(e){
     var nid = e.currentTarget.dataset.nid;
-
+    var id = this.data.openid
     wx.navigateTo({
       url: '/pages/return/return?id='+nid,
     })

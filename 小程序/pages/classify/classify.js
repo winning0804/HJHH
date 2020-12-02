@@ -1,200 +1,15 @@
 // pages/classification/classify.js
+const good = wx.cloud.database().collection("goods")
 Page({
   	data: {
-		list: [
-			{
-				obj: [
-					{
-						id: "0",
-						name: "电子产品|蓝牙耳机",
-						price: "￥ 3.00元/日",
-						deposit: "押金：￥20"
-					},
-					{
-						id: "1",
-						name: "电子产品|蓝牙耳机",
-						price: "￥ 3.00元/日",
-						deposit: "押金：￥20"
-					},
-					{
-						id: "2",
-						name: "电子产品|蓝牙耳机",
-						price: "￥ 3.00元/日",
-						deposit: "押金：￥20"
-					},
-					{
-						id: "3",
-						name: "电子产品|蓝牙耳机",
-						price: "￥ 3.00元/日",
-						deposit: "押金：￥20"
-					},
-					{
-						id: "4",
-						name: "电子产品|蓝牙耳机",
-						price: "￥ 3.00元/日",
-						deposit: "押金：￥20"
-					},
-				]
-			},
-			{
-				obj: [
-					{
-						id: "0",
-						name: "日常用品|针线盒",
-						price: "￥ 1.00元/日",
-						deposit: "押金：免费"
-					},
-					{
-						id: "1",
-						name: "日常用品|针线盒",
-						price: "￥ 1.00元/日",
-						deposit: "押金：免费"
-					},
-				],
-			},
-			{
-				obj: [
-					{
-						id: "0",
-						name: "交通工具|电动车",
-						price: "￥ 5.00元/日",
-						deposit: "押金：￥20"
-					},
-					{
-						id: "1",
-						name: "交通工具|电动车",
-						price: "￥ 5.00元/日",
-						deposit: "押金：￥20"
-					},
-				],
-			},
-			{
-				obj: [
-					{
-						id: "0",
-						name: "服务|代取快递",
-						price: "￥ 3.00元/次",
-						deposit: "押金：免费"
-					},
-					{
-						id: "1",
-						name: "服务|代取快递",
-						price: "￥ 3.00元/次",
-						deposit: "押金：免费"
-					},
-					{
-						id: "2",
-						name: "服务|代取快递",
-						price: "￥ 3.00元/次",
-						deposit: "押金：免费"
-					},
-				],
-			},
-			{
-				obj: [
-					{
-						id: "0",
-						name: "其他|PPT制作",
-						price: "￥ 20.00元/次",
-						deposit: "押金：免费"
-					}
-				],
-			}
-		],
+		list: [],
 		all : true,
 		s1: false,
 		s2: false,
 		s3: false,
 		s4:false,
 		s5: false,
-		list1: [
-			{
-				id: "0",
-				name: "电子产品|蓝牙耳机",
-				price: "￥ 3.00元/日",
-				deposit: "押金：￥20"
-			},
-			{
-				id: "1",
-				name: "电子产品|蓝牙耳机",
-				price: "￥ 3.00元/日",
-				deposit: "押金：￥20"
-			},
-			{
-				id: "2",
-				name: "电子产品|蓝牙耳机",
-				price: "￥ 3.00元/日",
-				deposit: "押金：￥20"
-			},
-			{
-				id: "3",
-				name: "电子产品|蓝牙耳机",
-				price: "￥ 3.00元/日",
-				deposit: "押金：￥20"
-			},
-			{
-				id: "4",
-				name: "电子产品|蓝牙耳机",
-				price: "￥ 3.00元/日",
-				deposit: "押金：￥20"
-			},
-		],
-		list2: [
-			{
-				id: "0",
-				name: "日常用品|针线盒",
-				price: "￥ 1.00元/日",
-				deposit: "押金：免费"
-			},
-			{
-				id: "1",
-				name: "日常用品|针线盒",
-				price: "￥ 1.00元/日",
-				deposit: "押金：免费"
-			},
-		],
-		list3: [
-			{
-				id: "0",
-				name: "交通工具|电动车",
-				price: "￥ 5.00元/日",
-				deposit: "押金：￥20"
-			},
-			{
-				id: "1",
-				name: "交通工具|电动车",
-				price: "￥ 5.00元/日",
-				deposit: "押金：￥20"
-			},
-		],
-		list4: [
-			{
-				id: "0",
-				name: "服务|代取快递",
-				price: "￥ 3.00元/次",
-				deposit: "押金：免费"
-			},
-			{
-				id: "1",
-				name: "服务|代取快递",
-				price: "￥ 3.00元/次",
-				deposit: "押金：免费"
-			},
-			{
-				id: "2",
-				name: "服务|代取快递",
-				price: "￥ 3.00元/次",
-				deposit: "押金：免费"
-			},
-		],
-		list5: [
-			{
-				id: "0",
-				name: "其他|PPT制作",
-				price: "￥ 20.00元/次",
-				deposit: "押金：免费"
-			}
-		],
+		
 	},
 	onRefresh(){
         wx.showLoading({
@@ -208,10 +23,22 @@ Page({
     },
 	toindex:function(event){
 		wx.navigateTo({
-			url: '../index/index'
+			url: '../index/index?id='+this.data.list._id
 		})
 	},
 	onLoad: function (options) {
+		var that = this;
+		good.get({
+			success:function(res){
+				console.log('获取成功',res)
+				that.setData({
+					list:res.data
+				})
+			},
+			fail:function(res){
+				console.log('获取失败')
+			}
+		})
 	},
 	clickme: function () {
 	  this.showModal();

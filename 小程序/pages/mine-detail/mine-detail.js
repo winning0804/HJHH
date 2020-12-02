@@ -1,10 +1,12 @@
 // pages/mine-detail/mine-detail.js
+const DB = wx.cloud.database().collection("goods")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    change:false,
     local:"点此获取位置",
     imgList:[],
     shows: false, //控制下拉列表的显示隐藏，false隐藏、true显示
@@ -13,13 +15,22 @@ Page({
     objs:"请输入物品名称",
     money1:"请输入理想日租金",
     money2:"请输入理想押金",
-    button:"发布"
+    button:"发布",
+    intro:"",
+    id:""
   },
 
   bindobjs:function(e){
     console.log(e.detail.value);
     this.setData({
       objs:e.detail.value
+    })
+  },
+
+  intro:function(e){
+    console.log(e.detail.value);
+    this.setData({
+      intro:e.detail.value
     })
   },
 
@@ -40,19 +51,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id);
+    console.log(options);
     var that = this;
-    if(options.id==5){
-      that.setData({
-        local:"福建省福州市福州大学",
-        imgList:["../../images/car.png"],
-        indexs: 2 ,//选择的下拉列 表下标,
-        objs:"蓝牙耳机",
-        money1:"10",
-        money2:"50",
-        button:"提交修改"
-      })
-    }
+    DB.doc(options.id).get({
+      success: function(res) {
+        that.setData({
+          id:options.id,
+          change:true,
+          indexs:res.data.index,
+          objs:res.data.name,
+          money1:res.data.rent,
+          money2:res.data.deposit,
+          local:res.data.address,
+          imgList:res.data.img,
+          intro:res.data.introduction,
+          button:"修改"
+        })
+      }
+    })
   },
 
   /**
@@ -146,24 +162,82 @@ Page({
   },
 
   change:function(){
-    console.log(this.data.selectDatas[this.data.indexs]+this.data.objs+this.data.money1+this.data.money2+this.data.local+this.data.imgList);
-    wx.showModal({
-      title: '确认发布？',
-      success(res){
-        if(res.confirm)
-        {
-          wx.showToast({
-            title: '发布成功',
-            duration:2000,//显示时长
-            mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-            icon:'success'//图标，支持"success"、"loading"
-          })
-        }else if(res.cancel)
-        {
-          console.log("用户点击了取消");
+    var that = this;
+    if(this.data.change==false){
+      wx.showModal({
+        title: '确认发布？',
+        success(res){
+          if(res.confirm)
+          {
+            DB.add({
+              data:{
+                kind:that.data.selectDatas[that.data.indexs],
+                index:that.data.indexs,
+                name:that.data.objs,
+                rent:that.data.money1,
+                deposit:that.data.money2,
+                address:that.data.local,
+                img:that.data.imgList,
+                introduction:that.data.intro,
+                id:5
+              },
+              success(res){
+                wx.showToast({
+                  title: '发布成功',
+                  duration:2000,//显示时长
+                  mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                  icon:'success'//图标，支持"success"、"loading"
+                })
+              },
+              fail(res){
+                console.log("fail")
+              }
+            })
+            
+          }else if(res.cancel)
+          {
+            console.log("用户点击了取消");
+          }
         }
-      }
-    })
+      })
+    }
+    else{
+      wx.showModal({
+        title: '确认修改？',
+        success(res){
+          if(res.confirm)
+          {
+            DB.doc(that.data.id).update({
+              data:{
+                kind:that.data.selectDatas[that.data.indexs],
+                index:that.data.indexs,
+                name:that.data.objs,
+                rent:that.data.money1,
+                deposit:that.data.money2,
+                address:that.data.local,
+                img:that.data.imgList,
+                introduction:that.data.intro
+              },
+              success(res){
+                wx.showToast({
+                  title: '修改成功',
+                  duration:2000,//显示时长
+                  mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                  icon:'success'//图标，支持"success"、"loading"
+                })
+              },
+              fail(res){
+                console.log("fail")
+              }
+            })
+            
+          }else if(res.cancel)
+          {
+            console.log("用户点击了取消");
+          }
+        }
+      })
+    }
   }
 
 })

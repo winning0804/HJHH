@@ -8,24 +8,13 @@
   <view class="lists">
 
     <view class="mine-list" wx:for="{{array}}">
-      <block wx:if="{{item.id==5}}">
-        <navigator url="../../pages/mine-detail/mine-detail?id={{item.id}}">
-          <image src="{{item.img}}"></image>
-        </navigator>  
-      </block>
-      <block wx:else>
-        <navigator url="../../pages/item/item?id={{item.id}}&num={{item.num}}">
-          <image src="{{item.img}}"></image>
-        </navigator>  
-      </block>
+      <image src="{{item.img[0]}}" id="{{item._id}}" bindtap="newpage"></image>
       <view class="list-in">
-        <view class="list-info list-info-name">{{item.obj}}</view>
-        <view class="list-info list-info-peo">{{item.people}}</view>
-        <view class="list-info list-info-pri">{{item.price}}</view>
-        <view class="list-info list-info-date">{{item.date}}</view>
+        <view class="list-info list-info-name">{{item.kind}}|{{item.name}}</view>
+        <view class="list-info list-info-pri">￥{{item.rent}}元/日 押金：￥{{item.deposit}}</view>
         <view class="list-info mine-buttons">
-          <button class="list-button" wx:if="{{item.button1}}" bindtap="button1">{{item.button1}}</button>
-          <button class="list-button" wx:if="{{item.button2}}" bindtap="button2">{{item.button2}}</button>
+          <button class="list-button" wx:if="{{button1}}" bindtap="button1">{{button1}}</button>
+          <button class="list-button" wx:if="{{button2}}" bindtap="button2">{{button2}}</button>
           <view class="situa">{{item.situa}}</view>
         </view>  
       </view>

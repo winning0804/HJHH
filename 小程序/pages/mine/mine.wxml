@@ -9,7 +9,7 @@
       <view class="mine-name">{{nickname}}</view>
     </block>
     <block wx:else>
-      <button open-type="getUserInfo" bindgetuserinfo="getMyInfo">未登录，点此登录</button>
+      <button open-type="getUserInfo" bindtap="getOpenid" bindgetuserinfo="getMyInfo">未登录，点此登录</button>
     </block>
   </view>
   <!--第二部分-->

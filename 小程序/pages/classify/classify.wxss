@@ -96,7 +96,7 @@ page{
 .goods_name{
     width: 90%;
     height: 14%;
-    font-size: 34rpx;
+    font-size: 30rpx;
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 2%;
@@ -104,7 +104,7 @@ page{
 .goods_price{
     width: 55%;
     height: 12%;
-    font-size: 30rpx;
+    font-size: 28rpx;
     color: #BF0A0A;
     padding-left: 5%;
     padding-top: 2%;

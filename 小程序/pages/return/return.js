@@ -1,4 +1,5 @@
 // pages/return/return.js
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -6,27 +7,10 @@ Page({
    */
   data: {
       page:"我是xx人",
-      array:[{
-        id:"",
-        num:"1",
-        img:"../../images/u8.png",
-        obj:"电子产品|蓝牙耳机",
-        people:"借用人：美少女战士",
-        price:"￥3.00/日",
-        date:"20.11.11-20.11.13",
-        situa:"待审核"
-      },
-      {
-        id:"",
-        num:"2",
-        img:"../../images/car.png",
-        obj:"交通出行|电动车",
-        people:"借用人：圣代",
-        price:"￥5.00/日",
-        date:"20.10.10-20.11.11",
-        button1:"待交易"
-      }
-    ]
+      array:[],
+      button1:"",
+      button2:"",
+      id:""
     
   },
 
@@ -35,6 +19,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    this.setData({
+      openid:options.openid
+    })
     if(options.id==1){
       that.setData({
         page:"我是所属人",
@@ -128,20 +115,29 @@ Page({
       })
     }
     if(options.id==5){
-      that.setData({
-        page:"我的物品",
-        array:[{
-          id:"5",
-          img:"../../images/car.png",
-          obj:"交通出行|电动车",
-          people:"所属人：晚安",
-          price:"￥10.0/日 押金：￥50.0",
-          date:" ",
-          button1:"隐藏物品",
-          button2:"删除物品"
-        }]
+      var app=getApp(); 
+      var id = app.globalData.openid
+      db.collection('goods').where({
+        _openid: id
       })
+      .get({
+        success: function(res) {
+          that.setData({
+            page:"我的物品",
+            button1:"隐藏物品",
+            button2:"删除物品",
+            array:res.data
+          })
+        }
+      })
+      
     }
+  },
+
+  newpage:function(e){
+    wx.navigateTo({
+      url: '/pages/mine-detail/mine-detail?id='+e.currentTarget.id,
+    })
   },
 
   /**
@@ -236,13 +232,21 @@ Page({
       })
   },
 
-  button2:function(){
+  button2:function(e){
+    console.log(e);
+    /*
       wx.showModal({
         title: '提醒',
         content: '是否确认删除？',
         success(res){
           if(res.confirm)
           {
+            /*
+            db.collection('todos').doc('todo-identifiant-aleatoire').remove({
+              success: function(res) {
+                console.log(res.data)
+              }
+            })
             wx.showToast({
               title: '已删除',
               duration:2000,//显示时长
@@ -254,7 +258,7 @@ Page({
             console.log("用户点击了取消");
           }
         }
-      })
+      })*/
   }
 
 })
