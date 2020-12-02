@@ -41,8 +41,6 @@ App({
     
   },
   globalData: {
-    openid:"",
-    userimg:"",
-    username:""
+    openid:""
   }
 })

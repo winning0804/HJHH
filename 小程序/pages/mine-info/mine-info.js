@@ -1,4 +1,5 @@
 // pages/mine-info/mine-info.js
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -6,7 +7,7 @@ Page({
    */
   data: {
     username:" ",
-    src:"../../images/unlogin.png"
+    src:" "
   },
 
   bindname:function(e){
@@ -21,20 +22,29 @@ Page({
       title: '提醒',
       content: '是否确认修改个人信息？',
       success(res){
-        if(res.confirm)
-        {
-          wx.request({
-            url: 'http://127.0.0.1:8000/def_user/user_list',
-            data: { uname:that.data.username, ulogo:that.data.src },
-            method: "POST",
-            success:function(res){
-              wx.showToast({
-                title: '修改成功',
-                duration:2000,//显示时长
-                mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-                icon:'success'//图标，支持"success"、"loading"
+        if(res.confirm){
+          var app=getApp(); 
+          db.collection('user').where({
+            _openid: app.globalData.openid
+          })
+          .get({
+            success: function(res) {
+              var id = res.data[0]._id;
+              db.collection('user').doc(id).update({
+                data:{
+                  username:that.data.username,
+                  userimg:that.data.src
+                },
+                success:function(res) {
+                  wx.showToast({
+                    title: '修改成功',
+                    duration:2000,//显示时长
+                    mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                    icon:'success'//图标，支持"success"、"loading"
+                  })
+                }
               })
-            } 
+            }
           })
         }else if(res.cancel)
         {
@@ -64,10 +74,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
-    this.setData({
-      username:options.username,
-      src:"../../images/mine-image.png"
+    var that = this;
+    var app=getApp(); 
+    db.collection('user').where({
+      _openid: app.globalData.openid
+    })
+    .get({
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          username:res.data[0].username,
+          src:res.data[0].userimg
+        })
+      }
     })
 
   },
