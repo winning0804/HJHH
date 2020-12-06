@@ -1,4 +1,3 @@
-const db = wx.cloud.database()
 //index.js
 const app = getApp()
 
@@ -10,10 +9,7 @@ Page({
 		sum:0,
 		autoplay: false,
     	interval: 3000,
-		duration: 1000,
-		detail:{},
-		goodsid:'',
-		comment:[],
+    	duration: 1000,
 		comments:[
 			{
 				img: "../../images/u22.svg",
@@ -51,47 +47,16 @@ Page({
 			{
 				src : "../../images/u21.png",
 			}
-		],
+		]
 	  },
-	onLoad:function (option) {
-		var that = this;
-		db.collection('goods').doc(option.id).get({
-			success: function(res) {
-				that.setData({
-					detail: res.data,
-				});
-				console.log(id);
-			},
-			fail:function(res){
-				console.log('获取失败')
-			}
-		});
-		db.collection('comments').where({
-				goods_id: option.id,
-		  	})
-		  	.get({
-				success: function(res) {
-					that.setData({
-						comment:res.data,
-					})
-			  		console.log(res.data)
-				},
-				fail:function(){
-					console.log("comments required failure.");
-				}
-		  });
-		that.setData({
-			goodsid:option.id,
-		})
-	},
-	swiperchange: function (e) {
+	  swiperchange: function (e) {
 		//console.log(e.detail.current)
 		this.setData({
 		  swiperCurrent: e.detail.current
 		})
-	},
+	  },
   	clickme: function () {
-    	this.showModal();
+    this.showModal();
   	},
 	showModal: function () {
 		// 显示遮罩层
@@ -200,31 +165,6 @@ Page({
 	confirmbutton: function(){
 		this.hideShade();
 		this.setData({ show: false ,toaffirm: false });
-		db.collection('goods').doc(this.data.goodsid).remove({
-			success: function(res) {
-			  	console.log("update success")
-			},
-			fail:function(){
-				console.log("update failure");
-			}
-		});
-		db.collection('orders').add({
-			data: {
-				kind:this.data.detail.kind,
-                index:this.data.detail.index,
-                name:this.data.detail.name,
-                rent:this.data.detail.rent,
-                deposit:this.data.detail.deposit,
-                address:this.data.detail.address,
-                img:this.data.detail.img,
-                introduction:this.data.detail.introduction,
-				id:this.data.detail.id,
-				data:this.data.sum,
-			},
-			success: function(res) {
-			  	console.log(res)
-			}
-		  })
 	},
 	cancelbutton: function(){
 		this.hideShade();

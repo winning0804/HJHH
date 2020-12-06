@@ -1,5 +1,4 @@
 // pages/classification/classify.js
-const db = wx.cloud.database()
 const good = wx.cloud.database().collection("goods")
 Page({
   	data: {
@@ -10,23 +9,26 @@ Page({
 		s3: false,
 		s4:false,
 		s5: false,
-		text:'',
+		
+	},
+	onRefresh(){
+        wx.showLoading({
+		  title: '刷新中...',
+		  duration: 1500, 
+        })
+        //this.getData();获取数据，重置数据
 	},
 	onPullDownRefresh: function () {
-		this.onLoad();
-		wx.stopPullDownRefresh();
+    	this.onRefresh();
     },
 	toindex:function(event){
-		console.log(this.data.list[event.currentTarget.dataset.index]._id);
 		wx.navigateTo({
-			url: '../index/index?id='+this.data.list[event.currentTarget.dataset.index]._id,
+			url: '../index/index?id='+this.data.list._id
 		})
 	},
 	onLoad: function (options) {
 		var that = this;
-		good.where({
-		})
-		.get({
+		good.get({
 			success:function(res){
 				console.log('获取成功',res)
 				that.setData({
@@ -81,124 +83,57 @@ Page({
 	},
 	select1: function(event){
 		this.setData({
+			all: false,
+			s1: true,
+			s2:false,
+			s3: false,
+			s4: false,
+			s5:false,
 			showModalStatus:false,
-		});
-		var that = this;
-		good.where({
-			kind:"电子产品"
-		})
-		.get({
-			success:function(res){
-				console.log('获取成功',res)
-				that.setData({
-					list:res.data
-				})
-			},
-			fail:function(res){
-				console.log('获取失败')
-			}
 		})
 	},
 	select2: function(event){
 		this.setData({
+			all: false,
+			s1: false,
+			s2:true,
+			s3: false,
+			s4: false,
+			s5:false,
 			showModalStatus:false,
-		});
-		var that = this;
-		good.where({
-			kind:"日常用品"
-		})
-		.get({
-			success:function(res){
-				console.log('获取成功',res)
-				that.setData({
-					list:res.data
-				})
-			},
-			fail:function(res){
-				console.log('获取失败')
-			}
 		})
 	},
 	select3: function(event){
 		this.setData({
+			all: false,
+			s1: false,
+			s2:false,
+			s3: true,
+			s4: false,
+			s5:false,
 			showModalStatus:false,
-		});
-		var that = this;
-		good.where({
-			kind:"交通出行"
-		})
-		.get({
-			success:function(res){
-				console.log('获取成功',res)
-				that.setData({
-					list:res.data
-				})
-			},
-			fail:function(res){
-				console.log('获取失败')
-			}
 		})
 	},
 	select4: function(event){
 		this.setData({
+			all: false,
+			s1: false,
+			s2:false,
+			s3: false,
+			s4: true,
+			s5:false,
 			showModalStatus:false,
-		});
-		var that = this;
-		good.where({
-			kind:"服务"
-		})
-		.get({
-			success:function(res){
-				console.log('获取成功',res)
-				that.setData({
-					list:res.data
-				})
-			},
-			fail:function(res){
-				console.log('获取失败')
-			}
 		})
 	},
 	select5: function(event){
 		this.setData({
+			all: false,
+			s1: false,
+			s2:false,
+			s3: false,
+			s4: false,
+			s5:true,
 			showModalStatus:false,
-		});
-		var that = this;
-		good.where({
-			kind:"其他"
-		})
-		.get({
-			success:function(res){
-				console.log('获取成功',res)
-				that.setData({
-					list:res.data
-				})
-			},
-			fail:function(res){
-				console.log('获取失败')
-			}
-		})
-	},
-	inputBind(e){
-		this.setData({
-			text : e.detail.value
-		})
-		
-	},
-	tosearch:function(){
-		var that=this;
-		db.collection('goods').where({
-			name:{
-				$regex:'.*'+ this.data.text + '.*',
-				$options: 'i'
-			},
-		}).get({
-		  success: res => {
-			var that = this;
-			that.setData({
-				list:res.data
-			})
-		  }
 		})
 	},
 })
