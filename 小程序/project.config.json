@@ -1,15 +1,10 @@
 {
   "description": "项目配置文件",
-  "cloudfunctionRoot": "cloud/",
   "packOptions": {
     "ignore": []
   },
   "setting": {
-<<<<<<< HEAD
     "urlCheck": false,
-=======
-    "urlCheck": true,
->>>>>>> 34d0fead15497085d2158600d011e697faae5308
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -33,44 +28,30 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-<<<<<<< HEAD
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-=======
-    "enableEngineNative": false,
-    "useIsolateContext": true,
-    "useCompilerModule": true,
-    "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
->>>>>>> 34d0fead15497085d2158600d011e697faae5308
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "bundle": false
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.0",
   "appid": "wxab8a9c9c4fce36d4",
-  "projectname": "HJHH",
+  "cloudfunctionRoot": "cloud/",
+  "cloudfunctionTemplateRoot": "",
+  "watchOptions": {
+    "ignore": []
+  },
   "debugOptions": {
     "hidedInDevtools": []
   },
   "scripts": {},
-  "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
-      "list": []
-    },
-    "plugin": {
       "list": []
     },
     "gamePlugin": {
