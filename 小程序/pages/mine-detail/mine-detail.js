@@ -131,14 +131,33 @@ Page({
 
   upload:function(){
     var that = this;
-
+    var old = that.data.imgList;
     wx.chooseImage({
       count: 9,
       sizeType:['original', 'compressed'],
       sourceType:['album', 'camera'],
       success:function(res){
-        that.setData({
-          imgList:that.data.imgList.concat(res.tempFilePaths)
+        var lists = that.data.imgList.concat(res.tempFilePaths)
+        var length = lists.length;
+        for(var i=0;i<length;i++){
+          wx.cloud.uploadFile({
+            cloudPath: new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),//云储存的路径及文件名
+            filePath : lists[i], //要上传的图片/文件路径 这里使用的是选择图片返回的临时地址
+            success : (res) => { //上传图片到云储存成功
+              old.push(res.fileID);
+              that.setData({
+                  imgList:old,
+              });
+            }
+          })
+        }
+        
+        console.log(that.data.imgList);
+        wx.showToast({
+            title: '上传成功',
+            duration:2000,//显示时长
+            mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+            icon:'success'//图标，支持"success"、"loading"
         })
       }
     })

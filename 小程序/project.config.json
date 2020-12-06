@@ -5,9 +5,8 @@
     "ignore": []
   },
   "setting": {
+    "urlCheck": false,
     "urlCheck": true,
-    "scopeDataCheck": false,
-    "coverView": true,
     "es6": true,
     "postcss": true,
     "compileHotReLoad": false,
@@ -17,14 +16,21 @@
     "newFeature": false,
     "uglifyFileName": false,
     "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
     "useIsolateContext": true,
     "nodeModules": false,
     "enhance": false,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "useMultiFrameRuntime": false,
-    "useApiHook": true,
-    "showShadowRootInWxmlPanel": true,
+    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true

@@ -1,4 +1,5 @@
 // pages/iden/iden.js
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -13,7 +14,8 @@ Page({
       {name: '男', value: 'b', checked: 'true'},
       {name: '女', value: 'g'}
     ],
-    hidden: false
+    hidden: false,
+    set:false
   },
 
   radioChange(e) {
@@ -43,21 +45,63 @@ Page({
   },
 
   submit:function(){
-    console.log(this.data.sex);
-    wx.request({
-      url: 'http://127.0.0.1:8000/def_user/getUserInfo',
-      data: { urealname:this.data.name, usex:this.data.sex, uzhengjian_tel:this.data.id, uphone:this.data.phone},
-      method: "POST",
-      success:function(res){
-        console.log(res);
-      } 
+    var that = this;
+    if(set==false){
+      db.collection('identify').add({
+      data:{
+        realname:that.data.name,
+        sex:that.data.sex,
+        ID_number:that.data.id,
+        phone:that.data.phone
+      },
+      success:function(res) {
+        wx.showToast({
+          title: '提交成功！',
+          duration:2000,//显示时长
+          mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+          icon:'success'//图标，支持"success"、"loading"
+        })
+      }
     })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+    var that = this;
+    var app=getApp(); 
+    db.collection('identify').where({
+      _openid: app.globalData.openid
+    })
+    .get({
+      success: function(res) {
+        console.log(res);
+        if(res.data.length==0){
+          wx.showToast({
+            title: '您还未实名认证',
+            duration:2000,//显示时长
+            mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+            icon:'loading'//图标，支持"success"、"loading"
+          })
+        }
+        else {
+          that.setData({
+            name:res.data[0].realname,
+            sex:res.data[0].sex,
+            id:res.data[0].ID_number,
+            phone:res.data[0].phone,
+            set:true
+          })
+        }
+          
+      }
+    })
+    if(this.data.sex=='女'){
+      radioItems
+    }
   },
 
   /**

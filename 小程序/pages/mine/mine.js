@@ -1,5 +1,6 @@
 //logs.js
 const util = require('../../utils/util.js')
+const db = wx.cloud.database()
 
 Page({
   data: {
@@ -10,6 +11,7 @@ Page({
 
   //获取个人信息
   getMyInfo:function(e){
+    var that = this;
     wx.login({
       success:(result)=>{
         console.log(result);
@@ -17,13 +19,35 @@ Page({
     })
     let info = e.detail.userInfo;
     this.setData({
-      src:info.avatarUrl,
-      nickname:info.nickName,
       isLogin:true
     })
     var app=getApp(); 
-    app.globalData.username = info.nickName
-    app.globalData.userimg = info.avatarUrl
+    db.collection('user').where({
+      _openid: app.globalData.openid
+    })
+    .get({
+      success: function(res) {
+        if(res.data.length==0){
+          db.collection('user').add({
+            data:{
+              username:info.nickName,
+              userimg:info.avatarUrl
+            }
+          }),
+          that.setData({
+            src:info.avatarUrl,
+            nickname:info.nickName
+          })
+        }
+        else {
+          that.setData({
+            src:res.data[0].userimg,
+            nickname:res.data[0].username
+          })
+        }
+          
+      }
+    })
   },
 
   getOpenid() {
@@ -34,7 +58,6 @@ Page({
        var id = res.result.openId;
        var app=getApp(); 
        app.globalData.openid = id
-       console.log(" openid为： "+app.globalData.openid)
      }
     })
    },
@@ -73,7 +96,7 @@ Page({
   ToInfo:function(){
     var that = this;
     wx.navigateTo({
-      url: '/pages/mine-info/mine-info?username='+that.data.nickname,
+      url: '/pages/mine-info/mine-info',
     })
   }
 

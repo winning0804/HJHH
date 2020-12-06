@@ -6,7 +6,7 @@
   <view class="lists">
     <view class="mine-block">
       <view>真实姓名</view>
-      <input bindinput="bindname" placeholder="必填"/>
+      <input bindinput="bindname" placeholder="{{name}}"/>
     </view>
     <view class="mine-block">
       <view>性别</view>
@@ -19,11 +19,11 @@
     </view>
     <view class="mine-block">
       <view>身份证号</view>
-      <input bindinput="bindid" placeholder="必填"/>
+      <input bindinput="bindid" placeholder="{{id}}"/>
     </view>
     <view class="mine-block">
       <view>联系电话</view>
-      <input bindinput="bindphone" placeholder="必填"/>
+      <input bindinput="bindphone" placeholder="{{phone}}"/>
     </view>
   </view>
   <button class="bottom-button" bindtap="submit">确认</button>
