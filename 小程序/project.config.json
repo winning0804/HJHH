@@ -1,20 +1,24 @@
 {
   "description": "项目配置文件",
-  "cloudfunctionRoot": "cloud/",
   "packOptions": {
     "ignore": []
   },
   "setting": {
     "urlCheck": false,
-    "urlCheck": true,
     "es6": true,
+    "enhance": false,
     "postcss": true,
-    "compileHotReLoad": false,
     "preloadBackgroundData": false,
     "minified": true,
-    "autoAudits": false,
     "newFeature": false,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
     "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
     "useMultiFrameRuntime": false,
@@ -24,13 +28,9 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
     "useIsolateContext": true,
-    "nodeModules": false,
-    "enhance": false,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true
@@ -38,25 +38,20 @@
   "compileType": "miniprogram",
   "libVersion": "2.14.0",
   "appid": "wxab8a9c9c4fce36d4",
-  "projectname": "HJHH",
+  "cloudfunctionRoot": "cloud/",
+  "cloudfunctionTemplateRoot": "",
+  "watchOptions": {
+    "ignore": []
+  },
   "debugOptions": {
     "hidedInDevtools": []
   },
   "scripts": {},
-  "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
-      "list": []
-    },
-    "plugin": {
       "list": []
     },
     "gamePlugin": {
