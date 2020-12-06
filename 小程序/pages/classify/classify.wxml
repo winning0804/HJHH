@@ -1,7 +1,6 @@
 <view class = "container">
     <view class = "search_top">
         <input class = "search" type='text' placeholder='搜索' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
-        <view class='searchbox' catchtap="tosearch">搜索</view>
     </view>
     <view class = "nav_top">
         <scroll-view class="nav_left" scroll-x="true" scroll-left="{{x}}" scroll-with-animation="{{true}}">
@@ -24,7 +23,7 @@
     <view  class = "goods">
         <view >
             <view  wx:for="{{list}}" wx:key="_id" class = "thegoods">
-                <view class = "goods_detail" data-index="{{index}}" bindtap = "toindex">
+                <view class = "goods_detail" bindtap = "toindex">
                     <view class = "goods_img">
                         <image class = "images" src="{{item.img[0]}}" mode="aspectFill" lazy-load="true"></image>
                     </view>
