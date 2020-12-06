@@ -19,13 +19,25 @@ page{
 /* 搜索框样式 */
 .search
 {
-    width:90%;
-    height: 7vh;
-    margin-top: 2.5vh;
-    margin-left: 5%;
+    width:80%;
+    height: 70rpx;
+    margin-top: 30rpx;
+    margin-left: 2%;
     background-color:white;
     border:1rpx solid whitesmoke;
     border-radius: 40rpx;
+    float:left;
+}
+.searchbox{
+    width: 12%;
+    margin-left:2%;
+    margin-top:40rpx;
+    height:50rpx;
+    line-height: 50rpx;
+    background-color:white;
+    border:1rpx solid whitesmoke;
+    font-size:35rpx;
+    float:left;
 }
 .search input
 {
@@ -74,11 +86,10 @@ page{
 .thegoods{
     float: left;
     width: 49vw;
-    height: 40vh;
 }
 .goods_detail{
-    width: 94%;
-    height: 94%;
+    width: 330rpx;
+    height: 450rpx;
     margin-left: 5%;
     margin-top:6%;
     border-radius: 10%;
@@ -86,7 +97,7 @@ page{
 }
 .goods_img{
     width: 100%;
-    height: 70%;
+    height: 330rpx;
 }
 .images{
     width: 100%;
@@ -95,7 +106,6 @@ page{
 }
 .goods_name{
     width: 90%;
-    height: 14%;
     font-size: 30rpx;
     padding-left: 5%;
     padding-right: 5%;
