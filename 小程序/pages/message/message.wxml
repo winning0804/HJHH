@@ -1,8 +1,8 @@
 <!--logs.wxml-->
 <view class = "container">
-  <view class = "search_top">
+  <!-- <view class = "search_top">
         <input class = "search" type='text' placeholder='搜索' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
-    </view>
+    </view> -->
 
   <view class="message_list">
      <block wx:for="{{messages}}" wx:key="{{index}}">
