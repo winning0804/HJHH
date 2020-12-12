@@ -1,38 +1,101 @@
-<view class = "container">
-    <view class = "search_top">
-        <input class = "search" type='text' placeholder='搜索' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
-        <view class='searchbox' catchtap="tosearch">搜索</view>
-    </view>
-    <view class = "nav_top">
-        <scroll-view class="nav_left" scroll-x="true" scroll-left="{{x}}" scroll-with-animation="{{true}}">
-        <view bindtap = "select1" class = "thenav">电子产品</view>
-        <view bindtap = "select2" class = "thenav">日常用品</view>
-        <view bindtap = "select3" class = "thenav">交通出行</view>
-        <view bindtap = "select4" class = "thenav">服务</view>
-        <view bindtap = "select5" class = "thenav">其他</view>
-        </scroll-view>
-        <view bindtap="clickme" class = "nav_serch">筛选</view>
-    </view>
-    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-        <view bindtap = "select1" class = "select">电子产品</view>
-        <view bindtap = "select2" class = "select">日常用品</view>
-        <view bindtap = "select3" class = "select">交通出行</view>
-        <view bindtap = "select4" class = "select">服务</view>
-        <view bindtap = "select5" class = "select">其他</view>
-    </view> 
-    <view  class = "goods">
-        <view >
-            <view  wx:for="{{list}}" wx:key="_id" class = "thegoods">
-                <view class = "goods_detail" data-index="{{index}}" bindtap = "toindex">
-                    <view class = "goods_img">
-                        <image class = "images" src="{{item.img[0]}}" mode="aspectFill" lazy-load="true"></image>
-                    </view>
-                    <view class = "goods_name">{{item.kind}}|{{item.name}}</view>
-                    <view class = "goods_price">租金：{{item.rent}}</view>
-                    <view class = "goods_deposit">押金：{{item.deposit}}</view>
-                </view>
-            </view>
-        </view>
-    </view>
+<view class="container">
+	<view class="search_box">
+		<view class="cu-bar bg-white search_box_in">
+			<view class="search-form round">
+				<text class="cuIcon-search"></text>
+				<input
+				 type="text"
+				 placeholder="搜索"
+				 confirm-type="search"
+				 bindinput="searchinput"
+				></input>
+			</view>
+			<view class="action">
+				<button class="cu-btn bg-green shadow-blur round searchcolor" bindtap="search">搜索</button>
+			</view>
+		</view>
+		<view class="nav_top">
+			<view class="nav_top_box {{sortid==0?'selected':''}}" bindtap="sortselect0">综合</view>
+			<view class="nav_top_box {{sortid==1?'selected':''}}" bindtap="sortselect1">价格</view>
+			<view class="nav_top_box {{sortid==2?'selected':''}}" bindtap="sortselect2">信誉</view>
+			<view class="nav_top_box {{sortid==3?'selected':''}}" bindtap="sortselect3">距离</view>
+			<view class="nav_top_box"></view>
+			<view class="nav_top_box"></view>
+			<view
+			 class="nav_top_classify"
+			 bindtap="showModal"
+			 data-target="DrawerModalR"
+			>
+				分类
+				<text class="cuIcon-cascades"></text>
+			</view>
+		</view>
+	</view>
+
+	<view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
+		<view
+		 class="cu-dialog basis-lg"
+		 catchtap
+		 style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)"
+		>
+			<view class="cu-list menu text-left">
+				<view
+				 class="cu-item arrow"
+				 wx:for="{{tablist}}"
+				 wx:key="key"
+				 data-index="{{index}}"
+				 bindtap="classifyselect"
+				>
+					<view class="content {{classifyid==index?'selected':''}}">
+						<view>{{item.title}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="goods">
+		<view style="display:none">
+			<image
+			 wx:for="{{images}}"
+			 wx:key="id"
+			 id="{{item.id}}"
+			 src="{{item.pic}}"
+			 bindload="onImageLoad"
+			></image>
+		</view>
+		<scroll-view scroll-y="true" style="height:{{scrollH}}px">
+			<view style="width:100%">
+				<view class="img_item">
+					<view wx:for="{{col1}}" wx:key="id">
+						<view class="item_box">
+							<image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;box-shadow:0px 4rpx 6rpx 4rpx #e0e0e0;"></image>
+							<view class="item_info">
+								<view class="item_info_name">{{item.name}}</view>
+								<view class="item_info_price">
+									<view class="item_info_rent">￥ {{item.rent}}</view>
+									<view class="item_info_deposit">押金：{{item.deposit}}</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="img_item">
+					<view wx:for="{{col2}}" wx:key="id">
+						<view class="item_box">
+							<image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;box-shadow:0px 4rpx 6rpx 4rpx #e0e0e0;"></image>
+							<view class="item_info">
+								<view class="item_info_name">{{item.name}}</view>
+								<view class="item_info_price">
+									<view class="item_info_rent">￥ {{item.rent}}</view>
+									<view class="item_info_deposit">押金：{{item.deposit}}</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
 </view>
+
