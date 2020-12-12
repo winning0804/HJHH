@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/classify/classify",
     "pages/mine/mine",
+    "pages/classify/classify",
     "pages/mine-info/mine-info",
     "pages/iden/iden",
     "pages/render/render",

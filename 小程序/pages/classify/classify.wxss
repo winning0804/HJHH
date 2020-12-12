@@ -1,86 +1,165 @@
 page{
-  background: #f0f0f0;
+  background: #E4DADA;
 }
 .container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: #e0e0e0;
-  }
-.search_box{
-    width: 750rpx;
-    height: 160rpx;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #E4DADA;
+}
+.search_top{
+    width : 100%;
+    height: 12vh;
+    z-index: 9999;
     position: fixed;
     top: 0;
-    z-index: 1000;
+    text-align:center;
+    background-color: #932525;
 }
-.search_box_in{
-    width: 100%;
-    height: 100rpx;
-    background-color: white;
-    float: left;
+/* 搜索框样式 */
+.search
+{
+    width:80%;
+    height: 70rpx;
+    margin-top: 30rpx;
+    margin-left: 2%;
+    background-color:white;
+    border:1rpx solid whitesmoke;
+    border-radius: 40rpx;
+    float:left;
 }
-.searchcolor{
-    background-color: #a6281d;
+.searchbox{
+    width: 12%;
+    margin-left:2%;
+    margin-top:40rpx;
+    height:50rpx;
+    line-height: 50rpx;
+    background-color:white;
+    border:1rpx solid whitesmoke;
+    font-size:35rpx;
+    float:left;
+}
+.search input
+{
+  font-size:27rpx;
+}
+.search image
+{ 
+  width:40rpx;
+  height:40rpx;
+  padding-right:20rpx;
 }
 .nav_top{
-    width : 750rpx;
-    height: 60rpx;
-    margin-top:100rpx;
-    line-height: 50rpx;
+    width : 100%;
+    height: 8vh;
+    line-height: 8vh;
+    z-index: 9999;
+    position: fixed;
     text-align:center;
+    top: 12vh;
     background-color:#ffffff;
     font-size: 14px;
-    display: flex;
+    border-bottom: 1rpx solid #f3f3f3;
 }
-.nav_top_box{
-    width: 100rpx;
-    height: 60rpx;
+.nav_left{
+    width: 70%;
+    height: 8vh;
+    float:left;
+    white-space: nowrap;
 }
-.nav_top_classify{
-    width: 150rpx;
-    height: 60rpx;
+.thenav{
+    width: 35%;
+    display: inline-block;
+}
+.nav_serch{
+    width: 30%;
+    height: 8vh;
+    position:fixed;
+    right: 0;
+    border-left: 1rpx solid black;
 }
 .goods{
     width:100%;
-    padding-top: 160rpx;
+    padding-top: 20vh;
+    background-color: #E4DADA;
 }
-.img_item {
-    width: 48%;
-    margin: 0 1% 0 1%;
-    display: inline-block;
-    vertical-align: top;
+.thegoods{
+    float: left;
+    width: 49vw;
 }
-.item_box{
+.goods_detail{
+    width: 330rpx;
+    height: 450rpx;
+    margin-left: 5%;
+    margin-top:6%;
+    border-radius: 10%;
+    background-color: white;
+}
+.goods_img{
     width: 100%;
-    padding: 3%;
-    margin-top: 10rpx;
-    margin-bottom: 10rpx;
-    background-color: #fff;
+    height: 330rpx;
 }
-.item_info{
+.images{
     width: 100%;
-    padding-left: 10rpx;
-    padding-right: 10rpx;
+    height: 100%;
+    border-radius: 10% 10% 0 0;
 }
-.item_info_name{
-    min-height: 60rpx;
+.goods_name{
+    width: 90%;
     font-size: 30rpx;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
 }
-.item_info_price{
-    height: 40rpx;
-    line-height: 40rpx;
-    display: flex;
-}
-.item_info_rent{
-    width: 65%;
-    color: red;
+.goods_price{
+    width: 55%;
+    height: 12%;
     font-size: 28rpx;
+    color: #BF0A0A;
+    padding-left: 5%;
+    padding-top: 2%;
+    float: left;
 }
-.item_info_deposit{
+.goods_deposit{
     width: 35%;
-    font-size: 20rpx;
+    height: 10%;
+    font-size: 23rpx;
+    color: #BF0A0A;
+    padding-left: 5%;
+    padding-top: 4%;
+    float: left;
 }
-.selected{
-    color: #a6281d;
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.commodity_attr_box {
+  height: 500rpx;
+  width: 100vw;
+  overflow: hidden;
+  position: fixed;
+  top: 20vh;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}
+.select{
+    width: 600rpx;
+    height: 60rpx;
+    margin: auto;
+    margin-top: 35rpx;
+    border-radius: 30rpx;
+    background: #932525;
+    text-align:center;
+    color: #fff;
+    font-size: 35rpx;
+    line-height: 60rpx;
 }
