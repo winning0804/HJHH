@@ -194,6 +194,7 @@ Page({
 			},
 		}).get({
 		  success: res => {
+				console.log('查询成功',res);
 			var that = this;
 			that.setData({
 				list:res.data
