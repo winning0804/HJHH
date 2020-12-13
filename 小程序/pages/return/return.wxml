@@ -1,22 +1,19 @@
 <!--pages/return/return.wxml-->
 <view>
-  <!--顶栏-->
-  <view class="mine-head">
-    <view class="mine-head-text">{{page}}</view>
-  </view>
   <!--物品栏-->
   <view class="lists">
 
-    <view class="mine-list" wx:for="{{array}}">
+    <view class="mine-list" wx:for="{{array}}" >
       <image src="{{item.img[0]}}" id="{{item._id}}" bindtap="newpage"></image>
       <view class="list-in">
         <view class="list-info list-info-name">{{item.kind}}|{{item.name}}</view>
         <view class="list-info list-info-pri">￥{{item.rent}}元/日 押金：￥{{item.deposit}}</view>
         <view class="list-info mine-buttons">
-          <button class="list-button" wx:if="{{button1}}" bindtap="button1">{{button1}}</button>
-          <button class="list-button" wx:if="{{button2}}" bindtap="button2">{{button2}}</button>
+          <button class="list-button"  data-text="{{item._id}}"      
+          data-button="{{item.button1}}" bindtap="button1">{{item.button1}}</button>
+          <button class="list-button" data-text="{{item._id}}" bindtap="button2">{{item.button2}}</button>
           <view class="situa">{{item.situa}}</view>
-        </view>  
+        </view>
       </view>
     </view>
 

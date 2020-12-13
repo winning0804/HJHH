@@ -1,8 +1,5 @@
 <!--pages/mine-detail/mine-detail.wxml-->
 <view class="bac">
-  <view class="mine-head">
-    <view class="mine-head-text">我要发布</view>
-  </view>
   <view class="lists">
     <view class="mine-block">
       <view>物品种类：</view>
