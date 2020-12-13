@@ -5,63 +5,66 @@ page{
 
 .messages_detail{
   background-color: #E4DADA;
-  margin-top: 2vh;
+  margin-top: 3vh;
   width: 100%;
+  
 }
 .item{
   margin-top: 0;
   margin-bottom:10px;
   width: 100%;
-  height: 10vh;
+  height: auto;
   display: flex;
   flex-direction:row;
   background-color: #E4DADA;
 }
 .borrower_image{
   float: left;
-  width:50px;
-  height:50px;
+  width:40px;
+  height:40px;
   border-radius: 50rpx;
   margin-left: 2%;
 }
 .messages_text{
   float:center;
   width: 50%;
-  height: 7vh;
   background-color:white;
-  border-radius: 25px;
-  border:1px solid gray;
-  margin-left: 10px;
   margin-top:10px;
+  line-height: normal;
+  padding: 0;
+  margin-left: 10px;
+  border-radius: 10rpx;
+  
 }
 .messages_detail_text{
     float:center;
-    font-size: 12px;
+    font-size: 13px;
     padding-top: 20px;
-    padding-left: 30px;
-  
+    padding-left: 10px;
+    margin-left: 3px;
 }
 .messages_text2{
-  float:center;
+  float: center;
   width: 50%;
-  height: 7vh;
-  background-color:white;
-  border-radius: 25px;
-  border:1px solid gray;
-  margin-left: 30%;
   margin-top:10px;
+  line-height: normal;
+  padding: 0;
+  background-color:#a52f2f;
+  border-radius: 10rpx;
+  margin-left: 35%;
 }
 .messages_detail_text2{
-  float:center;
-  font-size: 12px;
+  float: center;
+  font-size: 13px;
   padding-top: 20px;
-  padding-left: 30px;
-
+  padding-right: 10px;
+  color:white;
+  margin-left: 10px;
 }
 .mine_image{
   float: right;
-  width:50px;
-  height:50px;
+  width:40px;
+  height:40px;
   border-radius: 60rpx;
   margin-right:2%;
   margin-left:10px;
@@ -69,7 +72,7 @@ page{
 
 .messages_detai_bottom{
   width : 100%;
-  height: 10vh;
+  height: 7vh;
   z-index:9999;
   position: fixed;
   bottom: 0;
@@ -78,26 +81,26 @@ page{
 }
 .send_top{
     width:75%;
-    height: 6vh;
-    margin-top:2vh;
-    margin-left: 5%;
+    height: 5vh;
+    margin-top:1vh;
+    margin-left: 3%;
     background-color:white;
     border:1rpx solid whitesmoke;
     border-radius: 40rpx;
     float: left;
 }
 .send{
-  padding-top: 5px;
+  padding-top: 1px;
   padding-left: 20px;
 }
 .send input
 {
-  font-size:27rpx;
+  font-size:26rpx;
 }
 .bottom{
   width:15%;
-  height:6vh;
+  height:5vh;
   float: left;
-  margin-top:2vh;
+  margin-top:1vh;
   margin-left:10px;
 }
