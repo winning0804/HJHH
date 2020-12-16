@@ -7,7 +7,7 @@ Page({
    */
   data: {
     change:false,
-    local:"点此获取位置",
+    local:"点击图标获取位置",
     imgList:[],
     shows: false, //控制下拉列表的显示隐藏，false隐藏、true显示
     selectDatas: ['电子产品', '日常用品', '交通出行','服务','其他'], //下拉列表的数据
@@ -17,7 +17,8 @@ Page({
     money2:"请输入理想押金",
     button:"发布",
     intro:"",
-    id:""
+    id:"",
+    modalName: null,
   },
 
   bindobjs:function(e){
@@ -47,28 +48,57 @@ Page({
       money2:e.detail.value
     })
   },
+
+  ViewImage(e) {
+    wx.previewImage({
+      urls: this.data.imgList,
+      current: e.currentTarget.dataset.url
+    });
+  },
+
+  DelImg(e) {
+    wx.showModal({
+      title: '提醒',
+      content: '确定要删除这张图片吗？',
+      cancelText: '再看看',
+      confirmText: '删除',
+      success: res => {
+        if (res.confirm) {
+          this.data.imgList.splice(e.currentTarget.dataset.index, 1);
+          this.setData({
+            imgList: this.data.imgList
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
-    var that = this;
-    DB.doc(options.id).get({
-      success: function(res) {
-        that.setData({
-          id:options.id,
-          change:true,
-          indexs:res.data.index,
-          objs:res.data.name,
-          money1:res.data.rent,
-          money2:res.data.deposit,
-          local:res.data.address,
-          imgList:res.data.img,
-          intro:res.data.introduction,
-          button:"修改"
-        })
-      }
-    })
+    if(options.id){
+      console.log("options: ");
+      console.log(options);
+      var that = this;
+      DB.doc(options.id).get({
+        success: function(res) {
+          console.log('获取物品详情信息成功',res);
+          that.setData({
+            id:options.id,
+            change:true,
+            indexs:res.data.index,
+            objs:res.data.name,
+            money1:res.data.rent,
+            money2:res.data.deposit,
+            local:res.data.address,
+            imgList:res.data.img,
+            intro:res.data.introduction,
+            button:"修改"
+          })
+        }
+      })
+    }
+    
   },
 
   /**
@@ -144,6 +174,7 @@ Page({
             cloudPath: new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),//云储存的路径及文件名
             filePath : lists[i], //要上传的图片/文件路径 这里使用的是选择图片返回的临时地址
             success : (res) => { //上传图片到云储存成功
+              console.log('图片上传成功',res);
               old.push(res.fileID);
               that.setData({
                   imgList:old,
@@ -164,20 +195,11 @@ Page({
   },
 
 
-  // 点击下拉显示框
-  selectTaps() {
+  PickerChange(e) {
+    console.log(e);
     this.setData({
-      shows: !this.data.shows,
-    });
-  },
-  // 点击下拉列表
-  optionTaps(e) {
-    let Indexs = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
-    this.setData({
-      indexs: Indexs,
-      shows: !this.data.shows
-    });
-
+      index: e.detail.value
+    })
   },
 
   change:function(){
@@ -198,9 +220,14 @@ Page({
                 address:that.data.local,
                 img:that.data.imgList,
                 introduction:that.data.intro,
-                id:5
+                block3:true,
+                show:true,
+                button1:"隐藏物品",
+                button2:"删除物品",
+                isrent:false
               },
               success(res){
+                console.log('物品上传成功',res);
                 wx.showToast({
                   title: '发布成功',
                   duration:2000,//显示时长
@@ -238,6 +265,7 @@ Page({
                 introduction:that.data.intro
               },
               success(res){
+                console.log('修改物品信息成功',res);
                 wx.showToast({
                   title: '修改成功',
                   duration:2000,//显示时长
@@ -246,7 +274,7 @@ Page({
                 })
               },
               fail(res){
-                console.log("fail")
+                console.log("fail");
               }
             })
             

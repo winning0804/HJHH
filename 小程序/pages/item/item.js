@@ -1,4 +1,5 @@
 // pages/item/item.js
+const db = wx.cloud.database();
 Page({
 
   /**
@@ -6,15 +7,8 @@ Page({
    */
   data: {
     id:"",
-    page:"物品详情",
-    array:[
-      "../../images/u8.png",
-      "../../images/u19.svg",
-      "../../images/u8.png",
-      "../../images/u8.png",
-      "../../images/u8.png",
-    ],
-    imagesrc2:"../../images/u19.svg",
+    array:[],
+    imagesrc2:"",
     obj:"...",
     people:"...",
     time:"...",
@@ -50,7 +44,7 @@ Page({
 
   confirm:function(){
     var that = this;
-    if(this.data.num==1){
+    if(this.data.func=="待审核"){
       wx.showModal({
         title: '提醒',
         content: '是否通过审核？',
@@ -75,7 +69,7 @@ Page({
         }
       })
     }
-    if(this.data.num==2){
+    if(this.data.func=="待交易"){
       wx.showModal({
         title: '提醒',
         content: '是否成功交易？',
@@ -83,7 +77,7 @@ Page({
           if(res.confirm)
           {
             wx.showToast({
-              title: '已通过',
+              title: '已确认交易',
               duration:2000,//显示时长
               mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
               icon:'success'//图标，支持"success"、"loading"
@@ -92,9 +86,48 @@ Page({
         }
       })
     }
-    if(this.data.num==4){
-      that.setData({
-        isShowConfirm1:true
+    if(this.data.func=="待归还"){
+      wx.showModal({
+        title: '提醒',
+        content: '是否确认归还？',
+        success(res){
+          if(res.confirm){
+            that.setData({
+            isShowConfirm1:true
+            })
+          }
+          else if(res.cancel)
+          {
+            wx.showToast({
+              title: '已取消',
+              duration:2000,//显示时长
+              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+              icon:'success'//图标，支持"success"、"loading"
+            })
+          }
+        }
+      })
+    }
+    if(this.data.func=="确认归还"){
+      wx.showModal({
+        title: '提醒',
+        content: '是否确认归还？',
+        success(res){
+          if(res.confirm){
+            that.setData({
+            isShowConfirm1:true
+            })
+          }
+          else if(res.cancel)
+          {
+            wx.showToast({
+              title: '已取消',
+              duration:2000,//显示时长
+              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+              icon:'success'//图标，支持"success"、"loading"
+            })
+          }
+        }
       })
     }
       
@@ -139,7 +172,7 @@ Page({
     that.setData({
       isShowConfirm1: false,
     })
-    if(that.data.id==1){
+    if(that.data.func=="确认归还"){
       wx.showToast({
         title: '评论成功',
         duration:2000,//显示时长
@@ -147,7 +180,7 @@ Page({
         icon:'success'//图标，支持"success"、"loading"
       })
     }
-    if(that.data.id==2){
+    if(that.data.func=="待归还"){
       that.setData({
         isShowConfirm2:true
       })
@@ -169,117 +202,68 @@ Page({
     console.log(this.data.comment2+"   ");
   },
 
+  getuserinfo:function(someone){
+    var that = this;
+    db.collection('user').where({ 
+      _openid: someone
+    })
+    .get({
+      success:function(res){
+        that.setData({
+          imagesrc2:res.data[0].userimg,
+          people:res.data[0].username
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
     var that = this;
-    if(options.id==1){
-      that.setData({
-        id:1,
-        array:[
-          "../../images/u8.png",
-          "../../images/car.png",
-          "../../images/finger.png",
-        ],
-        imagesrc2:"../../images/u19.svg",
-        obj:"电子产品|蓝牙耳机",
-        people:"借用人：阿达娃",
-        time:"借用时间：2020.10.02-2020.11.20",
-        phone:"借用人电话：2657843659",
-        price:"￥3.00/日 免押金"
-      })
-      if(options.num==1){
+    db.collection("orders").doc(options.id).get({
+      success:function(res){
+        console.log('获取物品信息成功',res);
         that.setData({
-          but:true,
-          func:"审核",
-          num:1
+          array:res.data.img,
+          obj:res.data.kind+"|"+res.data.name,
+          price:"租金:"+res.data.rent+" 押金:"+res.data.deposit,
+          time:"from "+res.data.datestart+" to "+res.data.dateend
         })
+        if(options.page=="1"){
+          that.getuserinfo(res.data.borrowerid);
+          if(res.data.rstatus=="待审核"||res.data.rstatus=="待交易"||res.data.rstatus=="确认归还"){
+            that.setData({
+              but:true,
+              func:res.data.rstatus
+            })
+          }
+          if(res.data.rstatus=="等待对方确认交易"||res.data.rstatus=="借出中"){
+            that.setData({
+              text:true,
+              situa:res.data.rstatus
+            })
+          }
+        }
+        else if(options.page=="2"){
+        that.getuserinfo(res.data.renterid);
+        if(res.data.bstatus=="待交易"||res.data.bstatus=="待归还"){
+          that.setData({
+            but:true,
+            func:res.data.bstatus
+          })
+        }
+        if(res.data.bstatus=="等待对方审核"||res.data.bstatus=="等待对方确认交易"||res.data.bstatus=="等待对方确认归还"){
+          that.setData({
+            text:true,
+            situa:res.data.bstatus
+          })
+        }
+        }
       }
-      if(options.num==2){
-        that.setData({
-          but:true,
-          func:"已交易",
-          num:2
-        })
-      }
-      if(options.num==3){
-        that.setData({
-          text:true,
-          situa:"等待对方确认交易",
-          num:3
-        })
-      }
-      if(options.num==4){
-        that.setData({
-          but:true,
-          func:"已归还",
-          num:4
-        })
-      }
-      if(options.num==5){
-        that.setData({
-          text:true,
-          situa:"等待对方确认归还",
-          num:5
-        })
-      }
-    }
-    if(options.id==2){
-      that.setData({
-        id:2,
-        array:[
-          "../../images/u8.png",
-          "../../images/u19.svg",
-          "../../images/u8.png",
-          "../../images/u8.png",
-          "../../images/u8.png",
-          "../../images/u8.png",
-        ],
-        imagesrc2:"../../images/u19.svg",
-        obj:"交通出行|car",
-        people:"所属人：月野兔",
-        time:"借用时间：2020.08.04-2020.11.23",
-        phone:"所属人电话：2657843659",
-        price:"￥10.00/日 免押金",
-        func:"归还"
-      })
-      if(options.num==1){
-        that.setData({
-          text:true,
-          situa:"待审核",
-          num:1
-        })
-      }
-      if(options.num==2){
-        that.setData({
-          but:true,
-          func:"已交易",
-          num:2
-        })
-      }
-      if(options.num==3){
-        that.setData({
-          text:true,
-          situa:"等待对方确认交易",
-          num:3
-        })
-      }
-      if(options.num==4){
-        that.setData({
-          but:true,
-          func:"已归还",
-          num:4
-        })
-      }
-      if(options.num==5){
-        that.setData({
-          text:true,
-          situa:"等待对方确认归还",
-          num:5
-        })
-      }
-    }
+    })
   },
 
   /**

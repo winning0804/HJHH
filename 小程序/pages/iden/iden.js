@@ -78,7 +78,7 @@ Page({
     })
     .get({
       success: function(res) {
-        console.log(res);
+        console.log('获取实名认证信息成功',res);
         if(res.data.length==0){
           wx.showToast({
             title: '您还未实名认证',

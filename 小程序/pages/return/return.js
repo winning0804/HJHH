@@ -6,127 +6,62 @@ Page({
    * 页面的初始数据
    */
   data: {
-      page:"我是xx人",
-      array:[],
-      button1:"",
-      button2:"",
-      id:""
-    
+    pageid:0,
+    array:[],
+    block1:false,
+    block2:false,
+    block3:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.id);
     var that = this;
-    this.setData({
-      openid:options.openid
-    })
+    var app=getApp(); 
+    var id = app.globalData.openid;
     if(options.id==1){
-      that.setData({
-        page:"我是所属人",
-        array:[{
-          id:"1",
-          num:"1",
-          img:"../../images/u8.png",
-          obj:"电子产品|蓝牙耳机",
-          people:"借用人：美少女战士",
-          price:"￥3.00/日",
-          date:"20.11.11-20.11.13",
-          situa:"待审核"
-        },
-        {
-          id:"1",
-          num:"3",
-          img:"../../images/car.png",
-          obj:"交通出行|电动车",
-          people:"借用人：圣代",
-          price:"￥5.00/日",
-          date:"20.10.10-20.11.11",
-          situa:"等待对方确认交易"
-        },
-        {
-          id:"1",
-          num:"5",
-          img:"../../images/car.png",
-          obj:"交通出行|电动车",
-          people:"借用人：圣代",
-          price:"￥5.00/日",
-          date:"20.10.10-20.11.11",
-          situa:"等待对方确认归还"
-        },
-        {
-          id:"1",
-          num:"4",
-          img:"../../images/car.png",
-          obj:"交通出行|电动车",
-          people:"借用人：圣代",
-          price:"￥5.00/日",
-          date:"20.10.10-20.11.11",
-          situa:"待归还"
+      db.collection('orders').where({
+        renterid: id
+      })
+      .get({
+        success:function(res){
+          console.log('获取我的物品成功',res);
+          that.setData({
+            array:res.data,
+            block1:true,
+            pageid:1
+          })
         }
-      ]
       })
     }
     if(options.id==2){
-      that.setData({
-        page:"我是借方",
-        array:[{
-          id:"2",
-          num:"2",
-          img:"../../images/car.png",
-          obj:"交通出行|电动车",
-          people:"所属人：月野兔",
-          price:"￥10.00/日",
-          date:"20.08.04-20.11.23",
-          situa:"待交易",
-        },
-        {
-          id:"2",
-          num:"5",
-          img:"../../images/finger.png",
-          obj:"日常用品|finger",
-          people:"所属人：subs",
-          price:"￥1.00/日",
-          date:"20.10.04-20.11.23",
-          situa:"等待对方确认归还"
-        },
-        {
-          id:"2",
-          num:"1",
-          img:"../../images/car.png",
-          obj:"交通出行|电动车",
-          people:"所属人：月野兔",
-          price:"￥10.00/日",
-          date:"20.08.04-20.11.23",
-          situa:"待审核"
-        },
-        {
-          id:"2",
-          num:"4",
-          img:"../../images/car.png",
-          obj:"交通出行|电动车",
-          people:"所属人：月野兔",
-          price:"￥10.00/日",
-          date:"20.08.04-20.11.23",
-          situa:"待归还"
+      db.collection('orders').where({
+        borrowerid: id
+      })
+      .get({
+        success:function(res){
+          console.log('获取我的物品成功',res);
+          that.setData({
+            array:res.data,
+            block2:true,
+            pageid:2
+          })
         }
-        ]
       })
     }
     if(options.id==5){
-      var app=getApp(); 
-      var id = app.globalData.openid
       db.collection('goods').where({
         _openid: id
       })
       .get({
         success: function(res) {
+          console.log('获取我的物品成功',res);
           that.setData({
-            page:"我的物品",
-            button1:"隐藏物品",
-            button2:"删除物品",
-            array:res.data
+            array:res.data,
+            block3:true,
+            pageid:5
           })
         }
       })
@@ -140,6 +75,12 @@ Page({
     })
   },
 
+  item:function(e){
+    var that = this;
+    wx.navigateTo({
+      url:'/pages/item/item?id='+e.currentTarget.id+'&page='+that.data.pageid,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -189,40 +130,32 @@ Page({
 
   },
 
-  /*
-  obj_detail:function(e){
-    console.log(e);
-    
-    if(this.data.id==1){
-      wx.navigateTo({
-      url: '../../pages/item/item?id=1',
-      })
-    }
-    if(this.data.id==2){
-      wx.navigateTo({
-      url: '../../pages/item/item?id=2',
-      })
-    }
-    if(this.data.id==5){
-      wx.navigateTo({
-      url: '../../pages/mine-detail/mine-detail?id=5',
-      })
-    }
-  },
-*/
 
-  button1:function(){
+  button1:function(e){
+    var that = this;
+    console.log(e);
+    if(e.currentTarget.dataset.button=="隐藏物品"){
       wx.showModal({
         title: '提醒',
         content: '是否确认隐藏物品？',
         success(res){
           if(res.confirm)
           {
-            wx.showToast({
-              title: '已隐藏',
-              duration:2000,//显示时长
-              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-              icon:'success'//图标，支持"success"、"loading"
+            db.collection('goods').doc(e.currentTarget.dataset.text).update({
+              data:{
+                show:false,
+                button1:"取消隐藏",
+              },
+              success: function(res) {
+                console.log(res.data);
+                wx.showToast({
+                  title: '已隐藏',
+                  duration:2000,//显示时长
+                  mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                  icon:'success'//图标，支持"success"、"loading"
+                })
+                that.onLoad();
+              }
             })
           }else if(res.cancel)
           {
@@ -230,35 +163,67 @@ Page({
           }
         }
       })
-  },
-
-  button2:function(e){
-    console.log(e);
-    /*
+    }
+    if(e.currentTarget.dataset.button=="取消隐藏"){
       wx.showModal({
         title: '提醒',
-        content: '是否确认删除？',
+        content: '是否取消隐藏物品？',
         success(res){
           if(res.confirm)
           {
-            /*
-            db.collection('todos').doc('todo-identifiant-aleatoire').remove({
+            db.collection('goods').doc(e.currentTarget.dataset.text).update({
+              data:{
+                show:true,
+                button1:"隐藏物品",
+              },
               success: function(res) {
-                console.log(res.data)
+                console.log(res.data);
+                wx.showToast({
+                  title: '已取消隐藏',
+                  duration:2000,//显示时长
+                  mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                  icon:'success'//图标，支持"success"、"loading"
+                })
+                that.onLoad();
               }
-            })
-            wx.showToast({
-              title: '已删除',
-              duration:2000,//显示时长
-              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-              icon:'success'//图标，支持"success"、"loading"
             })
           }else if(res.cancel)
           {
             console.log("用户点击了取消");
           }
         }
-      })*/
+      })
+    }  
+  },
+
+  button2:function(e){
+    var that = this;
+    console.log(e);
+      wx.showModal({
+        title: '提醒',
+        content: '是否确认删除？',
+        success(res){
+          if(res.confirm)
+          {
+            db.collection('goods').doc(e.currentTarget.dataset.text).remove({
+              success: function(res) {
+                console.log(res.data);
+                wx.showToast({
+                  title: '已删除',
+                  duration:2000,//显示时长
+                  mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                  icon:'success'//图标，支持"success"、"loading"
+                })
+                that.onLoad();
+              }
+            })
+            
+          }else if(res.cancel)
+          {
+            console.log("用户点击了取消");
+          }
+        }
+      })
   }
 
 })

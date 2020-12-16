@@ -1,9 +1,5 @@
 <!--pages/item/item.wxml-->
 <view>
-  <!--顶栏-->
-  <view class="mine-head">
-    <view class="mine-head-text">{{page}}</view>
-  </view>
   <!--幻灯片-->
   <view class="my-image">
     <swiper indicator-dots indicator-color="#E4DADA"
@@ -14,7 +10,6 @@
         </swiper-item>
       </block>
     </swiper>
-    
   </view>
   <!--内容-->
   <view class="content">
@@ -27,7 +22,6 @@
       <image src="{{imagesrc2}}"></image>
       <view class="line4">
         <view class="line5">{{time}}</view>
-        <view>{{phone}}</view>
       </view>
     </view>
   </view>

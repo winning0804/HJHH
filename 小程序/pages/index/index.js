@@ -60,7 +60,7 @@ Page({
 				that.setData({
 					detail: res.data,
 				});
-				console.log(id);
+				console.log('获取成功',res);
 			},
 			fail:function(res){
 				console.log('获取失败')

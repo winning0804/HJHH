@@ -36,6 +36,7 @@ Page({
                   userimg:that.data.src
                 },
                 success:function(res) {
+                  console.log('个人信息修改成功',res);
                   wx.showToast({
                     title: '修改成功',
                     duration:2000,//显示时长
@@ -81,7 +82,7 @@ Page({
     })
     .get({
       success: function(res) {
-        console.log(res)
+        console.log('获取个人信息成功',res)
         that.setData({
           username:res.data[0].username,
           src:res.data[0].userimg
