@@ -5,9 +5,9 @@
     <view class="mine-head-text">用户设置</view>
   </view>
   <!--内容-->
-  <view class="lists ">
-    <view class="mine-block">
-      <button open-type='feedback'>反馈</button>
-    </view>
+  <view class="items ">
+    <!-- <view class="mine-block"> -->
+      <button open-type='feedback' type="default">反馈</button>
+    <!-- </view> -->
   </view>
 </view>
