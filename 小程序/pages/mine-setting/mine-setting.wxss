@@ -1,2 +1,11 @@
 /* pages/mine-setting/mine-setting.wxss */
-
+.items{
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 98%;
+  height:45px;
+  display: flex;
+  flex-direction:row;
+  background-color: white;
+  border-radius: 10rpx;
+}
