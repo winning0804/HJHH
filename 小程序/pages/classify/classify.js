@@ -4,14 +4,14 @@ const good = wx.cloud.database().collection("goods")
 let col1H = 0;
 let col2H = 0;
 let images = [
-    { pic: "../../images/1.png", name:"蓝牙耳机", rent:30, deposit: 50, id:"01"},
-    { pic: "../../images/2.png", name:"蓝牙耳机", rent:30, deposit: 50, id:"02"},
-    { pic: "../../images/3.png", name:"蓝牙耳机", rent:30, deposit: 50, id:"03"},
-    { pic: "../../images/4.png", name:"蓝牙耳机", rent:30, deposit: 50, id:"04"},
-    { pic: "../../images/5.png", name:"蓝牙耳机", rent:30, deposit: 50, id:"05"},
-    { pic: "../../images/6.png", name:"蓝牙耳机", rent:30, deposit: 50, id:"06"},
-    { pic: "../../images/7.png", name:"蓝牙耳机", rent:30, deposit: 50, id:"07"},
-    { pic: "../../images/8.png", name:"蓝牙耳机", rent:30, deposit: 50, id:"08"},
+    { pic: "../../images/1.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"01"},
+    { pic: "../../images/2.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"02"},
+    { pic: "../../images/3.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"03"},
+    { pic: "../../images/4.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"04"},
+    { pic: "../../images/5.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"05"},
+    { pic: "../../images/6.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"06"},
+    { pic: "../../images/7.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"07"},
+    { pic: "../../images/8.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"08"},
 ];
 Page({
   	data: {
