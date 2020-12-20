@@ -4,12 +4,15 @@
   <view class="lists">
 
     <view wx:if="{{block1}}">
-      <view class="mine-list" wx:for="{{array}}" >
-        <image src="{{item.img[0]}}" id="{{item._id}}" bindtap="item"></image>
-        <view class="list-in">
-          <view class="list-info list-info-name">{{item.kind}}|{{item.name}}</view>
-          <view class="list-info list-info-pri">￥{{item.rent}}元/日 押金：￥{{item.deposit}}</view>
-          <view class="situa">{{item.rstatus}}</view>
+      <view class="cu-card case no-card"  wx:for="{{array}}">
+        <view class="cu-item shadow">
+          <view class="image">
+            <image src="{{item.img[0]}}" id="{{item._id}}" bindtap="item"  mode="widthFix"></image>
+            <view class="cu-tag bg-blue">{{item.bstatus}}</view>
+            <view class="cu-bar bg-shadeBottom">
+              <text class="text-cut">{{item.kind}}|{{item.name}}</text>
+            </view>
+          </view>
         </view>
       </view>
     </view>

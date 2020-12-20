@@ -7,20 +7,21 @@ Page({
    */
   data: {
     change:false,
-    local:"点击图标获取位置",
+    local:"",
     imgList:[],
     shows: false, //控制下拉列表的显示隐藏，false隐藏、true显示
     selectDatas: ['电子产品', '日常用品', '交通出行','服务','其他'], //下拉列表的数据
-    indexs: 0 ,//选择的下拉列 表下标,
-    objs:"请输入物品名称",
-    money1:"请输入理想日租金",
-    money2:"请输入理想押金",
+    index:null,
+    objs:"",
+    money1:"",
+    money2:"",
     button:"发布",
     intro:"",
     id:"",
     modalName: null,
   },
 
+  //输入框的绑定函数
   bindobjs:function(e){
     console.log(e.detail.value);
     this.setData({
@@ -49,6 +50,7 @@ Page({
     })
   },
 
+  //图片的预览和删除
   ViewImage(e) {
     wx.previewImage({
       urls: this.data.imgList,
@@ -86,7 +88,7 @@ Page({
           that.setData({
             id:options.id,
             change:true,
-            indexs:res.data.index,
+            index:res.data.index,
             objs:res.data.name,
             money1:res.data.rent,
             money2:res.data.deposit,
@@ -150,6 +152,7 @@ Page({
 
   },
 
+  //获取地址信息
   getlocal:function(){
     var that = this;
     wx.chooseLocation({
@@ -159,6 +162,7 @@ Page({
     })
   },
 
+  //上传图片到云端
   upload:function(){
     var that = this;
     var old = that.data.imgList;
@@ -195,6 +199,7 @@ Page({
   },
 
 
+  //单选框的绑定事件
   PickerChange(e) {
     console.log(e);
     this.setData({
@@ -202,8 +207,10 @@ Page({
     })
   },
 
+  //提交表单
   change:function(){
     var that = this;
+    //添加物品
     if(this.data.change==false){
       wx.showModal({
         title: '确认发布？',
@@ -212,8 +219,8 @@ Page({
           {
             DB.add({
               data:{
-                kind:that.data.selectDatas[that.data.indexs],
-                index:that.data.indexs,
+                index:that.data.index,
+                kind:that.data.selectDatas[that.data.index],
                 name:that.data.objs,
                 rent:that.data.money1,
                 deposit:that.data.money2,
@@ -247,6 +254,7 @@ Page({
         }
       })
     }
+    //修改物品
     else{
       wx.showModal({
         title: '确认修改？',
@@ -255,8 +263,8 @@ Page({
           {
             DB.doc(that.data.id).update({
               data:{
-                kind:that.data.selectDatas[that.data.indexs],
-                index:that.data.indexs,
+                index:that.data.index,
+                kind:that.data.selectDatas[that.data.index],
                 name:that.data.objs,
                 rent:that.data.money1,
                 deposit:that.data.money2,
