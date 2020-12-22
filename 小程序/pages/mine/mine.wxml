@@ -54,5 +54,5 @@
       <image  src="../../images/forward.png"></image>
     </view>
   </view>  
-  <button bindtap="addorder">添加订单测试</button>
+  <!--<button bindtap="addorder">添加订单测试</button>-->
 </view>

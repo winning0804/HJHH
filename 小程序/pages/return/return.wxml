@@ -8,7 +8,7 @@
         <view class="cu-item shadow">
           <view class="image">
             <image src="{{item.img[0]}}" id="{{item._id}}" bindtap="item"  mode="widthFix"></image>
-            <view class="cu-tag bg-blue">{{item.bstatus}}</view>
+            <view class="cu-tag bg-blue">{{item.rstatus}}</view>
             <view class="cu-bar bg-shadeBottom">
               <text class="text-cut">{{item.kind}}|{{item.name}}</text>
             </view>

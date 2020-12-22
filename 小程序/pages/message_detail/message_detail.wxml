@@ -3,35 +3,32 @@
     <view class="mine-head-text">{{name}}</view>
   </view>
 
-  <view class="messages_detail">
-     <block wx:for="{{messages_detail_text1}}">
-  <view class="item">
-    <image class = "borrower_image" src="{{url}}" ></image>
-    <view class="messages_text">
-      <view>
-        <text class = "messages_detail_text">{{item}}</text>
+<view class="cu-chat">
+
+  <view class="cu-item self">
+    <view class="main">
+      <view class="content bg-green shadow">
+        <text>喵喵喵！喵喵喵！喵喵喵！喵喵！喵喵！！喵！喵喵喵！</text>
       </view>
     </view>
-  </view>
-  </block>
-  </view>
-
-  <view class="messages_my_detail">
-    <block wx:for ="{{messages_detail_text2}}">
-    <view class="item">
-      <view class="messages_text2">
-        <view>
-          <text class = "messages_detail_text2">{{item}}</text>
-        </view>
-    </view>
-    <image class = "mine_image" src="{{ur2}}" ></image>
-  </view>
-  </block>
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+    <view class="date">2018年3月23日 13:23</view>
   </view>
 
-  <view class="messages_detai_bottom">
-    <view class = "send_top">
-        <input class = "send" type='default' placeholder='发信息。。' confirm-type='send' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>    
+  <view class="cu-item">
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg);"></view>
+    <view class="main">
+      <view class="content shadow">
+        <text>喵喵喵！喵喵喵！</text>
+      </view>
     </view>
-    <button class="bottom" style="font-size:25rpx ">发送</button>
+    <view class="date "> 13:23</view>
   </view>
+
+</view>
+
+
+<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
+  <input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10"></input>
+  <button class="cu-btn bg-green shadow">发送</button>
+</view>

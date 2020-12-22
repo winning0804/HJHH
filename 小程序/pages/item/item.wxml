@@ -19,7 +19,7 @@
       <view class="price">{{price}}</view>
     </view>
     <view class="line3">
-      <image src="{{imagesrc2}}"></image>
+      <image src="{{imagesrc2}}" bindtap="chat"></image>
       <view class="line4">
         <view class="line5">{{time}}</view>
       </view>
@@ -53,7 +53,7 @@
               <view>{{one_1}}星</view>
             </view>
             <view class='toast-main'>
-                <textarea type='text' placeholder='{{comment1}}' bindinput='setValue1'></textarea>
+                <textarea type='text' placeholder="请输入对对方的评价" value="{{comment1}}" bindinput='setValue1'></textarea>
             </view>
             <button class="confirm" bindtap="confirmAcceptance">确认</button>
         </view>
@@ -80,7 +80,7 @@
               <view>{{one_2}}星</view>
             </view>
             <view class='toast-main'>
-                <textarea type='text' placeholder='{{comment2}}' bindinput='setValue2'></textarea>
+                <textarea type='text' placeholder="请输入对物品的评价"  value="{{comment2}}" bindinput='setValue2'></textarea>
             </view>
             <button class="confirm" bindtap="confirmAcceptance2">确认</button>
         </view>
