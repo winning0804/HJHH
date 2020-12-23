@@ -38,6 +38,7 @@ Page({
         sortid:0,
         col1:[],
         col2:[],
+        images:[],
     });
         this.onLoad();
     },
@@ -46,6 +47,7 @@ Page({
             sortid:1,
             col1:[],
             col2:[],
+            images:[],
         });
         //此处将当前所有商品（可能已经经过了分类筛选）按价格排序返回并赋值给images数组，所需信息参照images数组
         this.onLoad();
@@ -55,6 +57,7 @@ Page({
             sortid:2,
             col1:[],
             col2:[],
+            images:[],
         });
         //此处将当前所有商品（可能已经经过了分类筛选）按信誉排序返回并赋值给images数组，所需信息参照images数组
         this.onLoad();
@@ -64,6 +67,7 @@ Page({
             sortid:3,
             col1:[],
             col2:[],
+            images:[],
         });
         //此处将当前所有商品（可能已经经过了分类筛选）按距离排序返回并赋值给images数组，所需信息参照images数组
         this.onLoad();
@@ -73,7 +77,277 @@ Page({
             classifyid:e.currentTarget.dataset.index,
             col1:[],
             col2:[],
+            images:[],
         })
+        if(this.data.classifyid==0){
+            var that = this;
+            db.collection('goods').where({
+                isrent: false,
+                show:true,
+              })
+              .get({
+                success: function(res) {
+                  console.log(res.data);
+                  let ii = [];
+                  let iiii = res.data;
+                  console.log(iiii);
+                  for(var i = 0;i<iiii.length;i++){
+                    var i0 = {};
+                    i0._id = iiii[i]._id;
+                    i0.img = iiii[i].img[0];
+                    i0.name = iiii[i].name;
+                    i0.rent = iiii[i].rent;
+                    i0.deposit = iiii[i].deposit;
+                    i0.height = 180;
+                    ii.push(i0);
+                }
+                  that.setData({
+                      images:ii,
+                  });
+                }
+    
+            });
+            wx.getSystemInfo({
+                success: (res) => {
+                    let ww = res.windowWidth;
+                    let wh = res.windowHeight;
+                    let imgWidth = ww * 0.48;
+                    let scrollH = wh;
+    
+                    this.setData({
+                        scrollH: scrollH,
+                        imgWidth: imgWidth
+                    });
+    
+                    this.loadImages();
+                }
+            });   
+        }
+        if(this.data.classifyid==1){
+            var that = this;
+            db.collection('goods').where({
+                isrent: false,
+                show:true,
+                kind:"电子产品",
+              })
+              .get({
+                success: function(res) {
+                  console.log(res.data);
+                  let ii = [];
+                  let iiii = res.data;
+                  console.log(iiii);
+                  for(var i = 0;i<iiii.length;i++){
+                    var i0 = {};
+                    i0._id = iiii[i]._id;
+                    i0.img = iiii[i].img[0];
+                    i0.name = iiii[i].name;
+                    i0.rent = iiii[i].rent;
+                    i0.deposit = iiii[i].deposit;
+                    i0.height = 180;
+                    ii.push(i0);
+                }
+                  that.setData({
+                      images:ii,
+                  });
+                }
+    
+            });
+            wx.getSystemInfo({
+                success: (res) => {
+                    let ww = res.windowWidth;
+                    let wh = res.windowHeight;
+                    let imgWidth = ww * 0.48;
+                    let scrollH = wh;
+    
+                    this.setData({
+                        scrollH: scrollH,
+                        imgWidth: imgWidth
+                    });
+    
+                    this.loadImages();
+                }
+            });   
+        }
+        if(this.data.classifyid==2){
+            var that = this;
+            db.collection('goods').where({
+                isrent: false,
+                show:true,
+                kind:"日常用品",
+              })
+              .get({
+                success: function(res) {
+                  console.log(res.data);
+                  let ii = [];
+                  let iiii = res.data;
+                  console.log(iiii);
+                  for(var i = 0;i<iiii.length;i++){
+                    var i0 = {};
+                    i0._id = iiii[i]._id;
+                    i0.img = iiii[i].img[0];
+                    i0.name = iiii[i].name;
+                    i0.rent = iiii[i].rent;
+                    i0.deposit = iiii[i].deposit;
+                    i0.height = 180;
+                    ii.push(i0);
+                }
+                  that.setData({
+                      images:ii,
+                  });
+                }
+    
+            });
+            wx.getSystemInfo({
+                success: (res) => {
+                    let ww = res.windowWidth;
+                    let wh = res.windowHeight;
+                    let imgWidth = ww * 0.48;
+                    let scrollH = wh;
+    
+                    this.setData({
+                        scrollH: scrollH,
+                        imgWidth: imgWidth
+                    });
+    
+                    this.loadImages();
+                }
+            });   
+        }
+        if(this.data.classifyid==3){
+            var that = this;
+            db.collection('goods').where({
+                isrent: false,
+                show:true,
+                kind:"交通出行",
+              })
+              .get({
+                success: function(res) {
+                  console.log(res.data);
+                  let ii = [];
+                  let iiii = res.data;
+                  console.log(iiii);
+                  for(var i = 0;i<iiii.length;i++){
+                    var i0 = {};
+                    i0._id = iiii[i]._id;
+                    i0.img = iiii[i].img[0];
+                    i0.name = iiii[i].name;
+                    i0.rent = iiii[i].rent;
+                    i0.deposit = iiii[i].deposit;
+                    i0.height = 180;
+                    ii.push(i0);
+                }
+                  that.setData({
+                      images:ii,
+                  });
+                }
+    
+            });
+            wx.getSystemInfo({
+                success: (res) => {
+                    let ww = res.windowWidth;
+                    let wh = res.windowHeight;
+                    let imgWidth = ww * 0.48;
+                    let scrollH = wh;
+    
+                    this.setData({
+                        scrollH: scrollH,
+                        imgWidth: imgWidth
+                    });
+    
+                    this.loadImages();
+                }
+            });   
+        }
+        if(this.data.classifyid==4){
+            var that = this;
+            db.collection('goods').where({
+                isrent: false,
+                show:true,
+                kind:"服务",
+              })
+              .get({
+                success: function(res) {
+                  console.log(res.data);
+                  let ii = [];
+                  let iiii = res.data;
+                  console.log(iiii);
+                  for(var i = 0;i<iiii.length;i++){
+                    var i0 = {};
+                    i0._id = iiii[i]._id;
+                    i0.img = iiii[i].img[0];
+                    i0.name = iiii[i].name;
+                    i0.rent = iiii[i].rent;
+                    i0.deposit = iiii[i].deposit;
+                    i0.height = 180;
+                    ii.push(i0);
+                }
+                  that.setData({
+                      images:ii,
+                  });
+                }
+    
+            });
+            wx.getSystemInfo({
+                success: (res) => {
+                    let ww = res.windowWidth;
+                    let wh = res.windowHeight;
+                    let imgWidth = ww * 0.48;
+                    let scrollH = wh;
+    
+                    this.setData({
+                        scrollH: scrollH,
+                        imgWidth: imgWidth
+                    });
+    
+                    this.loadImages();
+                }
+            });   
+        }
+        if(this.data.classifyid==5){
+            var that = this;
+            db.collection('goods').where({
+                isrent: false,
+                show:true,
+                kind:"其他",
+              })
+              .get({
+                success: function(res) {
+                  console.log(res.data);
+                  let ii = [];
+                  let iiii = res.data;
+                  console.log(iiii);
+                  for(var i = 0;i<iiii.length;i++){
+                    var i0 = {};
+                    i0._id = iiii[i]._id;
+                    i0.img = iiii[i].img[0];
+                    i0.name = iiii[i].name;
+                    i0.rent = iiii[i].rent;
+                    i0.deposit = iiii[i].deposit;
+                    i0.height = 180;
+                    ii.push(i0);
+                }
+                  that.setData({
+                      images:ii,
+                  });
+                }
+    
+            });
+            wx.getSystemInfo({
+                success: (res) => {
+                    let ww = res.windowWidth;
+                    let wh = res.windowHeight;
+                    let imgWidth = ww * 0.48;
+                    let scrollH = wh;
+    
+                    this.setData({
+                        scrollH: scrollH,
+                        imgWidth: imgWidth
+                    });
+    
+                    this.loadImages();
+                }
+            });   
+        }
         //此处返回经过分类筛选后的商品信息
         //如果classifyid=0:全部商品
         //如果classifyid=1:电子产品
@@ -81,13 +355,13 @@ Page({
         //如果classifyid=3:交通出行
         //如果classifyid=4:服务
         //如果classifyid=5:其他
-        this.onLoad();
     },
     search:function(e){
         this.setData({
             classifyid:e.currentTarget.dataset.index,
             col1:[],
             col2:[],
+            images:[],
         });
         //此处为搜索功能，根据关键字(即searchtext的值)返回商品并赋值给images数组
         this.onLoad();

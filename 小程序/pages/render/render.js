@@ -36,20 +36,64 @@ Page({
             sortid:0,
             col1:[],
             col2:[],
+            images: [],
         });
         var that = this;
         that.setData({
             i0:false,
             i1:true,
         })
+        var that = this;
+        db.collection('goods').where({
+            isrent: this.data.i0,
+            show:this.data.i1,
+            _openid:this.data.iiid,
+          })
+          .get({
+            success: function(res) {
+              console.log(res.data);
+              let ii = [];
+              let iiii = res.data;
+              console.log(iiii);
+              for(var i = 0;i<iiii.length;i++){
+                var i0 = {};
+                i0._id = iiii[i]._id;
+                i0.img = iiii[i].img[0];
+                i0.name = iiii[i].name;
+                i0.rent = iiii[i].rent;
+                i0.deposit = iiii[i].deposit;
+                i0.height = 180;
+                ii.push(i0);
+            }
+              that.setData({
+                  images:ii,
+              });
+            }
+
+        });
+        wx.getSystemInfo({
+            success: (res) => {
+                let ww = res.windowWidth;
+                let wh = res.windowHeight;
+                let imgWidth = ww * 0.48;
+                let scrollH = wh;
+
+                this.setData({
+                    scrollH: scrollH,
+                    imgWidth: imgWidth
+                });
+
+				this.loadImages();
+            }
+        })
         //此处获取可借物品
-        this.onLoad();
 	},
 	select2:function (e){
         this.setData({
             sortid:0,
             col1:[],
             col2:[],
+            images: [],
         });
         var that = this;
         that.setData({
@@ -57,13 +101,56 @@ Page({
             i1:true,
         })
         //此处获取已借物品
-        this.onLoad();
+        var that = this;
+        db.collection('goods').where({
+            isrent: this.data.i0,
+            show:this.data.i1,
+            _openid:this.data.iiid,
+          })
+          .get({
+            success: function(res) {
+              console.log(res.data);
+              let ii = [];
+              let iiii = res.data;
+              console.log(iiii);
+              for(var i = 0;i<iiii.length;i++){
+                var i0 = {};
+                i0._id = iiii[i]._id;
+                i0.img = iiii[i].img[0];
+                i0.name = iiii[i].name;
+                i0.rent = iiii[i].rent;
+                i0.deposit = iiii[i].deposit;
+                i0.height = 180;
+                ii.push(i0);
+            }
+              that.setData({
+                  images:ii,
+              });
+            }
+
+        });
+        wx.getSystemInfo({
+            success: (res) => {
+                let ww = res.windowWidth;
+                let wh = res.windowHeight;
+                let imgWidth = ww * 0.48;
+                let scrollH = wh;
+
+                this.setData({
+                    scrollH: scrollH,
+                    imgWidth: imgWidth
+                });
+
+				this.loadImages();
+            }
+        })
 	},
 	select3:function (e){
         this.setData({
             sortid:0,
             col1:[],
             col2:[],
+            images: [],
         });
         var that = this;
         that.setData({
@@ -71,10 +158,52 @@ Page({
             i1:false,
         })
         //此处获取隐藏物品
-        this.onLoad();
+        var that = this;
+        db.collection('goods').where({
+            isrent: this.data.i0,
+            show:this.data.i1,
+            _openid:this.data.iiid,
+          })
+          .get({
+            success: function(res) {
+              console.log(res.data);
+              let ii = [];
+              let iiii = res.data;
+              console.log(iiii);
+              for(var i = 0;i<iiii.length;i++){
+                var i0 = {};
+                i0._id = iiii[i]._id;
+                i0.img = iiii[i].img[0];
+                i0.name = iiii[i].name;
+                i0.rent = iiii[i].rent;
+                i0.deposit = iiii[i].deposit;
+                i0.height = 180;
+                ii.push(i0);
+            }
+              that.setData({
+                  images:ii,
+              });
+            }
+
+        });
+        wx.getSystemInfo({
+            success: (res) => {
+                let ww = res.windowWidth;
+                let wh = res.windowHeight;
+                let imgWidth = ww * 0.48;
+                let scrollH = wh;
+
+                this.setData({
+                    scrollH: scrollH,
+                    imgWidth: imgWidth
+                });
+
+				this.loadImages();
+            }
+        })
     },
 	  onLoad: function (Option) {
-          console.log(Option.openid)
+        console.log(Option.openid)
         var that = this;
         db.collection('user').where({   
 			_openid: Option.openid,
@@ -182,13 +311,24 @@ Page({
         });
 	},
 	
-
+    toindex1:function(event){
+		console.log(this.data.col1[event.currentTarget.dataset.index]._id);
+		wx.navigateTo({
+			url: '../index/index?id='+this.data.col1[event.currentTarget.dataset.index]._id,
+		})
+    },
+	toindex2:function(event){
+		console.log(this.data.col2[event.currentTarget.dataset.index]._id);
+		wx.navigateTo({
+            url: '../index/index?id='+this.data.col2[event.currentTarget.dataset.index]._id,
+		})
+    },
 
 
 
 	tomessage: function(event){
 		wx.switchTab({
-			url: '../message_detail/message_detail'
+			url: '../message_detail/message_detail?openid='+this.data.iiid,
 		});
 	},
 	back: function(event){
