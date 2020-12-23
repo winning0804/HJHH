@@ -4,26 +4,26 @@
         <input class = "search" type='text' placeholder='搜索' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
     </view> -->
 
-  <view class="message_list">
-     <block wx:for="{{messages}}" wx:key="{{index}}">
-        <navigator url="../message_detail/message_detail?image={{item.url}}&name={{item.borrower_name}}&nameid={{item.nameid}}">
-    <view class="item">
-      <image class = "borrower_image" src="{{item.url}}" ></image>
-      <view class="borrower_text">
-        <view>
-          <text class = "borrower_name">{{item.borrower_name}}</text>
-        </view> 
-        <view>
-          <text class = "borrower_message">{{item.borrower_message}}</text>
-        </view> 
-      </view> 
-      
-      <view class="item_right">
-      <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view>
-    </view>
+<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 375rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+    <view class="padding-top padding-lr">
+      <view class="cu-list menu-avatar" >
+        <view class="cu-item" wx:for="{{messages}}" wx:key="{{index}}">
+          <view class="cu-avatar radius lg" style="background-image:url({{item.img}});" bindtap="detail"></view>
+          <view class="content" id="{{item.openid}}" bindtap="detail">
+            <view class="text-black">
+              <text class="text-cut">{{item.name}}</text>
+            </view>
+            <view class="text-gray text-sm flex">
+              <text class="text-cut">{{item.text}}</text>
+            </view>
+          </view>
+          <view class="action">
+            <view class="text-grey text-xs">{{item.time}}</view>
+          </view>
+        </view>
+      </view>
 
-   </view>
- </navigator>
-    </block>
-  </view>   
+    </view>
+  </scroll-view>
+
 </view>  

@@ -13,14 +13,6 @@
     </block>
   </view>
   <!--第二部分-->
-  <view class="bac view3">
-    <block wx:if="{{isLogin}}">
-      <view class="view3-text">{{score}}</view>
-    </block>
-    <block wx:else>
-      <view class="view3-text">信誉分：000分</view>
-    </block>
-  </view>
   <!--第三部分-->
   <view class="view5 bac">
     <view  class="center" bindtap="ToDetail" data-nid="1">
@@ -54,5 +46,5 @@
       <image  src="../../images/forward.png"></image>
     </view>
   </view>  
-  <button bindtap="addorder">添加订单测试</button>
+  <!--<button bindtap="addorder">添加订单测试</button>-->
 </view>

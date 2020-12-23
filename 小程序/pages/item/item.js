@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    objid:"",
     id:"",
+    someone:"",
     array:[],
     imagesrc2:"",
     obj:"...",
@@ -26,8 +28,8 @@ Page({
     but:false,
     situa:"",
     num:"",
-    comment1:"请输入对对方的评价",
-    comment2:"请输入对物品的评价"
+    comment1:"",
+    comment2:""
   },
 
   setValue1:function(e){
@@ -51,12 +53,21 @@ Page({
         success(res){
           if(res.confirm)
           {
-            wx.showToast({
-              title: '已通过',
-              duration:2000,//显示时长
-              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-              icon:'success'//图标，支持"success"、"loading"
+            db.collection("orders").doc(that.data.objid).update({
+              data:{
+                bstatus:"待交易",
+                rstatus:"待交易",
+              },
+              success(res){
+                wx.showToast({
+                  title: '已通过',
+                  duration:2000,//显示时长
+                  mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                  icon:'success'//图标，支持"success"、"loading"
+                })
+              }
             })
+            
           }else if(res.cancel)
           {
             wx.showToast({
@@ -76,11 +87,44 @@ Page({
         success(res){
           if(res.confirm)
           {
-            wx.showToast({
-              title: '已确认交易',
-              duration:2000,//显示时长
-              mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-              icon:'success'//图标，支持"success"、"loading"
+            var rs,bs;
+            db.collection("orders").doc(that.data.objid).get({
+              success:function(res){
+                if(that.data.id=="1"){
+                  if(res.data.bstatus=="待交易"){
+                    rs="等待对方确认交易",
+                    bs="待交易"
+                  }
+                  if(res.data.bstatus=="等待对方确认交易"){
+                    rs="借出中",
+                    bs="待归还"
+                  }
+                }
+                if(that.data.id=="2"){
+                  if(res.data.rstatus=="待交易"){
+                    bs="等待对方确认交易",
+                    rs="待交易"
+                  }
+                  if(res.data.rstatus=="等待对方确认交易"){
+                    rs="借出中",
+                    bs="待归还"
+                  }
+                }
+                db.collection("orders").doc(that.data.objid).update({
+                  data:{
+                    bstatus:bs,
+                    rstatus:rs,
+                  },
+                  success(res){
+                    wx.showToast({
+                      title: '已确认交易',
+                      duration:2000,//显示时长
+                      mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                      icon:'success'//图标，支持"success"、"loading"
+                    })
+                  }
+                })
+              }
             })
           }
         }
@@ -93,7 +137,7 @@ Page({
         success(res){
           if(res.confirm){
             that.setData({
-            isShowConfirm1:true
+              isShowConfirm1:true
             })
           }
           else if(res.cancel)
@@ -185,7 +229,7 @@ Page({
         isShowConfirm2:true
       })
     }
-    console.log(this.data.comment1+"   ");
+    console.log(that.data.one_1+"星 "+that.data.comment1);
   },
 
   confirmAcceptance2:function(){
@@ -199,7 +243,14 @@ Page({
       mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
       icon:'success'//图标，支持"success"、"loading"
     })
-    console.log(this.data.comment2+"   ");
+    console.log(that.data.one_2+"星 "+that.data.comment2);
+  },
+
+  chat:function(res){
+    var that = this;
+    wx.navigateTo({
+      url: '/pages/message_detail/message_detail?id='+that.data.someone,
+    })
   },
 
   getuserinfo:function(someone){
@@ -211,7 +262,8 @@ Page({
       success:function(res){
         that.setData({
           imagesrc2:res.data[0].userimg,
-          people:res.data[0].username
+          people:res.data[0].username,
+          someone:someone
         })
       }
     })
@@ -227,6 +279,8 @@ Page({
       success:function(res){
         console.log('获取物品信息成功',res);
         that.setData({
+          objid:options.id,
+          id:options.page,
           array:res.data.img,
           obj:res.data.kind+"|"+res.data.name,
           price:"租金:"+res.data.rent+" 押金:"+res.data.deposit,

@@ -3,35 +3,36 @@
     <view class="mine-head-text">{{name}}</view>
   </view>
 
-  <view class="messages_detail">
-     <block wx:for="{{messages_detail_text1}}">
-  <view class="item">
-    <image class = "borrower_image" src="{{url}}" ></image>
-    <view class="messages_text">
-      <view>
-        <text class = "messages_detail_text">{{item}}</text>
-      </view>
-    </view>
-  </view>
-  </block>
-  </view>
+<view class="cu-chat" wx:for="{{chat}}">
 
-  <view class="messages_my_detail">
-    <block wx:for ="{{messages_detail_text2}}">
-    <view class="item">
-      <view class="messages_text2">
-        <view>
-          <text class = "messages_detail_text2">{{item}}</text>
+  <block wx:if="{{item.me==me}}">
+    <view class="cu-item self">
+      <view class="main">
+        <view class="content bg-green shadow">
+          <text>{{item.text}}</text>
         </view>
+      </view>
+      <view class="cu-avatar radius" style="background-image:url({{my_img}});"></view>
+      <view class="date">{{item.time}}</view>
     </view>
-    <image class = "mine_image" src="{{ur2}}" ></image>
-  </view>
   </block>
-  </view>
 
-  <view class="messages_detai_bottom">
-    <view class = "send_top">
-        <input class = "send" type='default' placeholder='发信息。。' confirm-type='send' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>    
+  <block wx:else>
+    <view class="cu-item">
+      <view class="cu-avatar radius" style="background-image:url({{your_img}});"></view>
+      <view class="main">
+        <view class="content shadow">
+          <text>{{item.text}}</text>
+        </view>
+      </view>
+      <view class="date ">{{item.time}}</view>
     </view>
-    <button class="bottom" style="font-size:25rpx ">发送</button>
-  </view>
+  </block>
+
+</view>
+
+
+<view class="cu-bar foot input ">
+  <input class="solid-bottom" bindinput="tobesend" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10"></input>
+  <button class="cu-btn bg-green shadow" bindtap="send">发送</button>
+</view>
