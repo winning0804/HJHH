@@ -1,10 +1,6 @@
 // pages/item/item.js
 const db = wx.cloud.database();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     goodid:"",
     objid:"",

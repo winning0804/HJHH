@@ -455,6 +455,8 @@ Page({
         this.setData(data);
     },
 	loadImages: function () {
+        col1H = 0;
+        col2H = 0;
         this.setData({
             loadingCount: images.length,
             //images: images
