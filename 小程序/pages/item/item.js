@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    goodid:"",
     objid:"",
     id:"",
     someone:"",
@@ -136,8 +137,22 @@ Page({
         content: '是否确认归还？',
         success(res){
           if(res.confirm){
+            db.collection("orders").doc(that.data.objid).update({
+              data:{
+                bstatus:"等待对方确认归还",
+                rstatus:"确认归还"
+              },
+              success:function(res){
+                wx.showToast({
+                  title: '已归还,等待确认',
+                  duration:2000,//显示时长
+                  mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+                  icon:'success'//图标，支持"success"、"loading"
+                })
+              }
+            })
             that.setData({
-              isShowConfirm1:true
+              isShowConfirm2:true
             })
           }
           else if(res.cancel)
@@ -158,8 +173,18 @@ Page({
         content: '是否确认归还？',
         success(res){
           if(res.confirm){
-            that.setData({
-            isShowConfirm1:true
+            db.collection("orders").doc(that.data.objid).remove({
+              success:function(res){
+                console.log("归还成功");
+              }
+            })
+            db.collection("goods").doc(that.data.goodid).update({
+              data:{
+                isrent:false
+              },
+              success:function(res){
+                console.log("物品可借");
+              }
             })
           }
           else if(res.cancel)
@@ -237,13 +262,21 @@ Page({
     that.setData({
       isShowConfirm2: false
     })
-    wx.showToast({
-      title: '评论成功',
-      duration:2000,//显示时长
-      mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
-      icon:'success'//图标，支持"success"、"loading"
+    db.collection('comments').add({
+      data:{
+        comment:that.data.comment2,
+        score:that.data.one_2,
+        good_id:that.data.goodid
+      },
+      success(res){
+        wx.showToast({
+          title: '评论成功',
+          duration:2000,//显示时长
+          mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
+          icon:'success'//图标，支持"success"、"loading"
+        })
+      }
     })
-    console.log(that.data.one_2+"星 "+that.data.comment2);
   },
 
   chat:function(res){
@@ -279,6 +312,7 @@ Page({
       success:function(res){
         console.log('获取物品信息成功',res);
         that.setData({
+          goodid:res.data.goodsid,
           objid:options.id,
           id:options.page,
           array:res.data.img,
