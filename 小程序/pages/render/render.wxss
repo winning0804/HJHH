@@ -6,6 +6,7 @@ page{
     height : 375rpx;
     background-color: #932525;
     position: fixed;
+    z-index: 2000;
 }
 .profile_picture{
     width: 375rpx;
@@ -79,55 +80,50 @@ page{
     font-weight: bold;
     float: left;
 }
+.three{
+    width: 33%;
+}
+.two{
+    width: 50%;
+}
 .goods{
-    margin-top: 375rpx;
-    width : 750rpx;
+    width:100%;
+    padding-top: 5rpx;
+    margin-top:375rpx;
 }
-.thegoods{
-    float: left;
-    width: 49vw;
-    height: 40vh;
+.img_item {
+    width: 48%;
+    margin: 0 1% 0 1%;
+    display: inline-block;
+    vertical-align: top;
 }
-.goods_detail{
-    width: 94%;
-    height: 94%;
-    margin-left: 5%;
-    margin-top:6%;
-    border-radius: 20rpx;
-    background-color: white;
-}
-.goods_img{
+.item_box{
     width: 100%;
-    height: 70%;
+    padding: 3%;
+    margin-top: 10rpx;
+    margin-bottom: 10rpx;
+    background-color: #fff;
 }
-.images{
+.item_info{
     width: 100%;
-    height: 100%;
-    border-radius: 20rpx 20rpx 0 0;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
 }
-.goods_name{
-    width: 90%;
-    height: 14%;
-    font-size: 34rpx;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 2%;
-}
-.goods_price{
-    width: 55%;
-    height: 12%;
+.item_info_name{
+    min-height: 60rpx;
     font-size: 30rpx;
-    color: #BF0A0A;
-    padding-left: 5%;
-    padding-top: 2%;
-    float: left;
 }
-.goods_deposit{
+.item_info_price{
+    height: 40rpx;
+    line-height: 40rpx;
+    display: flex;
+}
+.item_info_rent{
+    width: 65%;
+    color: red;
+    font-size: 28rpx;
+}
+.item_info_deposit{
     width: 35%;
-    height: 10%;
-    font-size: 23rpx;
-    color: #BF0A0A;
-    padding-left: 5%;
-    padding-top: 4%;
-    float: left;
+    font-size: 20rpx;
 }

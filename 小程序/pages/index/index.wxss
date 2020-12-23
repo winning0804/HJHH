@@ -1,89 +1,153 @@
 /**index.wxss**/
 .container{
-    background-color: #E4DADA;
-}
-.swiper-container {
-  width: 100%;
-  position: relative;
-}
-
-.swiper_box {
-  width: 100%;
-  height: 748rpx;
-}
-
-swiper-item image {
-  width: 100%;
-  display: inline-block;
-  overflow: hidden;
-  height: 748rpx;
-}
-
-.swiper-container .dots {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 20rpx;
-  display: flex;
-  justify-content: center;
-}
-
-.swiper-container .dots .dot {
-  margin: 0 8rpx;
-  width: 14rpx;
-  height: 14rpx;
-  background: #000;
-  border-radius: 50%;
-  transition: all 0.6s;
-  opacity: 0.3;
-}
-
-.swiper-container .dots .dot.active {
-  opacity: 0.6;
-}
-.t1{
-    width: 100vw;
-    background-color: #fff;
-    border-radius: 0 0 30rpx 30rpx;
+    background-color: #f0f0f0;
 }
 .images{
-    width: 100%;
-    height: 600rpx;
-    float:left;
+    height: 500rpx;
+    width: 750rpx;
+    background-color: #fff;
 }
-.title1{
-    width:600rpx;
+.screen-swiper{
+    min-height: 500rpx;
+    width: 750rpx;
+}
+.title0{
+    width: 750rpx;
+    background-color: #fff;
+    padding-left: 50rpx;
+    padding-right: 50rpx;
+    padding-top: 30rpx;
+}
+.title_name{
+    width:100%;
+    min-height: 50rpx;
     line-height : 50rpx;
-    margin: auto;
     font-size :40rpx;
 }
+.title_left{
+    width: 50%;
+    height: 150rpx;
+    float: left;
+}
+.title_right{
+    width: 50%;
+    height: 150rpx;
+    float: left;
+    text-align: center;
+}
 .price{
-    width: 220rpx;
-    height: 110rpx;
+    width: 100%;
+    height: 50%;
     line-height : 110rpx;
     font-size :35rpx;
-    padding-left: 60rpx;
     color : #BF0A0A;
-    float: left;
 }
 .deposit{
-    width: 200rpx;
-    height: 110rpx;
-    line-height : 110rpx;
+    width: 100%;
+    height: 50%;
+    line-height : 75rpx;
     font-size :25rpx;
     color : #BF0A0A;
+}
+.thescore{
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 40rpx;
+}
+.scorestars_w{
+    height: 40%;
+    line-height: 80rpx;
+    font-size: 40rpx;
+}
+.socrestars{
+    width: 20%;
+    height: 100%;
     float: left;
 }
+.thetotal{
+    width: 100%;
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 25rpx;
+}
+.padding-xl{
+    width: 100%;
+    height: 400rpx;
+    padding:0rpx;
+    background-color: #fff;
+}
+.torend_detail_top{
+    width: 100%;
+    height: 80rpx;
+    line-height: 30rpx;
+    font-size : 40rpx;
+    text-align: left;
+}
+.fff{
+    width: 100%;
+    height: 100rpx;
+}
+.torend{
+    width: 100%;
+    height: 100rpx;
+    line-height: 90rpx;
+    text-align:center;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    z-index: 1000;
+    border-top: 1rpx solid #797979;
+}
+.okbutton{
+    width: 750rpx;
+    height: 80rpx;
+    padding-top: 20rpx;
+}
+.okbuttonin{
+    width: 600rpx;
+}
+.padding2{
+    height: 300rpx;
+    padding: 20rpx 60rpx 20rpx 60rpx;
+}
+.contain_title{
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 35rpx;
+    text-align: left;
+}
+.contain_contain{
+    width: 100%;
+    height: 60rpx;
+    line-height:60rpx;
+    font-size: 30rpx;
+    text-align: left;
+}
+.bleft{
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+.bright{
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+.okok{
+    float: left;
+    width: 50%;
+}
+
+
+
+
 .score{
     width: 250rpx;
     height: 110rpx;
     float: left;
     text-align:center;
-}
-.thescore{
-    width: 100%;
-    height: 40rpx;
-    font-size: 30rpx;
 }
 .stars{
     width: 100%;
@@ -103,6 +167,7 @@ swiper-item image {
     border-radius: 30rpx;
     margin-top: 30rpx;
     background-color: #fff;
+    padding-left:30rpx;
 }
 .introduce_title{
     font-size: 20px;
@@ -110,7 +175,7 @@ swiper-item image {
     padding-top: 30rpx;
 }
 .introduce_container{
-    padding: 50rpx;
+    padding: 20rpx;
     font-size: 15px;
 }
 .container_info{
@@ -121,17 +186,16 @@ swiper-item image {
 }
 .container_image{
     float: left;
-    width: 20%;
-    height: 140rpx;
-    padding: 30rpx;
+    width: 25%;
+    height: 270rpx;
     padding-left: 50rpx;
 }
 .container_detail{
     float: left;
     width: 375rpx;
     height: 160rpx;
-    line-height: 80rpx;
-    font-size: 13px;
+    line-height: 160rpx;
+    font-size: 18px;
     padding-left: 30rpx;
     padding-top: 30rpx;
     padding-bottom: 30rpx;
@@ -141,6 +205,7 @@ swiper-item image {
     height : 100rpx;
     float: left;
     margin-top: 100rpx;
+    margin-left: 30rpx;
 }
 .comments{
     width: 100vw;
@@ -241,8 +306,6 @@ swiper-item image {
     width: 630rpx;
     margin:auto;
 }
-.comment_print{
-}
 .commentTocomment{
     width: 670rpx;
     margin: auto;
@@ -295,17 +358,6 @@ swiper-item image {
     float: left;
     width: 95%;
     height: 95%;
-}
-.torend{
-    width: 100%;
-    height: 100rpx;
-    line-height: 90rpx;
-    text-align:center;
-    position: fixed;
-    bottom: 0;
-    background-color: white;
-    z-index: 2000;
-    border-top: 1rpx solid #797979;
 }
 .torend_button{
     width: 30%;
@@ -459,20 +511,6 @@ swiper-item image {
   overflow: hidden;
   z-index: 6000;
   color: #fff;
-}
-.contain_title{
-    width: 500rpx;
-    height: 120rpx;
-    padding: 0 50rpx 0 50rpx;
-    line-height: 120rpx;
-    font-size: 40rpx;
-}
-.contain_contain{
-    width: 440rpx;
-    height: 60rpx;
-    padding: 0 80rpx 0 80rpx;
-    line-height:60rpx;
-    font-size: 30rpx;
 }
 .contain_buttons{
     width: 600rpx;

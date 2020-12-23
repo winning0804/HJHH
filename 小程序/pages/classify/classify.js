@@ -4,15 +4,17 @@ const good = wx.cloud.database().collection("goods")
 let col1H = 0;
 let col2H = 0;
 let images = [
-    { pic: "../../images/1.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"01"},
-    { pic: "../../images/2.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"02"},
-    { pic: "../../images/3.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"03"},
-    { pic: "../../images/4.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"04"},
-    { pic: "../../images/5.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"05"},
-    { pic: "../../images/6.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"06"},
-    { pic: "../../images/7.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"07"},
-    { pic: "../../images/8.jpg", name:"蓝牙耳机", rent:30, deposit: 50, id:"08"},
+    {pic: "../../images/1.jpg", name:"蓝牙耳机", rent:30, deposit: 50, _id:"01"},
+    {pic:"", img: "../../images/2.jpg", name:"蓝牙耳机", rent:30, deposit: 50, _id:"02"},
+    { img: "../../images/3.jpg", name:"蓝牙耳机", rent:30, deposit: 50, _id:"03"},
+    { img: "../../images/4.jpg", name:"蓝牙耳机", rent:30, deposit: 50, _id:"04"},
+    { img: "../../images/5.jpg", name:"蓝牙耳机", rent:30, deposit: 50, _id:"05"},
+    { img: "../../images/6.jpg", name:"蓝牙耳机", rent:30, deposit: 50, _id:"06"},
+    { img: "../../images/7.jpg", name:"蓝牙耳机", rent:30, deposit: 50, _id:"07"},
+    { img: "../../images/8.jpg", name:"蓝牙耳机", rent:30, deposit: 50, _id:"08"},
 ];
+let ii = [];
+
 Page({
   	data: {
 		tablist:[{"tabid":0,"title":"全部商品"},
@@ -28,16 +30,15 @@ Page({
         images: [],
         col1: [],
         col2: [],
+        im:[],
         sortid:0,
         classifyid:0,
 	},
-    sortselect0:function (e){
-        this.setData({
-            sortid:0,
-            col1:[],
-            col2:[],
-        });
-        //此处将当前所有商品（可能已经经过了分类筛选）按综合（默认）方式排序返回并赋值给images数组，所需信息参照images数组
+    sortselect0:function (e){this.setData({
+        sortid:0,
+        col1:[],
+        col2:[],
+    });
         this.onLoad();
     },
     sortselect1:function (e){
@@ -92,6 +93,33 @@ Page({
         this.onLoad();
     },
     onLoad: function () {
+        var that = this;
+        db.collection('goods').where({
+            isrent: false,
+            show:true,
+          })
+          .get({
+            success: function(res) {
+              console.log(res.data);
+              let ii = [];
+              let iiii = res.data;
+              console.log(iiii);
+              for(var i = 0;i<iiii.length;i++){
+                var i0 = {};
+                i0._id = iiii[i]._id;
+                i0.img = iiii[i].img[0];
+                i0.name = iiii[i].name;
+                i0.rent = iiii[i].rent;
+                i0.deposit = iiii[i].deposit;
+                i0.height = 180;
+                ii.push(i0);
+            }
+              that.setData({
+                  images:ii,
+              });
+            }
+
+        });
         wx.getSystemInfo({
             success: (res) => {
                 let ww = res.windowWidth;
@@ -106,8 +134,9 @@ Page({
 
 				this.loadImages();
             }
-        })
-	},
+        });      
+        console.log(that.data.images);
+    },
 	onImageLoad: function (e) {
         let imageId = e.currentTarget.id;
         let oImgW = e.detail.width;         //图片原始宽度
@@ -115,13 +144,12 @@ Page({
         let imgWidth = this.data.imgWidth;  //图片设置的宽度
         let scale = imgWidth / oImgW;        //比例计算
         let imgHeight = oImgH * scale;      //自适应高度
-
         let images = this.data.images;
         let imageObj = null;
 
         for (let i = 0; i < images.length; i++) {
             let img = images[i];
-            if (img.id === imageId) {
+            if (img._id === imageId) {
                 imageObj = img;
                 break;
             }
@@ -154,8 +182,10 @@ Page({
 	loadImages: function () {
         this.setData({
             loadingCount: images.length,
-            images: images
+            //images: images
         });
+        
+        console.log(this.data.images);
     },
     searchinput: function(e){
         this.setData({
@@ -168,10 +198,16 @@ Page({
 		wx.hideNavigationBarLoading();
 		wx.stopPullDownRefresh();
     },
-	toindex:function(event){
-		console.log(this.data.list[event.currentTarget.dataset.index]._id);
+	toindex1:function(event){
+		console.log(this.data.col1[event.currentTarget.dataset.index]._id);
 		wx.navigateTo({
-			url: '../index/index?id='+this.data.list[event.currentTarget.dataset.index]._id,
+			url: '../index/index?id='+this.data.col1[event.currentTarget.dataset.index]._id,
+		})
+    },
+	toindex2:function(event){
+		console.log(this.data.col2[event.currentTarget.dataset.index]._id);
+		wx.navigateTo({
+            url: '../index/index?id='+this.data.col2[event.currentTarget.dataset.index]._id,
 		})
     },
     showModal(e) {

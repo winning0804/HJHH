@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/classify/classify",
+    "pages/render/render",
     "pages/mine/mine",
     "pages/return/return",
     "pages/item/item",
     "pages/index/index",
-    "pages/classify/classify",
     "pages/mine-info/mine-info",
     "pages/iden/iden",
-    "pages/render/render",
     "pages/mine-detail/mine-detail",
     "pages/mine-setting/mine-setting",
     "pages/message/message",
