@@ -8,10 +8,16 @@
 				 placeholder="搜索"
 				 confirm-type="search"
 				 bindinput="searchinput"
+				 value="{{text}}"
 				></input>
 			</view>
 			<view class="action">
-				<button class="cu-btn bg-green shadow-blur round searchcolor" bindtap="search">搜索</button>
+				<button
+				 class="cu-btn bg-green shadow-blur round searchcolor"
+				 id="search"
+				 catchtap="tosearch"
+				>搜索
+				</button>
 			</view>
 		</view>
 		<view class="nav_top">

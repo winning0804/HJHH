@@ -33,6 +33,7 @@ Page({
         im:[],
         sortid:0,
         classifyid:0,
+        text:'',
 	},
     sortselect0:function (e){this.setData({
         sortid:0,
@@ -494,4 +495,63 @@ Page({
           modalName: null
         })
     },
+    searchinput(e){
+		this.setData({
+			text : e.detail.value
+		})
+		
+	},
+    tosearch:function(){
+        this.setData({
+            col1:[],
+            col2:[],
+            images:[],
+        })
+        var that = this;
+            db.collection('goods').where({
+                //isrent: false,
+                //show:true,
+                name:{
+                    $regex:'.*'+ this.data.text + '.*',
+                    $options: 'i'
+                },
+              })
+              .get({
+                success: function(res) {
+                  console.log(res.data);
+                  let ii = [];
+                  let iiii = res.data;
+                  console.log(iiii);
+                  for(var i = 0;i<iiii.length;i++){
+                    var i0 = {};
+                    i0._id = iiii[i]._id;
+                    i0.img = iiii[i].img[0];
+                    i0.name = iiii[i].name;
+                    i0.rent = iiii[i].rent;
+                    i0.deposit = iiii[i].deposit;
+                    i0.height = 180;
+                    ii.push(i0);
+                }
+                  that.setData({
+                      images:ii,
+                  });
+                }
+    
+            });
+            wx.getSystemInfo({
+                success: (res) => {
+                    let ww = res.windowWidth;
+                    let wh = res.windowHeight;
+                    let imgWidth = ww * 0.48;
+                    let scrollH = wh;
+    
+                    this.setData({
+                        scrollH: scrollH,
+                        imgWidth: imgWidth
+                    });
+    
+                    this.loadImages();
+                }
+            });   
+	},
 })
