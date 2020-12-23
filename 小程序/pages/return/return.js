@@ -53,7 +53,8 @@ Page({
     }
     if(options.id==5){
       db.collection('goods').where({
-        _openid: id
+        _openid: id,
+        isrent:false
       })
       .get({
         success: function(res) {
