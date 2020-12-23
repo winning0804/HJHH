@@ -139,7 +139,8 @@ Page({
           if(res.confirm){
             db.collection("orders").doc(that.data.objid).update({
               data:{
-                bstatus:"等待对方确认归还"
+                bstatus:"等待对方确认归还",
+                rstatus:"确认归还"
               },
               success:function(res){
                 wx.showToast({
