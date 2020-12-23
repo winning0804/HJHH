@@ -62,6 +62,7 @@ Page({
 						that.setData({
 							holder: res.data,
 						});
+						console.log(option.id);
 						db.collection('comments').where({
 							goods_id: option.id,
 							})
@@ -70,7 +71,7 @@ Page({
 								that.setData({
 									comment:res.data,
 								})
-								console.log(res.data)
+								console.log(res.data);
 							},
 							fail:function(){
 								console.log("comments required failure.");
@@ -325,13 +326,14 @@ Page({
 		});
 	},
 	torender: function (event) {
+		console.log(this.data.holder);
 		wx.navigateTo({
 			url: '../render/render?openid='+this.data.holder[0]._openid,
 		})
 	},
 	tomessage: function (event) {
 		wx.navigateTo({
-			url: '../message_detail/message_detail'
+			url: '../message_detail/message_detail?openid='+this.data.holder[0]._openid,
 		});
 	},
 	thumbChange: function (event) {

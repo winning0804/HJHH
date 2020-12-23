@@ -66,10 +66,10 @@
 	<view class="comments">
 		<view class="comment_title">评价</view>
 		<view
-		 wx:for="{{comments}}"
+		 wx:for="{{comment}}"
 		 data-index="{{index}}"
 		 class="comment"
-		 wx:if='{{comments.length!=0}}'
+		 wx:if='{{comment.length!=0}}'
 		>
 			<view class="borrower">
 				<image

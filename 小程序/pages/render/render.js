@@ -15,6 +15,9 @@ let images = [
 ];
 Page({
   	data: {
+          iiid:'',
+          i0:false,
+          i1:true,
 		scrollH: 0,
         imgWidth: 0,
         loadingCount: 0,
@@ -34,6 +37,11 @@ Page({
             col1:[],
             col2:[],
         });
+        var that = this;
+        that.setData({
+            i0:false,
+            i1:true,
+        })
         //此处获取可借物品
         this.onLoad();
 	},
@@ -43,6 +51,11 @@ Page({
             col1:[],
             col2:[],
         });
+        var that = this;
+        that.setData({
+            i0:true,
+            i1:true,
+        })
         //此处获取已借物品
         this.onLoad();
 	},
@@ -52,25 +65,58 @@ Page({
             col1:[],
             col2:[],
         });
+        var that = this;
+        that.setData({
+            i0:false,
+            i1:false,
+        })
         //此处获取隐藏物品
         this.onLoad();
     },
 	  onLoad: function (Option) {
-          console.log(Option);
-          var that = this;
-        db.collection('user').where({
+          console.log(Option.openid)
+        var that = this;
+        db.collection('user').where({   
 			_openid: Option.openid,
 		  }).get({
 			success: function(res) {
 				that.setData({
-					holder: res.data,
+                    holder: res.data,
+                    iiid:Option.openid,
 				});
-				console.log(res.data);
 			},
 			fail:function(res){
 				console.log('获取失败')
 			}
-		});
+        });
+        var that = this;
+        db.collection('goods').where({
+            isrent: this.data.i0,
+            show:this.data.i1,
+            _openid:Option.openid,
+          })
+          .get({
+            success: function(res) {
+              console.log(res.data);
+              let ii = [];
+              let iiii = res.data;
+              console.log(iiii);
+              for(var i = 0;i<iiii.length;i++){
+                var i0 = {};
+                i0._id = iiii[i]._id;
+                i0.img = iiii[i].img[0];
+                i0.name = iiii[i].name;
+                i0.rent = iiii[i].rent;
+                i0.deposit = iiii[i].deposit;
+                i0.height = 180;
+                ii.push(i0);
+            }
+              that.setData({
+                  images:ii,
+              });
+            }
+
+        });
         wx.getSystemInfo({
             success: (res) => {
                 let ww = res.windowWidth;
@@ -94,13 +140,12 @@ Page({
         let imgWidth = this.data.imgWidth;  //图片设置的宽度
         let scale = imgWidth / oImgW;        //比例计算
         let imgHeight = oImgH * scale;      //自适应高度
-
         let images = this.data.images;
         let imageObj = null;
 
         for (let i = 0; i < images.length; i++) {
             let img = images[i];
-            if (img.id === imageId) {
+            if (img._id === imageId) {
                 imageObj = img;
                 break;
             }
@@ -133,7 +178,7 @@ Page({
 	loadImages: function () {
         this.setData({
             loadingCount: images.length,
-            images: images
+            //images: images
         });
 	},
 	
@@ -143,7 +188,7 @@ Page({
 
 	tomessage: function(event){
 		wx.switchTab({
-			url: '../message/message'
+			url: '../message_detail/message_detail'
 		});
 	},
 	back: function(event){

@@ -47,8 +47,8 @@
 			<image
 			 wx:for="{{images}}"
 			 wx:key="id"
-			 id="{{item.id}}"
-			 src="{{item.pic}}"
+			 id="{{item._id}}"
+			 src="{{item.img}}"
 			 bindload="onImageLoad"
 			></image>
 		</view>
@@ -61,7 +61,7 @@
 						 data-index="{{index}}"
 						 bindtap="toindex1"
 						>
-							<image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;box-shadow:0px 4rpx 6rpx 4rpx #e0e0e0;"></image>
+							<image src="{{item.img}}" style="width:100%;height:{{item.height}}px;box-shadow:0px 4rpx 6rpx 4rpx #e0e0e0;"></image>
 							<view class="item_info">
 								<view class="item_info_name">{{item.name}}</view>
 								<view class="item_info_price">
@@ -79,7 +79,7 @@
 						 data-index="{{index}}"
 						 bindtap="toindex2"
 						>
-							<image src="{{item.pic}}" style="width:100%;height:{{item.height}}px;box-shadow:0px 4rpx 6rpx 4rpx #e0e0e0;"></image>
+							<image src="{{item.img}}" style="width:100%;height:{{item.height}}px;box-shadow:0px 4rpx 6rpx 4rpx #e0e0e0;"></image>
 							<view class="item_info">
 								<view class="item_info_name">{{item.name}}</view>
 								<view class="item_info_price">
