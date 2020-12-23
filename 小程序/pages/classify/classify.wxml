@@ -22,7 +22,7 @@
 		</view>
 		<view class="nav_top">
 			<view class="nav_top_box {{sortid==0?'selected':''}}" bindtap="sortselect0">综合</view>
-			<view class="nav_top_box {{sortid==1?'selected':''}}" bindtap="sortselect1"></view>
+			<view class="nav_top_box {{sortid==1?'selected':''}}" bindtap="sortselect1">价格</view>
 			<view class="nav_top_box {{sortid==2?'selected':''}}" bindtap="sortselect2"></view>
 			<view class="nav_top_box {{sortid==3?'selected':''}}" bindtap="sortselect3"></view>
 			<view class="nav_top_box"></view>

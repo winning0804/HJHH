@@ -50,8 +50,51 @@ Page({
             col2:[],
             images:[],
         });
+        var that = this;
+        db.collection('goods').where({
+            isrent: false,
+            show:true,
+          })
+          .orderBy('rent', 'asc')
+          .get({
+            success: function(res) {
+              console.log(res.data);
+              let ii = [];
+              let iiii = res.data;
+              console.log(iiii);
+              for(var i = 0;i<iiii.length;i++){
+                var i0 = {};
+                i0._id = iiii[i]._id;
+                i0.img = iiii[i].img[0];
+                i0.name = iiii[i].name;
+                i0.rent = iiii[i].rent;
+                i0.deposit = iiii[i].deposit;
+                i0.height = 180;
+                ii.push(i0);
+            }
+              that.setData({
+                  images:ii,
+              });
+            }
+
+        });
+        wx.getSystemInfo({
+            success: (res) => {
+                let ww = res.windowWidth;
+                let wh = res.windowHeight;
+                let imgWidth = ww * 0.48;
+                let scrollH = wh;
+
+                this.setData({
+                    scrollH: scrollH,
+                    imgWidth: imgWidth
+                });
+
+				this.loadImages();
+            }
+        });      
         //此处将当前所有商品（可能已经经过了分类筛选）按价格排序返回并赋值给images数组，所需信息参照images数组
-        this.onLoad();
+        //this.onLoad();
     },
     sortselect2:function (e){
         this.setData({
