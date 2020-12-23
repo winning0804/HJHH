@@ -26,6 +26,52 @@ Page({
     }).get({
       success:function(res){
         console.log(res);
+        var time = [];
+        var text = [];
+        var img = [];
+        var name = [];
+        var openid = [];
+        var openid2 = [];
+        if(res.data.length!=0){
+          var l,i;
+          for(i = 0;i < res.data.length;i++){
+            var tem = that.data.messages;
+            l=res.data[i].chat.length;
+            if(l!=0){
+              time.push(res.data[i].chat[l-1].time);
+              text.push(res.data[i].chat[l-1].text);
+              openid2.push(res.data[i].openid_2);
+              db.collection('user').where({
+                _openid:res.data[i].openid_2
+              }).get({
+                success:function(e){
+                  img.push(e.data[0].userimg);
+                  openid.push(e.data[0]._openid);
+                  name.push(e.data[0].username);
+                  tem.push({img:e.data[0].userimg,openid:e.data[0]._openid,
+                    name:e.data[0].username,text:text[i],time:time[i]})
+                  that.setData({
+                    messages:tem
+                  })
+                  console.log("i:"+i);
+                  console.log(tem);
+                },
+                fail:function(e){
+                  console.log("fail");
+                }
+              })
+            }
+          }
+        }
+      }
+    })
+    db.collection('chat').where({
+      openid_2:app.globalData.openid
+    }).get({
+      success:function(res){
+        console.log(res);
+        var time = [];
+        var text = [];
         if(res.data.length!=0){
           var l,i;
           for(i = 0;i < res.data.length;i++){
@@ -33,17 +79,18 @@ Page({
             l=res.data[i].chat.length;
             if(l!=0){
               console.log(res.data[i].chat[l-1].text);
-              var time = res.data[i].chat[l-1].time;
-              var text = res.data[i].chat[l-1].text;
+              time.push(res.data[i].chat[l-1].time);
+              text.push(res.data[i].chat[l-1].text);
               db.collection('user').where({
-                _openid:res.data[i].openid_2
+                _openid:res.data[i].openid_1
               }).get({
                 success:function(e){
                   tem.push({img:e.data[0].userimg,openid:e.data[0]._openid,
-                    name:e.data[0].username,text:text,time:time})
-                    that.setData({
-                      messages:tem
-                    })
+                    name:e.data[0].username,text:text[i],time:time[i]})
+                  that.setData({
+                    messages:tem
+                  })
+                  console.log(tem);
                 },
                 fail:function(e){
                   console.log("fail");

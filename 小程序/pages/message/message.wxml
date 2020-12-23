@@ -8,7 +8,7 @@
     <view class="padding-top padding-lr">
       <view class="cu-list menu-avatar" >
         <view class="cu-item" wx:for="{{messages}}" wx:key="{{index}}">
-          <view class="cu-avatar radius lg" style="background-image:url({{item.img}});" bindtap="detail"></view>
+          <view class="cu-avatar radius lg" style="background-image:url({{item.img}});" ></view>
           <view class="content" id="{{item.openid}}" bindtap="detail">
             <view class="text-black">
               <text class="text-cut">{{item.name}}</text>

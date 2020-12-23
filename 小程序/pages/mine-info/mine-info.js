@@ -64,8 +64,15 @@ Page({
       sourceType:['album', 'camera'],
       success:function(res){
         console.log(res),
-        that.setData({
-          src:res.tempFilePaths,
+        wx.cloud.uploadFile({
+          cloudPath: new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),//云储存的路径及文件名
+          filePath : res.tempFilePaths, //要上传的图片/文件路径 这里使用的是选择图片返回的临时地址
+          success : (e) => { //上传图片到云储存成功
+            console.log('图片上传成功',e);
+            that.setData({
+                imgList:e.fileID,
+            });
+          }
         })
       }
     })
