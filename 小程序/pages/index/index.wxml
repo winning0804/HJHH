@@ -66,10 +66,10 @@
 	<view class="comments">
 		<view class="comment_title">评价</view>
 		<view
-		 wx:for="{{comment}}"
+		 wx:for="{{comments}}"
 		 data-index="{{index}}"
 		 class="comment"
-		 wx:if='{{comment.length!=0}}'
+		 wx:if='{{comments.length!=0}}'
 		>
 			<view class="borrower">
 				<image
@@ -81,12 +81,13 @@
 					<text style="display: inline-block; width: 40%;">{{item.name}}</text>
 					<text style="display: inline-block; width: 20%; font-size : 30rpx;">借过</text>
 					<view style="display: inline-block; width: 40%;">
-						<image
-						 wx:for="{{item.score}}"
-						 class="star"
-						 src="../../images/star.svg"
-						 mode="aspectFill"
-						></image>
+						<view
+						 class="socrestars"
+						 wx:for="{{5}}"
+						 wx:key
+						>
+							<text class="cuIcon-favorfill lg text-yellow"></text>
+						</view>
 					</view>
 				</view>
 				<view class="borrower_comment">{{item.comment}}</view>

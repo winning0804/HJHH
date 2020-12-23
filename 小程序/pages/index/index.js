@@ -47,47 +47,48 @@ Page({
 		cardCur: 0,
 	},
 	onLoad(option) {
-		console.log(app.globalData.openid);
+		//console.log(app.globalData.openid);
 		var that = this;
 		db.collection('goods').doc(option.id).get({
 			success: function(res) {
 				that.setData({
 					detail: res.data,
 				});
-				console.log(that.data.detail);
-			},
-			fail:function(res){
-				console.log('获取失败')
-			}
-		});
-		console.log(that.data.detail);
-		db.collection('user').where({
-			_openid: that.data.detail[0]._openid,
-		  }).get({
-			success: function(res) {
-				that.setData({
-					holder: res.data,
+				console.log(that.data.detail._openid);
+				db.collection('user').where({
+					_openid: that.data.detail._openid,
+				  }).get({
+					success: function(res) {
+						that.setData({
+							holder: res.data,
+						});
+						db.collection('comments').where({
+							goods_id: option.id,
+							})
+							.get({
+							success: function(res) {
+								that.setData({
+									comment:res.data,
+								})
+								console.log(res.data)
+							},
+							fail:function(){
+								console.log("comments required failure.");
+							}
+					  });
+					},
+					fail:function(res){
+						console.log('获取失败')
+					}
 				});
-				console.log(res.data);
 			},
 			fail:function(res){
 				console.log('获取失败')
 			}
 		});
-		db.collection('comments').where({
-			goods_id: option.id,
-			})
-			.get({
-			success: function(res) {
-				that.setData({
-					comment:res.data,
-				})
-				console.log(res.data)
-			},
-			fail:function(){
-				console.log("comments required failure.");
-			}
-	  });
+		console.log(that.data.detail._openid);
+		
+		
 		this.towerSwiper(this.data.detail.img);
 	  },
 	  DotStyle(e) {
