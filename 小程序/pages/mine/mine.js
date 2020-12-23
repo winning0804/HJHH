@@ -51,6 +51,11 @@ Page({
     })
   },
 
+  gettime:function(){
+    var time = util.formatTime(new Date());
+    console.log(time);
+  },
+
   getOpenid() {
     let that = this;
     wx.cloud.callFunction({
